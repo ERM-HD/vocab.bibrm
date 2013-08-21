@@ -1,0 +1,21 @@
+@base <http://vocab.ub.uni-leipzig.de/bibrm/> . 
+@prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix site:   <http://ns.ontowiki.net/SysOnt/Site/> .
+
+
+owl:Class               rdfs:subClassOf rdfs:Class .
+owl:DatatypeProperty    rdfs:subClassOf rdf:Property .
+owl:ObjectProperty      rdfs:subClassOf rdf:Property .
+owl:FunctionalProperty  rdfs:subClassOf rdf:Property .
+
+owl:Ontology site:classTemplate "ontology" .
+rdf:Property site:classTemplate "property" .
+rdfs:Class   site:classTemplate "class" .
+
+<http://aksw.org/NormanRadtke>      foaf:name "Norman Radtke" .
+<http://aksw.org/AndreasNareike>    foaf:name "Andreas Nareike" .
+<http://aksw.org/NatanaelArndt>     foaf:name "Natanael Arndt" .
