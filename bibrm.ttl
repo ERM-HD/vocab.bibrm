@@ -1,0 +1,253 @@
+@base <http://vocab.ub.uni-leipzig.de/bibrm/> . 
+@prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
+@prefix dc:     <http://purl.org/dc/elements/1.1/> .
+@prefix dct:    <http://purl.org/dc/terms/> .
+@prefix doap:   <http://usefulinc.com/ns/doap#>.
+@prefix foaf:   <http://xmlns.com/foaf/0.1/> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann:   <http://purl.org/vocab/vann/>.
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+<> a owl:Ontology;
+  foaf:maker <http://aksw.org/NormanRadtke>, <http://aksw.org/AndreasNareike>, <http://aksw.org/NatanaelArndt> ;
+  doap:maintainer <http://aksw.org/NormanRadtke>;
+  doap:homepage <http://aksw.org/Projects/ERM>;
+  vann:changes <https://github.com/ERM-HD/vocab.bibrm/commits/master/bibrm.ttl>;
+  vann:preferredNamespacePrefix "bibrm";
+  vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/bibrm/";
+  rdfs:label "Vocabulary for Biblioraphical Electronic Resource Management";
+  rdfs:isDefinedBy <> .
+
+#################################
+############ Classes ############
+#################################
+
+bibrm:LicenceContract rdf:type        owl:Class ;
+                    rdfs:comment    "A class modeling a business contract between two or more parties"@en ;
+                    rdfs:isDefinedBy <> ;
+                    rdfs:subClassOf bibrm:BibItem ,
+                                    [ rdf:type owl:Restriction ;
+                                    owl:onProperty bibrm:offeredTo ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                    owl:onProperty bibrm:offeredBy ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                    owl:onProperty bibrm:hasItem ;
+                                    owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                    owl:onProperty bibrm:price ;
+                                    owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                    owl:onProperty bibrm:startDate ;
+                                    owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                                    owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                            owl:onProperty bibrm:endDate ;
+                            owl:minCardinality "0"^^xsd:nonNegativeInteger ;
+                            owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+bibrm:BibItem rdf:type        owl:Class ;
+            rdfs:label      "Bibliographic Item"@en ;
+            rdfs:comment    "A class containing all items a bibliotheca shares offers it's customers"@en ;
+            rdfs:comment    "Ein BibItem ist ein Ding, welches die Bibliothek ihren Nutzern zur Nutzung anbietet"@de ;
+            rdfs:isDefinedBy <> ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty dc:publisher ;
+                            owl:minCardinality "1"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                            owl:onProperty dc:title ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+
+bibrm:Body    rdf:type        owl:Class ;
+            rdfs:label      "Body"@en ;
+            rdfs:comment    "A class containing entities like publishers or deliverer"@en ;
+            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb von bibrm:BibItems"@de ;
+            rdfs:isDefinedBy <> ;
+            rdfs:subClassOf dct:Agent .
+
+bibrm:Contact rdf:type        owl:Class ;
+            rdfs:label      "Contact"@en ;
+            rdfs:isDefinedBy <> ;
+            rdfs:subClassOf foaf:Person ,
+                            [ rdf:type owl:Restriction ;
+                            owl:onProperty bibrm:name ;
+                            owl:cardinality "1"^^xsd:nonNegativeInteger
+                            ] .
+
+bibrm:Contract    rdf:type        owl:Class ;
+                rdfs:label      "Contract"@en ;
+                rdfs:label      "Vertrag"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:comment    ""@en ;
+                rdfs:comment    ""@de .
+
+bibrm:ContractItem    rdf:type        owl:Class ;
+                    rdfs:label      "Contract item"@en ;
+                    rdfs:comment    "The object/thing of a contract"@en ;
+                    rdfs:comment    "Der Gegenstand eines Vertrags"@de ;
+                    rdfs:isDefinedBy <> ;
+                    rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty bibrm:hasItem ;
+                                    owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                    ] .
+
+bibrm:EJournal    rdf:type        owl:Class ;
+                rdfs:label      "E-Journal"@en ;
+                rdfs:comment    "An electronic journal"@en ;
+                rdfs:comment    "Eine elektronische Zeitschrift"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:subClassOf bibrm:Journal ,
+                                [ rdf:type owl:Restriction ;
+                                owl:onProperty bibrm:hasEISSN ;
+                                owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                owl:onProperty bibrm:hasPISSN ;
+                                owl:cardinality "0"^^xsd:nonNegativeInteger
+                                ] .
+
+bibrm:Journal rdf:type        owl:Class ;
+            rdfs:label      "Journal"@en ;
+            rdfs:comment    "A Journal. This class can be used if a unique reference to either the electronic or printed version of a journal is not given"@en ;
+            rdfs:comment    "Eine Zeitschrift, zu welcher die eindeutige Refferenz auf die elektronische oder gedruckte Ausgabe nicht gegeben ist."@de ;
+            rdfs:isDefinedBy <> ;
+            rdfs:subClassOf bibrm:BibItem ,
+                            [ rdf:type owl:Restriction ;
+                            owl:onProperty bibrm:hasPISSN ;
+                            owl:cardinality "0"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                            owl:onProperty bibrm:hasEISSN ;
+                            owl:cardinality "0"^^xsd:nonNegativeInteger
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                            owl:onProperty bibrm:title ;
+                            owl:minCardinality "0"^^xsd:nonNegativeInteger
+                            ] .
+
+bibrm:LicencePackage  rdf:type        owl:Class ;
+                    rdfs:label      "Licence Package"@en ;
+                    rdfs:comment    "A package licenced in a licence contract containing items (e.g. journals, books) a bibliotheca offers it's customers"@en ;
+                    rdfs:comment    "Ein Lizenzpaket bestehend aus Subjekten wie Büchern oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
+                    rdfs:isDefinedBy <> ;
+                    rdfs:subClassOf bibrm:ContractItem .
+
+bibrm:PJournal    rdf:type        owl:Class ;
+                rdfs:label      "Printed Journal"@en ;
+                rdfs:comment    "A printed journal"@en ;
+                rdfs:comment    "Eine gedruckte Zeitschrift"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:subClassOf bibrm:Journal ,
+                                [ rdf:type owl:Restriction ;
+                                owl:onProperty bibrm:hasPISSN ;
+                                owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                owl:onProperty bibrm:hasEISSN ;
+                                owl:cardinality "0"^^xsd:nonNegativeInteger
+                                ] .
+
+########################################
+########### ObjectProperties ###########
+########################################
+
+bibrm:deliveredBy rdf:type    owl:ObjectProperty, rdf:Property ;
+                rdfs:label  "deliverd by"@en ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain bibrm:BibItem ;
+                rdfs:range  bibrm:Body .
+
+bibrm:deliveredBy rdf:type    owl:ObjectProperty, rdf:Property ;
+                rdfs:label  "deliverd by"@en ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain bibrm:BibItem ;
+                rdfs:range  bibrm:Body .
+
+bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
+            rdfs:label  "has item"@en ;
+            rdfs:isDefinedBy <> ;
+            rdfs:domain bibrm:LicenceContract ;
+            rdfs:range  bibrm:ContractItem .
+
+bibrm:hasPISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
+                rdfs:label  "has P-ISSN"@en ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain bibrm:Journal .
+
+bibrm:hasEISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
+                rdfs:label  "has E-ISSN"@en ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain bibrm:Journal .
+bibrm:offeredBy   rdf:type        owl:ObjectProperty, rdf:Property ;
+                rdfs:label      "offered by"@en ;
+                rdfs:comment    "The partie of the contract offering the lawfull object"@en ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain     bibrm:Contract ;
+                rdfs:range      bibrm:Body .
+
+bibrm:offeredTo   rdf:type        owl:ObjectProperty, rdf:Property ;
+                rdfs:label      "offered to"@en ;
+                rdfs:comment    "The partie of the contract receiving the lawfull object"@en ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain     bibrm:Contract .
+
+#################################
+########### Datatypes ###########
+#################################
+
+bibrm:endDate    rdf:type    owl:DatatypeProperty, rdf:Property ;
+               rdfs:label  "end date"@en ;
+               rdfs:label  "Enddatum"@de ;
+               rdfs:isDefinedBy <> ;
+               rdfs:domain bibrm:Contract ;
+               rdfs:range  xsd:date .
+
+bibrm:field      rdf:type     owl:DatatypeProperty, rdf:Property ;
+               rdfs:label   "field"@en ;
+               rdfs:label   "Fachgebiet"@de ;
+               rdfs:comment "The field predicate can be used to classify bibliographic items"@en ;
+               rdfs:comment "Das Prädikat ermgölicht die Angabe von Fachgebieten"@de ;
+               rdfs:isDefinedBy <> ;
+               rdfs:domain  bibrm:BibItem .
+
+bibrm:name   rdf:type            owl:DatatypeProperty, rdf:Property ;
+           rdfs:isDefinedBy <> ;
+           rdfs:subPropertyOf  foaf:name .
+
+bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
+            rdfs:label  "price"@en ;
+            rdfs:label  "Preis"@de ;
+            rdfs:comment    "The price a item costs the biblitheca to offer that item to their users"@en ;
+            rdfs:comment    "Der Anschaffungs-/Nutzungspreis, den die Bibliothek für ein BibItem bezahlt"@de ;
+            rdfs:isDefinedBy <> ;
+            rdfs:domain bibrm:BibItem ;
+            rdfs:range  xsd:double .
+
+bibrm:publisher  rdf:type            owl:DatatypeProperty, rdf:Property ;
+               rdfs:isDefinedBy <> ;
+               rdfs:subPropertyOf  dc:publisher .
+
+bibrm:startDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+                rdfs:label  "start date"@en ;
+                rdfs:label  "Startdatum"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:domain bibrm:Contract ;
+                rdfs:range  xsd:date .
+
+bibrm:title  rdf:type            owl:DatatypeProperty, rdf:Property ;
+           rdfs:isDefinedBy <> ;
+           rdfs:subPropertyOf  dc:title .
