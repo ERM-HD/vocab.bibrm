@@ -20,7 +20,7 @@
   vann:changes <https://github.com/ERM-HD/vocab.bibrm/commits/master/bibrm.ttl>;
   vann:preferredNamespacePrefix "bibrm";
   vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/bibrm/";
-  rdfs:label "Vocabulary for Biblioraphical Electronic Resource Management";
+  rdfs:label "Vocabulary for Library Electronic Resource Management";
   rdfs:isDefinedBy <> .
 
 #################################
