@@ -27,16 +27,16 @@
 ############ Classes ############
 #################################
 
-bibrm:LicenceContract rdf:type        owl:Class ;
+bibrm:LicenseContract rdf:type        owl:Class ;
                     rdfs:comment    "A class modeling a business contract between two or more parties"@en ;
                     rdfs:isDefinedBy <> ;
-                    rdfs:subClassOf bibrm:BibItem ,
+                    rdfs:subClassOf bibrm:BibliographicResource ,
                                     [ rdf:type owl:Restriction ;
-                                    owl:onProperty bibrm:offeredTo ;
+                                    owl:onProperty bibrm:licensedBy ;
                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                    owl:onProperty bibrm:offeredBy ;
+                                    owl:onProperty bibrm:licensedTo ;
                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
                                     ] ,
                                     [ rdf:type owl:Restriction ;
@@ -49,18 +49,18 @@ bibrm:LicenceContract rdf:type        owl:Class ;
                                     owl:maxCardinality "1"^^xsd:nonNegativeInteger
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                                    owl:onProperty bibrm:startDate ;
+                                    owl:onProperty bibrm:licenseStartDate ;
                                     owl:minCardinality "0"^^xsd:nonNegativeInteger ;
                                     owl:maxCardinality "1"^^xsd:nonNegativeInteger
                                     ] ,
                                     [ rdf:type owl:Restriction ;
-                            owl:onProperty bibrm:endDate ;
+                            owl:onProperty bibrm:licenseEndDate ;
                             owl:minCardinality "0"^^xsd:nonNegativeInteger ;
                             owl:maxCardinality "1"^^xsd:nonNegativeInteger
                             ] .
 
-bibrm:BibItem rdf:type        owl:Class ;
-            rdfs:label      "Bibliographic Item"@en ;
+bibrm:BibliographicResource rdf:type owl:Class ;
+            rdfs:label      "Bibliographic Item"@en; 
             rdfs:comment    "A class containing all items a bibliotheca shares offers it's customers"@en ;
             rdfs:comment    "Ein BibItem ist ein Ding, welches die Bibliothek ihren Nutzern zur Nutzung anbietet"@de ;
             rdfs:isDefinedBy <> ;
@@ -74,10 +74,10 @@ bibrm:BibItem rdf:type        owl:Class ;
                             ] .
 
 
-bibrm:Body    rdf:type        owl:Class ;
+bibrm:Organization    rdf:type        owl:Class ;
             rdfs:label      "Body"@en ;
-            rdfs:comment    "A class containing entities like publishers or deliverer"@en ;
-            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb von bibrm:BibItems"@de ;
+            rdfs:comment    "A class containing entities like publishers or license agents"@en ;
+            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizensierung von bibrm:BibItems"@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf dct:Agent .
 
@@ -86,7 +86,7 @@ bibrm:Contact rdf:type        owl:Class ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf foaf:Person ,
                             [ rdf:type owl:Restriction ;
-                            owl:onProperty bibrm:name ;
+                            owl:onProperty foaf:name ;
                             owl:cardinality "1"^^xsd:nonNegativeInteger
                             ] .
 
@@ -167,17 +167,6 @@ bibrm:PJournal    rdf:type        owl:Class ;
 ########### ObjectProperties ###########
 ########################################
 
-bibrm:deliveredBy rdf:type    owl:ObjectProperty, rdf:Property ;
-                rdfs:label  "deliverd by"@en ;
-                rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:BibItem ;
-                rdfs:range  bibrm:Body .
-
-bibrm:deliveredBy rdf:type    owl:ObjectProperty, rdf:Property ;
-                rdfs:label  "deliverd by"@en ;
-                rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:BibItem ;
-                rdfs:range  bibrm:Body .
 
 bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
             rdfs:label  "has item"@en ;
@@ -194,14 +183,14 @@ bibrm:hasEISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "has E-ISSN"@en ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
-bibrm:offeredBy   rdf:type        owl:ObjectProperty, rdf:Property ;
+bibrm:licensedBy   rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "offered by"@en ;
                 rdfs:comment    "The partie of the contract offering the lawfull object"@en ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:Contract ;
                 rdfs:range      bibrm:Body .
 
-bibrm:offeredTo   rdf:type        owl:ObjectProperty, rdf:Property ;
+bibrm:licensedTo   rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "offered to"@en ;
                 rdfs:comment    "The partie of the contract receiving the lawfull object"@en ;
                 rdfs:isDefinedBy <> ;
@@ -211,7 +200,7 @@ bibrm:offeredTo   rdf:type        owl:ObjectProperty, rdf:Property ;
 ########### Datatypes ###########
 #################################
 
-bibrm:endDate    rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:licenseEndDate    rdf:type    owl:DatatypeProperty, rdf:Property ;
                rdfs:label  "end date"@en ;
                rdfs:label  "Enddatum"@de ;
                rdfs:isDefinedBy <> ;
@@ -243,13 +232,9 @@ bibrm:publisher  rdf:type            owl:DatatypeProperty, rdf:Property ;
                rdfs:isDefinedBy <> ;
                rdfs:subPropertyOf  dc:publisher .
 
-bibrm:startDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:label  "start date"@en ;
                 rdfs:label  "Startdatum"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Contract ;
                 rdfs:range  xsd:date .
-
-bibrm:title  rdf:type            owl:DatatypeProperty, rdf:Property ;
-           rdfs:isDefinedBy <> ;
-           rdfs:subPropertyOf  dc:title .
