@@ -141,12 +141,55 @@ bibrm:Journal rdf:type        owl:Class ;
                             owl:minCardinality "0"^^xsd:nonNegativeInteger
                             ] .
 
-bibrm:LicencePackage  rdf:type        owl:Class ;
-                    rdfs:label      "Licence Package"@en ;
-                    rdfs:comment    "A package licenced in a licence contract containing items (e.g. journals, books) a bibliotheca offers it's customers"@en ;
-                    rdfs:comment    "Ein Lizenzpaket bestehend aus Subjekten wie Büchern oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
-                    rdfs:isDefinedBy <> ;
-                    rdfs:subClassOf bibrm:ContractItem .
+bibrm:Publisher rdf:type        owl:Class ;
+                rdfs:label      "Interface"@en ;
+                rdfs:label      "Schnittstelle"@de ;
+                rdfs:comment    "A Class for interfaces that can be used to get information about journals or to read the journals "@en ;
+                rdfs:comment    "Eine Klasse für Schittstellen um elektronische Medien oder Informationen zu solchen zu lesen"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:subClassOf  bibrm:Organization .
+
+bibrm:LicensingAgent rdf:type        owl:Class ;
+                rdfs:label      "Licensing Agent"@en ;
+                rdfs:label      "Lieferant"@de ;
+                rdfs:comment    "A Class for containing organizations in a role of a licensing agent "@en ;
+                rdfs:comment    "Diese Klasse modelliert Organisationen, die als Lieferant auftreten"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:subClassOf  bibrm:Organization .
+
+bibrm:Library   rdf:type        owl:Class ;
+                rdfs:label      "Library"@en ;
+                rdfs:label      "Bibliothek"@de ;
+                rdfs:comment    "A class modeling organizations in the role of a library"@en ;
+                rdfs:comment    "Ein Modell für Organisationen in der Rolle einer Bibliothek"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:subClassOf  bibrm:Organization .
+
+bibrm:Consortium rdf:type        owl:Class ;
+                rdfs:label      "Consortium"@en ;
+                rdfs:label      "Konsortium"@de ;
+                rdfs:comment    "A Class for containing organizations in the role of a consortium a cooporation of libraries."@en ;
+                rdfs:comment    "Diese Klasse modelliert Organisationen, die als Konsortium, einem Zusammenschluss von Bibliotheken, auftreten"@de ;
+                rdfs:isDefinedBy <> ;
+                rdfs:subClassOf  bibrm:Organization .
+
+bibrm:Interface rdf:type        owl:Class ;
+                rdfs:label      "Interface"@en ;
+                rdfs:label      "Schnittstelle"@de ;
+                rdfs:comment    "A Class for interfaces that can be used to get information about journals or to read the journals "@en ;
+                rdfs:comment    "Eine Klasse für Schittstellen um elektronische Medien oder Informationen zu solchen zu lesen"@de ;
+                rdfs:isDefinedBy <> .
+
+bibrm:LicensePackage rdf:type        owl:Class ;
+                        rdfs:label      "License Package"@en ;
+                        rdfs:comment    "A package licensed in a license contract containing items (e.g. journals, books) a bibliotheca offers it's customers"@en ;
+                        rdfs:comment    "Ein Lizenzpaket bestehend aus Subjekten wie Büchern oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
+                        rdfs:isDefinedBy <> ;
+                        rdfs:subClassOf bibrm:ContractItem ;
+                        [ rdf:type owl:Restriction ;
+                        owl:onProperty bibrm:availableAt ;
+                        owl:minCardinality "1"^^xsd:nonNegativeInteger
+                        ] .
 
 bibrm:PJournal    rdf:type        owl:Class ;
                 rdfs:label      "Printed Journal"@en ;
@@ -167,6 +210,12 @@ bibrm:PJournal    rdf:type        owl:Class ;
 ########### ObjectProperties ###########
 ########################################
 
+
+bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
+            rdfs:label  "Points to an interface that is usable with a license package"@en ;
+            rdfs:isDefinedBy <> ;
+            rdfs:domain bibrm:LicensePackage ;
+            rdfs:range  bibrm:Interface .
 
 bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
             rdfs:label  "has item"@en ;
