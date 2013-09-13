@@ -82,7 +82,7 @@ bibrm:Organization    rdf:type        owl:Class ;
             rdfs:label      "Organization"@en ;
             rdfs:label      "Organisation"@de ;
             rdfs:comment    "A class containing entities like publishers or license agents"@en ;
-            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizensierung von bibrm:BibliographicResources"@de ;
+            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizenzierung von bibrm:BibliographicResources"@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf dct:Agent .
 
@@ -157,7 +157,7 @@ bibrm:Journal rdf:type        owl:Class ;
 bibrm:Publisher rdf:type        owl:Class ;
                 rdfs:label      "Publisher"@en ;
                 rdfs:label      "Verlag"@de ;
-                rdfs:comment    ""A Class for containing organizations in a role of a publisher "@en ;
+                rdfs:comment    "A Class for containing organizations in a role of a publisher "@en ;
                 rdfs:comment    "Eine Klasse für Organisation, die als Verlag auftreten."@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:subClassOf  bibrm:Organization .
@@ -234,21 +234,25 @@ bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
 
 bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
             rdfs:label  "has item"@en ;
+            rdfs:label  "besitzt"@de ;
             rdfs:isDefinedBy <> ;
             rdfs:domain bibrm:LicenceContract ;
             rdfs:range  bibrm:ContractItem .
 
 bibrm:hasPISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "has P-ISSN"@en ;
+                rdfs:label  "hat die P-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
 
 bibrm:hasEISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "has E-ISSN"@en ;
+                rdfs:label  "hat die E-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
 bibrm:licensedBy   rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "offered by"@en ;
+                rdfs:label      "wird angeboten von"@de ;
                 rdfs:comment    "The partie of the contract offering the lawfull object"@en ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:Contract ;
@@ -256,6 +260,7 @@ bibrm:licensedBy   rdf:type        owl:ObjectProperty, rdf:Property ;
 
 bibrm:licensedTo   rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "offered to"@en ;
+                rdfs:label      "wird angenommen von"@de ;
                 rdfs:comment    "The partie of the contract receiving the lawfull object"@en ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:Contract .
@@ -265,8 +270,10 @@ bibrm:licensedTo   rdf:type        owl:ObjectProperty, rdf:Property ;
 #################################
 
 bibrm:licenseEndDate    rdf:type    owl:DatatypeProperty, rdf:Property ;
-               rdfs:label  "end date"@en ;
-               rdfs:label  "Enddatum"@de ;
+               rdfs:label  "license end date"@en ;
+               rdfs:label  "Vertragsende"@de ;
+               rdfs:comment "The date on which a license agreement terminates"@en ; 
+               rdfs:comment "Das Datum, an welchem ein Lizenzvertrag endet"@en ; 
                rdfs:isDefinedBy <> ;
                rdfs:domain bibrm:Contract ;
                rdfs:range  xsd:date .
@@ -286,8 +293,8 @@ bibrm:name   rdf:type            owl:DatatypeProperty, rdf:Property ;
 bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
             rdfs:label  "price"@en ;
             rdfs:label  "Preis"@de ;
-            rdfs:comment    "The price a item costs the biblitheca to offer that item to their users"@en ;
-            rdfs:comment    "Der Anschaffungs-/Nutzungspreis, den die Bibliothek für ein BibItem bezahlt"@de ;
+            rdfs:comment    "The price a bibliographic resource costs the library to offer that item to their users"@en ;
+            rdfs:comment    "Der Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de ;
             rdfs:isDefinedBy <> ;
             rdfs:domain bibrm:BibItem ;
             rdfs:range  xsd:double .
@@ -297,8 +304,10 @@ bibrm:publisher  rdf:type            owl:DatatypeProperty, rdf:Property ;
                rdfs:subPropertyOf  dc:publisher .
 
 bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
-                rdfs:label  "start date"@en ;
-                rdfs:label  "Startdatum"@de ;
+                rdfs:label  "license start date"@en ;
+                rdfs:label  "Vertragsbeginn"@de ;
+                rdfs:comment "The date on which a license agreement comes into effect"@en ; 
+                rdfs:comment "Das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@en ; 
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Contract ;
                 rdfs:range  xsd:date .
