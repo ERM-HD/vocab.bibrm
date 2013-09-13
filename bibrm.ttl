@@ -28,7 +28,10 @@
 #################################
 
 bibrm:LicenseContract rdf:type        owl:Class ;
-                    rdfs:comment    "A class modeling a business contract between two or more parties"@en ;
+                    rdfs:label      "LicenseContract"@en ;
+                    rdfs:label      "Lizenzvertrag"@de ;
+                    rdfs:comment    "A class modeling a business contract between the library and one or more parties. Item of the contract is an electronic resource."@en ;
+                    rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Gegenstand des Vertrags sind elektronische Ressourcen."@de ;
                     rdfs:isDefinedBy <> ;
                     rdfs:subClassOf bibrm:BibliographicResource ,
                                     [ rdf:type owl:Restriction ;
@@ -60,9 +63,10 @@ bibrm:LicenseContract rdf:type        owl:Class ;
                             ] .
 
 bibrm:BibliographicResource rdf:type owl:Class ;
-            rdfs:label      "Bibliographic Item"@en; 
-            rdfs:comment    "A class containing all items a bibliotheca shares offers it's customers"@en ;
-            rdfs:comment    "Ein BibItem ist ein Ding, welches die Bibliothek ihren Nutzern zur Nutzung anbietet"@de ;
+            rdfs:label      "Bibliographic Item"@en;
+            rdfs:label      "Bibliographische Ressource"@de ;
+            rdfs:comment    "A class containing all items a library offers it's users."@en ;
+            rdfs:comment    "Eine Bibliographische Ressource ist ein Ding, welches die Bibliothek ihren Nutzern anbietet."@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty dc:publisher ;
@@ -75,14 +79,18 @@ bibrm:BibliographicResource rdf:type owl:Class ;
 
 
 bibrm:Organization    rdf:type        owl:Class ;
-            rdfs:label      "Body"@en ;
+            rdfs:label      "Organization"@en ;
+            rdfs:label      "Organisation"@de ;
             rdfs:comment    "A class containing entities like publishers or license agents"@en ;
-            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizensierung von bibrm:BibItems"@de ;
+            rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizensierung von bibrm:BibliographicResources"@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf dct:Agent .
 
 bibrm:Contact rdf:type        owl:Class ;
             rdfs:label      "Contact"@en ;
+            rdfs:label      "Kontakt"@de ;
+            rdfs:comment    "A class containing name, adress, phone number, organization and other contact information of a person "@en ;
+            rdfs:comment    "Diese Klasse beinhaltet Kontaktinformationen einer Person, z.B. Name, Adresse, Organisation usw."@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf foaf:Person ,
                             [ rdf:type owl:Restriction ;
@@ -93,12 +101,15 @@ bibrm:Contact rdf:type        owl:Class ;
 bibrm:Contract    rdf:type        owl:Class ;
                 rdfs:label      "Contract"@en ;
                 rdfs:label      "Vertrag"@de ;
+                rdfs:comment    "A class modeling a business contract between the library and one or more parties. Item of the contract can be any bibliographic resource."@en ;
+                rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und mindestens einem weiteren Partner. Gegenstand des Vertrags können bibliographische Ressourcen jeder Art sein."@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:comment    ""@en ;
                 rdfs:comment    ""@de .
 
 bibrm:ContractItem    rdf:type        owl:Class ;
                     rdfs:label      "Contract item"@en ;
+                    rdfs:label      "Vertragsgegenstand"@de ;
                     rdfs:comment    "The object/thing of a contract"@en ;
                     rdfs:comment    "Der Gegenstand eines Vertrags"@de ;
                     rdfs:isDefinedBy <> ;
@@ -109,8 +120,9 @@ bibrm:ContractItem    rdf:type        owl:Class ;
 
 bibrm:EJournal    rdf:type        owl:Class ;
                 rdfs:label      "E-Journal"@en ;
-                rdfs:comment    "An electronic journal"@en ;
-                rdfs:comment    "Eine elektronische Zeitschrift"@de ;
+                rdfs:label      "Elektronische Zeitschrift"@de ;
+                rdfs:comment    "An electronic/digital journal"@en ;
+                rdfs:comment    "Eine Zeitschrift in digitaler Form"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:subClassOf bibrm:Journal ,
                                 [ rdf:type owl:Restriction ;
@@ -124,6 +136,7 @@ bibrm:EJournal    rdf:type        owl:Class ;
 
 bibrm:Journal rdf:type        owl:Class ;
             rdfs:label      "Journal"@en ;
+            rdfs:label      "Zeitschrift"@en ;
             rdfs:comment    "A Journal. This class can be used if a unique reference to either the electronic or printed version of a journal is not given"@en ;
             rdfs:comment    "Eine Zeitschrift, zu welcher die eindeutige Refferenz auf die elektronische oder gedruckte Ausgabe nicht gegeben ist."@de ;
             rdfs:isDefinedBy <> ;
@@ -142,10 +155,10 @@ bibrm:Journal rdf:type        owl:Class ;
                             ] .
 
 bibrm:Publisher rdf:type        owl:Class ;
-                rdfs:label      "Interface"@en ;
-                rdfs:label      "Schnittstelle"@de ;
-                rdfs:comment    "A Class for interfaces that can be used to get information about journals or to read the journals "@en ;
-                rdfs:comment    "Eine Klasse für Schittstellen um elektronische Medien oder Informationen zu solchen zu lesen"@de ;
+                rdfs:label      "Publisher"@en ;
+                rdfs:label      "Verlag"@de ;
+                rdfs:comment    ""A Class for containing organizations in a role of a publisher "@en ;
+                rdfs:comment    "Eine Klasse für Organisation, die als Verlag auftreten."@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:subClassOf  bibrm:Organization .
 
@@ -153,7 +166,7 @@ bibrm:LicensingAgent rdf:type        owl:Class ;
                 rdfs:label      "Licensing Agent"@en ;
                 rdfs:label      "Lieferant"@de ;
                 rdfs:comment    "A Class for containing organizations in a role of a licensing agent "@en ;
-                rdfs:comment    "Diese Klasse modelliert Organisationen, die als Lieferant auftreten"@de ;
+                rdfs:comment    "Diese Klasse modelliert Organisationen, die als Zahlungsempfänger/Zwischenhändler auftreten"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:subClassOf  bibrm:Organization .
 
@@ -168,7 +181,7 @@ bibrm:Library   rdf:type        owl:Class ;
 bibrm:Consortium rdf:type        owl:Class ;
                 rdfs:label      "Consortium"@en ;
                 rdfs:label      "Konsortium"@de ;
-                rdfs:comment    "A Class for containing organizations in the role of a consortium a cooporation of libraries."@en ;
+                rdfs:comment    "A Class for containing organizations in the role of a consortium, a cooporation of libraries."@en ;
                 rdfs:comment    "Diese Klasse modelliert Organisationen, die als Konsortium, einem Zusammenschluss von Bibliotheken, auftreten"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:subClassOf  bibrm:Organization .
@@ -182,8 +195,9 @@ bibrm:Interface rdf:type        owl:Class ;
 
 bibrm:LicensePackage rdf:type        owl:Class ;
                         rdfs:label      "License Package"@en ;
-                        rdfs:comment    "A package licensed in a license contract containing items (e.g. journals, books) a bibliotheca offers it's customers"@en ;
-                        rdfs:comment    "Ein Lizenzpaket bestehend aus Subjekten wie Büchern oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
+                		rdfs:label      "Paket"@de ;
+                        rdfs:comment    "A package containing items (e.g. e-journals, e-books) a library offers it's customers"@en ;
+                        rdfs:comment    "Ein Paket beinhaltet elektronische Bücher oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
                         rdfs:isDefinedBy <> ;
                         rdfs:subClassOf bibrm:ContractItem ;
                         [ rdf:type owl:Restriction ;
@@ -192,7 +206,8 @@ bibrm:LicensePackage rdf:type        owl:Class ;
                         ] .
 
 bibrm:PJournal    rdf:type        owl:Class ;
-                rdfs:label      "Printed Journal"@en ;
+                rdfs:label      "P-Journal"@en ;
+                rdfs:label      "Print-Zeitschrift"@de ;
                 rdfs:comment    "A printed journal"@en ;
                 rdfs:comment    "Eine gedruckte Zeitschrift"@de ;
                 rdfs:isDefinedBy <> ;
