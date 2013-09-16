@@ -30,8 +30,8 @@
 bibrm:LicenseContract rdf:type        owl:Class ;
                     rdfs:label      "LicenseContract"@en ;
                     rdfs:label      "Lizenzvertrag"@de ;
-                    rdfs:comment    "A class modeling a business contract between the library and one or more parties. Item of the contract is an electronic resource."@en ;
-                    rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Gegenstand des Vertrags sind elektronische Ressourcen."@de ;
+                    rdfs:comment    "A class modeling a business contract between the library and one or more parties. Item of the contract are licenses."@en ;
+                    rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Gegenstand des Vertrags sind Lizenzen."@de ;
                     rdfs:isDefinedBy <> ;
                     rdfs:subClassOf bibrm:BibliographicResource ,
                                     [ rdf:type owl:Restriction ;
@@ -66,7 +66,7 @@ bibrm:BibliographicResource rdf:type owl:Class ;
             rdfs:label      "Bibliographic Item"@en;
             rdfs:label      "Bibliographische Ressource"@de ;
             rdfs:comment    "A class containing all items a library offers it's users."@en ;
-            rdfs:comment    "Eine Bibliographische Ressource ist ein Ding, welches die Bibliothek ihren Nutzern anbietet."@de ;
+            rdfs:comment    "Bibliographische Ressourcen sind alle Dinge, welche die Bibliothek ihren Nutzern anbietet."@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf [ rdf:type owl:Restriction ;
                             owl:onProperty dc:publisher ;
@@ -78,7 +78,7 @@ bibrm:BibliographicResource rdf:type owl:Class ;
                             ] .
 
 
-bibrm:Organization    rdf:type        owl:Class ;
+bibrm:Organization rdf:type owl:Class ;
             rdfs:label      "Organization"@en ;
             rdfs:label      "Organisation"@de ;
             rdfs:comment    "A class containing entities like publishers or license agents"@en ;
@@ -89,7 +89,7 @@ bibrm:Organization    rdf:type        owl:Class ;
 bibrm:Contact rdf:type        owl:Class ;
             rdfs:label      "Contact"@en ;
             rdfs:label      "Kontakt"@de ;
-            rdfs:comment    "A class containing name, adress, phone number, organization and other contact information of a person "@en ;
+            rdfs:comment    "A class containing name, adress, phone number, organization and other contact information about a person "@en ;
             rdfs:comment    "Diese Klasse beinhaltet Kontaktinformationen einer Person, z.B. Name, Adresse, Organisation usw."@de ;
             rdfs:isDefinedBy <> ;
             rdfs:subClassOf foaf:Person ,
@@ -101,11 +101,9 @@ bibrm:Contact rdf:type        owl:Class ;
 bibrm:Contract    rdf:type        owl:Class ;
                 rdfs:label      "Contract"@en ;
                 rdfs:label      "Vertrag"@de ;
-                rdfs:comment    "A class modeling a business contract between the library and one or more parties. Item of the contract can be any bibliographic resource."@en ;
-                rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und mindestens einem weiteren Partner. Gegenstand des Vertrags können bibliographische Ressourcen jeder Art sein."@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:comment    ""@en ;
-                rdfs:comment    ""@de .
+                rdfs:comment    "A class modeling a business contract between the library and one or more parties"@en ;
+                rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und mindestens einem weiteren Partner"@de ;
+                rdfs:isDefinedBy <> .
 
 bibrm:ContractItem    rdf:type        owl:Class ;
                     rdfs:label      "Contract item"@en ;
@@ -195,7 +193,7 @@ bibrm:Interface rdf:type        owl:Class ;
 
 bibrm:LicensePackage rdf:type        owl:Class ;
                         rdfs:label      "License Package"@en ;
-                		rdfs:label      "Paket"@de ;
+                		    rdfs:label      "Paket"@de ;
                         rdfs:comment    "A package containing items (e.g. e-journals, e-books) a library offers it's customers"@en ;
                         rdfs:comment    "Ein Paket beinhaltet elektronische Bücher oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
                         rdfs:isDefinedBy <> ;
@@ -250,18 +248,20 @@ bibrm:hasEISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "hat die E-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
-bibrm:licensedBy   rdf:type        owl:ObjectProperty, rdf:Property ;
-                rdfs:label      "offered by"@en ;
-                rdfs:label      "wird angeboten von"@de ;
-                rdfs:comment    "The partie of the contract offering the lawfull object"@en ;
+bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
+                rdfs:label      "licensor"@en ;
+                rdfs:label      "Lizenzgeber"@de ;
+                rdfs:comment    "The party of a contract offering the lawfull object/license"@en ;
+                rdfs:comment    "Die Vertragspartei, die eine Lizenz zur Verfügung stellt"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:Contract ;
                 rdfs:range      bibrm:Body .
 
-bibrm:licensedTo   rdf:type        owl:ObjectProperty, rdf:Property ;
-                rdfs:label      "offered to"@en ;
-                rdfs:label      "wird angenommen von"@de ;
-                rdfs:comment    "The partie of the contract receiving the lawfull object"@en ;
+bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
+                rdfs:label      "licensee"@en ;
+                rdfs:label      "Lizenznehmer"@de ;
+                rdfs:comment    "The party of a contract receiving the lawfull object/license"@en ;
+                rdfs:comment    "Die Vertragspartei, die eine Lizenz erhält"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:Contract .
 
@@ -287,8 +287,8 @@ bibrm:field      rdf:type     owl:DatatypeProperty, rdf:Property ;
                rdfs:domain  bibrm:BibItem .
 
 bibrm:name   rdf:type            owl:DatatypeProperty, rdf:Property ;
-           rdfs:isDefinedBy <> ;
-           rdfs:subPropertyOf  foaf:name .
+             rdfs:isDefinedBy <> ;
+             rdfs:subPropertyOf  foaf:name .
 
 bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
             rdfs:label  "price"@en ;
@@ -299,7 +299,11 @@ bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
             rdfs:domain bibrm:BibItem ;
             rdfs:range  xsd:double .
 
-bibrm:publisher  rdf:type            owl:DatatypeProperty, rdf:Property ;
+bibrm:publisher  rdf:type    owl:DatatypeProperty, rdf:Property ;
+               rdfs:label  "publisher"@en ;
+               rdfs:label  "Verlag"@de ;
+               rdfs:comment    "The organization which owns the license for a bibliographic resource"@en ;
+               rdfs:comment    "Die Institution, die das Recht an einer Bibliographischen Ressource besitzt"@de ;
                rdfs:isDefinedBy <> ;
                rdfs:subPropertyOf  dc:publisher .
 
