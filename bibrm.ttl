@@ -13,7 +13,7 @@
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
 <> a owl:Ontology;
-  foaf:maker <http://aksw.org/NormanRadtke>, <http://aksw.org/AndreasNareike>, <http://aksw.org/NatanaelArndt> ;
+  foaf:maker <http://aksw.org/NormanRadtke>, <http://aksw.org/AndreasNareike>, <http://aksw.org/NatanaelArndt>, <http://aksw.org/ThomasRiechert>, <http://aksw.org/Partner/LydiaUnterdoerfel>, <http://aksw.org/Partner/BjoernMuschall>, <http://aksw.org/Partner/LeanderSeige> ;
   doap:maintainer <http://aksw.org/NormanRadtke>;
   doap:homepage <http://aksw.org/Projects/ERM>;
   cc:attributionName "AKSW & Universitätsbibliothek Leipzig" ;

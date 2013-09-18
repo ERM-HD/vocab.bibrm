@@ -19,3 +19,7 @@ rdfs:Class   site:classTemplate "class" .
 <http://aksw.org/NormanRadtke>      foaf:name "Norman Radtke" .
 <http://aksw.org/AndreasNareike>    foaf:name "Andreas Nareike" .
 <http://aksw.org/NatanaelArndt>     foaf:name "Natanael Arndt" .
+<http://aksw.org/ThomasRiechert>    foaf:name "Dr. Thomas Riechert" .
+<http://aksw.org/Partner/LydiaUnterdoerfel> foaf:name "Lydia Unterdörfel" .
+<http://aksw.org/Partner/BjoernMuschall>    foaf:name "Björn Muschall" .
+<http://aksw.org/Partner/LeanderSeige>      foaf:name "Leander Seige" .
