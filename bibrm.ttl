@@ -87,7 +87,7 @@ bibrm:Organization rdf:type owl:Class ;
                    rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizenzierung von bibrm:BibliographicResources"@de ;
                    rdfs:isDefinedBy <> ;
                    rdfs:subClassOf foaf:Oganization ,
-                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   [ rdf:type owl:Restriction ;
                                    owl:onProperty dc:publisher ;
                                    owl:minCardinality "0"^^xsd:nonNegativeInteger
                                    ] .
