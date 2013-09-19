@@ -223,8 +223,8 @@ bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
               rdfs:range  bibrm:BibliographicResource .
 
 bibrm:package rdf:type    owl:ObjectProperty, rdf:Property ;
-              rdfs:label  "has item"@en ;
-              rdfs:label  "besitzt"@de ;
+              rdfs:label  "package"@en ;
+              rdfs:label  "Paket"@de ;
               rdfs:isDefinedBy <> ;
               rdfs:domain bibrm:ContractItem ;
               rdfs:range  bibrm:LicensePackage .
