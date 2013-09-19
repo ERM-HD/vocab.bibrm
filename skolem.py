@@ -3,12 +3,16 @@
 # This script replaces all blank nodes with named nodes by skolemizing [1] the input file. It will
 # create a new bnode: namespace where the new named nodes are definde.
 #
+# [1] http://answers.semanticweb.com/questions/8336/what-is-skolemization
+#
 # Usage:
 #   -i --input=     The input file
 #   -o --output=    The output file (optional)
 #   -h --help       Usage information
 #
-# [1] http://answers.semanticweb.com/questions/8336/what-is-skolemization
+# Requirements:
+#   Redland librdf python interface <http://librdf.org/docs/python.html>
+#   Debian users cann install these bindings with "apt-get install python-librdf"
 #
 # Copyright:    (c) 2013 AKSW <http://aksw.org/>
 # License:      GNU General Public License (GPL) <http://opensource.org/licenses/gpl-license.php>
