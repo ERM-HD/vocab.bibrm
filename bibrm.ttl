@@ -92,6 +92,7 @@ bibrm:Organization rdf:type owl:Class ;
                                    owl:minCardinality "0"^^xsd:nonNegativeInteger
                                    ] .
 
+#TODO should become a subclass of contacts defined by schema.org
 bibrm:Contact rdf:type        owl:Class ;
               rdfs:label      "Contact"@en ;
               rdfs:label      "Kontakt"@de ;
@@ -104,6 +105,7 @@ bibrm:Contact rdf:type        owl:Class ;
                               owl:cardinality "1"^^xsd:nonNegativeInteger
                               ] .
 
+# TODO Find a Contract from a contracts ontology as a superclass of licensecontract
 bibrm:Contract  rdf:type        owl:Class ;
                 rdfs:label      "Contract"@en ;
                 rdfs:label      "Vertrag"@de ;
@@ -111,6 +113,7 @@ bibrm:Contract  rdf:type        owl:Class ;
                 rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und mindestens einem weiteren Partner"@de ;
                 rdfs:isDefinedBy <> .
 
+# TODO Think over if neccessary
 bibrm:ContractItem  rdf:type      owl:Class ;
                     rdfs:label      "Contract item"@en ;
                     rdfs:label      "Vertragsgegenstand"@de ;
@@ -125,6 +128,7 @@ bibrm:Journal rdf:type        owl:Class ;
               rdfs:comment    "Eine Zeitschrift, zu welcher die eindeutige Refferenz auf die elektronische oder gedruckte Ausgabe nicht gegeben ist."@de ;
               rdfs:isDefinedBy <> ;
               rdfs:subClassOf bibrm:BibliographicResource ,
+                              bibo:Journal ,
                               [ rdf:type owl:Restriction ;
                               owl:onProperty bibrm:hasPISSN ;
                               owl:minCardinality "0"^^xsd:nonNegativeInteger
@@ -304,6 +308,15 @@ bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:label  "Vertragsbeginn"@de ;
                 rdfs:comment "The date on which a license agreement comes into effect"@en ; 
                 rdfs:comment "Das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@en ; 
+                rdfs:isDefinedBy <> ;
+                rdfs:domain bibrm:Contract ;
+                rdfs:range  xsd:date .
+
+bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+                rdfs:label  "license end date"@en ;
+                rdfs:label  "Vertragsende"@de ;
+                rdfs:comment "The date on which a license agreement loses it's effect"@en ; 
+                rdfs:comment "Das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@en ; 
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Contract ;
                 rdfs:range  xsd:date .
