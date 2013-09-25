@@ -57,8 +57,7 @@ The class `bibrmLicenseContract` as a subclass of `dct:LicenseDocument`
     bibrm:LicenseContract rdf:type        owl:Class ;
                           rdfs:subClassOf dct:LicenseDocument .
 
-Restrictions on the usage of `dc:publisher` and `dc:title` for
-`bibrm:BibliographicResource`
+Restrictions on the usage of `dc:publisher` and `dc:title` for bibrm:BibliographicResource`
 
     bibrm:BibliographicResource rdf:type owl:Class ;
                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
