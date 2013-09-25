@@ -48,15 +48,18 @@ Used prefixes and their namespace
     @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
 The class `bibrm:Journal` as a subclass of `bibo:Journal`
+
     bibrm:Journal rdf:type        owl:Class ;
                   rdfs:subClassOf bibo:Journal .
 
 The class `bibrmLicenseContract` as a subclass of `dct:LicenseDocument`
+
     bibrm:LicenseContract rdf:type        owl:Class ;
                           rdfs:subClassOf dct:LicenseDocument .
 
 Restrictions on the usage of `dc:publisher` and `dc:title` for
 `bibrm:BibliographicResource`
+
     bibrm:BibliographicResource rdf:type owl:Class ;
                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                 owl:onProperty dc:publisher ;
