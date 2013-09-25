@@ -34,6 +34,7 @@ The URI of this vocabulary
     @prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 Used prefixes and their namespace
+
     @prefix bibo:   <http://purl.org/ontology/bibo/> .
     @prefix cc:     <http://creativecommons.org/ns#> .
     @prefix dc:     <http://purl.org/dc/elements/1.1/> .
