@@ -34,6 +34,7 @@ bibrm:LicenseContract rdf:type        owl:Class ;
                       rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Gegenstand des Vertrags sind Lizenzen."@de ;
                       rdfs:isDefinedBy <> ;
                       rdfs:subClassOf bibrm:ContractItem ,
+                                      dcterms:LicenseDocument ,
                                       [ rdf:type owl:Restriction ;
                                       owl:onProperty bibrm:licensee ;
                                       owl:minCardinality "1"^^xsd:nonNegativeInteger
@@ -85,12 +86,7 @@ bibrm:Organization rdf:type owl:Class ;
                    rdfs:label      "Organisation"@de ;
                    rdfs:comment    "A class containing entities like publishers or license agents"@en ;
                    rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizenzierung von bibrm:BibliographicResources"@de ;
-                   rdfs:isDefinedBy <> ;
-                   rdfs:subClassOf foaf:Oganization ,
-                                   [ rdf:type owl:Restriction ;
-                                   owl:onProperty dc:publisher ;
-                                   owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                   ] .
+                   rdfs:isDefinedBy <> .
 
 #TODO should become a subclass of contacts defined by schema.org
 bibrm:Contact rdf:type        owl:Class ;
@@ -105,16 +101,8 @@ bibrm:Contact rdf:type        owl:Class ;
                               owl:cardinality "1"^^xsd:nonNegativeInteger
                               ] .
 
-# TODO Find a Contract from a contracts ontology as a superclass of licensecontract
-bibrm:Contract  rdf:type        owl:Class ;
-                rdfs:label      "Contract"@en ;
-                rdfs:label      "Vertrag"@de ;
-                rdfs:comment    "A class modeling a business contract between the library and one or more parties"@en ;
-                rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und mindestens einem weiteren Partner"@de ;
-                rdfs:isDefinedBy <> .
-
 # TODO Think over if neccessary
-bibrm:ContractItem  rdf:type      owl:Class ;
+bibrm:ContractItem  rdf:type        owl:Class ;
                     rdfs:label      "Contract item"@en ;
                     rdfs:label      "Vertragsgegenstand"@de ;
                     rdfs:comment    "The object/thing of a contract"@en ;
@@ -135,10 +123,6 @@ bibrm:Journal rdf:type        owl:Class ;
                               ] ,
                               [ rdf:type owl:Restriction ;
                               owl:onProperty bibrm:hasEISSN ;
-                              owl:minCardinality "0"^^xsd:nonNegativeInteger
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                              owl:onProperty bibrm:title ;
                               owl:minCardinality "0"^^xsd:nonNegativeInteger
                               ] .
 
@@ -265,16 +249,16 @@ bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
 ########### Datatypes ###########
 #################################
 
-bibrm:licenseEndDate    rdf:type    owl:DatatypeProperty, rdf:Property ;
-               rdfs:label  "license end date"@en ;
-               rdfs:label  "Vertragsende"@de ;
-               rdfs:comment "The date on which a license agreement terminates"@en ; 
-               rdfs:comment "Das Datum, an welchem ein Lizenzvertrag endet"@en ; 
-               rdfs:isDefinedBy <> ;
-               rdfs:domain bibrm:Contract ;
-               rdfs:range  xsd:date .
+bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+                       rdfs:label  "license end date"@en ;
+                       rdfs:label  "Vertragsende"@de ;
+                       rdfs:comment "The date on which a license agreement terminates"@en ; 
+                       rdfs:comment "Das Datum, an welchem ein Lizenzvertrag endet"@en ; 
+                       rdfs:isDefinedBy <> ;
+                       rdfs:domain bibrm:Contract ;
+                       rdfs:range  xsd:date .
 
-bibrm:field      rdf:type     owl:DatatypeProperty, rdf:Property ;
+bibrm:field    rdf:type     owl:DatatypeProperty, rdf:Property ;
                rdfs:label   "field"@en ;
                rdfs:label   "Fachgebiet"@de ;
                rdfs:comment "The field predicate can be used to classify bibliographic items"@en ;
