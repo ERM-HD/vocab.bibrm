@@ -1,8 +1,5 @@
-vocab.bibrm
-===========
-
 Vocabulary for Bibliographical Electronic Resource Management
-------------------------------------------------------------
+=============================================================
 
 Status of this Document: draft
 
@@ -33,9 +30,10 @@ So this document is a human readable version of those resources we reuse in our 
 
 In RDF we try to make use of `rdfs:subClassOf` or `owl:subClassOf` in case of adding further statements like 'owl:Restrictions' on properties to a class. (Note that we will add all restrictions on properties even if their usagage is optional, with help of `owl:minCardinality "0"`. In contrast to open world assumption this is a closed world even if we know one can add triples she wants)
 
+The URI of this vocabulary
     @prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-
+Used prefixes and their namespace
     @prefix bibo:   <http://purl.org/ontology/bibo/> .
     @prefix cc:     <http://creativecommons.org/ns#> .
     @prefix dc:     <http://purl.org/dc/elements/1.1/> .
@@ -49,12 +47,16 @@ In RDF we try to make use of `rdfs:subClassOf` or `owl:subClassOf` in case of ad
     @prefix vann:   <http://purl.org/vocab/vann/>.
     @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
+The class `bibrm:Journal` as a subclass of `bibo:Journal`
     bibrm:Journal rdf:type        owl:Class ;
                   rdfs:subClassOf bibo:Journal .
 
+The class `bibrmLicenseContract` as a subclass of `dct:LicenseDocument`
     bibrm:LicenseContract rdf:type        owl:Class ;
-                          rdfs:subClassOf dcterms:LicenseDocument .
+                          rdfs:subClassOf dct:LicenseDocument .
 
+Restrictions on the usage of `dc:publisher` and `dc:title` for
+`bibrm:BibliographicResource`
     bibrm:BibliographicResource rdf:type owl:Class ;
                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
                                                 owl:onProperty dc:publisher ;
