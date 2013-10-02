@@ -1,5 +1,6 @@
 @base <http://vocab.ub.uni-leipzig.de/bibrm/> . 
 @prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
+@prefix bibo:   <http://purl.org/ontology/bibo/> .
 @prefix cc:     <http://creativecommons.org/ns#> .
 @prefix dc:     <http://purl.org/dc/elements/1.1/> .
 @prefix dct:    <http://purl.org/dc/terms/> .
@@ -34,7 +35,7 @@ bibrm:LicenseContract rdf:type        owl:Class ;
                       rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Gegenstand des Vertrags sind Lizenzen."@de ;
                       rdfs:isDefinedBy <> ;
                       rdfs:subClassOf bibrm:ContractItem ,
-                                      dcterms:LicenseDocument ,
+                                      dct:LicenseDocument ,
                                       [ rdf:type owl:Restriction ;
                                       owl:onProperty bibrm:licensee ;
                                       owl:minCardinality "1"^^xsd:nonNegativeInteger
@@ -269,6 +270,10 @@ bibrm:field    rdf:type     owl:DatatypeProperty, rdf:Property ;
 bibrm:name   rdf:type            owl:DatatypeProperty, rdf:Property ;
              rdfs:isDefinedBy <> ;
              rdfs:subPropertyOf  foaf:name .
+
+bibrm:shortname  rdf:type            owl:DatatypeProperty, rdf:Property ;
+                 rdfs:isDefinedBy <> ;
+                 rdfs:subPropertyOf  foaf:name .
 
 bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
             rdfs:label  "price"@en ;
