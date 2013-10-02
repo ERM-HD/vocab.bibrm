@@ -35,6 +35,7 @@ The URI of this vocabulary
 
 Used prefixes and their namespace
 
+    @prefix aiiso:  <http://purl.org/vocab/aiiso/schema#> .
     @prefix bibo:   <http://purl.org/ontology/bibo/> .
     @prefix cc:     <http://creativecommons.org/ns#> .
     @prefix dc:     <http://purl.org/dc/elements/1.1/> .
@@ -74,3 +75,11 @@ Example of an instance of a `bibrm:Journal` to show how we reference ISSN
 
     <http://ub.uni-leipzig.de/vokab/resource/examplejournal>    a bibrm:Journal ;
                                                                 bibrm:hasEISSN <urn:ISSN:1234-5678> .
+
+In connection with `bibrm:field a owl:ObjectProperty` we use `aiiso:Faculty` of
+the [Academic Institution Internal Structure Ontology](http://vocab.org/aiiso/schema). This provides further oportunities for reporting.
+
+        <http://erm-hd/faculty/MedizinischeFakultät> a aiiso:Faculty ;
+                                                     bibrm:name "Medizinische Fakultät" ;
+                                                     bibrm:shortname "Med" ;
+                                                     rdfs:label "Medizinische Fakultät" .
