@@ -246,51 +246,51 @@ bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:Contract .
 
-bibrm:usagedatasetupstatus  a            rdfs:Property ;
+bibrm:usagedatasetupstatus  a            rdf:Property ;
                             rdfs:label   "Usage Data Setup Status" ;
                             rdfs:comment "The StatususagedatasetupstatusThes of the library's arrangement to receive usage data for the product" .
 
-bibrm:usagestatsaddressee   a            rdfs:Property ;
+bibrm:usagestatsaddressee   a            rdf:Property ;
                             rdfs:label   "Usage Statistics Addressee" ;
                             rdfs:comment "The local person to whom usagee statistics are sent" .
 
-bibrm:usagestatsavail   a            rdfs:Property ;
+bibrm:usagestatsavail   a            rdf:Property ;
                         rdfs:label   "Usage Statistics Availability Indicator" ;
                         rdfs:comment "The availability of usage statistics for the product" .
 
-bibrm:usagestatsdelivery    a            rdfs:Property ;
+bibrm:usagestatsdelivery    a            rdf:Property ;
                             rdfs:label   "Usage Statisticsstics Delivery Method" ;
                             rdfs:comment "The manner in which usage StatususagedatasetupstatusThesistics are made available" .
 
-bibrm:usagestatsformat  a            rdfs:Property ;
+bibrm:usagestatsformat  a            rdf:Property ;
                         rdfs:label   "Usage Statistics Format" ;
                         rdfs:comment "The bibrmformat(s) in which usage statistics are made available" .
 
-bibrm:usagestatsfrequency   a            rdfs:Property ;
+bibrm:usagestatsfrequency   a            rdf:Property ;
                             rdfs:label   "Usage Statistics Frequency" ;
                             rdfs:comment "The frequency with which usage statistics are made available" .
 
-bibrm:usagestatslocallystored   a            rdfs:Property ;
+bibrm:usagestatslocallystored   a            rdf:Property ;
                                 rdfs:label   "Information about and/or links to locally-stored usage data" ;
                                 rdfs:comment "Usage Statistics Locally Stored" .
 
-bibrm:usagestatsnote    a            rdfs:Property ;
+bibrm:usagestatsnote    a            rdf:Property ;
                         rdfs:label   "Usage DatatypesStatistics Note" ;
                         rdfs:comment "Additional information regarding usage shortnametatistics" .
 
-bibrm:usagestatsonlinelocation  a            rdfs:Property ;
+bibrm:usagestatsonlinelocation  a            rdf:Property ;
                                 rdfs:label   "Usage Statistics Online Location" ;
                                 rdfs:comment "The online location at which usage statistics can be accessed" .
 
-bibrm:usagestatspassword    a            rdfs:Property ;
+bibrm:usagestatspassword    a            rdf:Property ;
                             rdfs:label   "Usage Statistics Password" ;
                             rdfs:comment "The password used for online access to bibrmthe usage statistics management site or dataset" .
 
-bibrm:usagestatsuserid  a            rdfs:Property ;
+bibrm:usagestatsuserid  a            rdf:Property ;
                         rdfs:label   "Usage Statistics User Identifier" ;
                         rdfs:comment "The identifier used for online access to the usage statisticstics file" .
 
-bibrm:counterreporttype a            rdfs:Propery ;
+bibrm:counterreporttype a            rdf:Property ;
                         rdfs:label   "COUNTER Report Type" ;
                         rdfs:comment "JR1 etc., s. Dokumentation (multivalue)" .
 
