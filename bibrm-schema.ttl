@@ -1,0 +1,25 @@
+
+@base <http://erm-hd/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix bibrm: <http://vocab.ub.uni-leipzig.de/bibrm/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<http://erm-hd/Template/Kontaktdaten> a bibrm:Template ;
+                                          rdfs:label "Template für Kontaktdaten"@de ;
+                                          bibrm:bindsClass foaf:Person ;
+                                          bibrm:providesProperty vcard:hasAddress, vcard:hasEmail, vcard:hasTelephone, vcard:hasOrganizationUnit, vcard:family-name, vcard:given-name, vcard:hasGender, vcard:hasRole .
+
+# Wir brauchen noch eine Einschränkung auf vcard:hasOrganizationUnit, dass die Range vcard:Organization ist und auf vcard:hasRole, dass die Range bibrm:Role ist.
+
+
+<http://erm-hd/Template/Organization> a bibrm:Template ;
+                                          rdfs:label "Template für Organisationen"@de ;
+                                          bibrm:bindsClass vcard:Organization ;
+                                          bibrm:providesProperty vcard:hasAddress, vcard:hasEmail, vcard:hasTelephone, vcard:hasOrganizationName .
+
+bibrm:Role a rdfs:Class .
+# Es fehlt noch die Definition der Rollen
