@@ -190,6 +190,11 @@ bibrm:LicensePackage rdf:type        owl:Class ;
                                      owl:minCardinality "1"^^xsd:nonNegativeInteger
                                      ] .
 
+bibrm:ContactRole rdf:type      rdfs:Class ;
+                  rdfs:label    "Contact Role"@en , "Kontaktart"@de ;
+                  rdfs:comment  "A contact role can be used to categorize contacts e.g. customer support, technical support, public relations"@en ,
+                                "Eine Kontaktart dient der Einordnung von Kontakten in bestimmte Kategorien bzw. Rollen (z.B. Kundenservice, technischer Support/Service, Marketing usw.)"@de .
+
 ########################################
 ########### ObjectProperties ###########
 ########################################
@@ -357,3 +362,11 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Contract ;
                 rdfs:range  xsd:date .
+
+#################################
+########### Instances ###########
+#################################
+
+bibrm:CustomerSupport rdf:type  bibrm:ContactRole ;
+                      rdfs:label "Customer Support"@en , "Kundenbetreuung"@de ;
+                      rdfs:comment "Customer support …"@en , "…"@de .
