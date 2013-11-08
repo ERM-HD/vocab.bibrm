@@ -367,6 +367,32 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
 ########### Instances ###########
 #################################
 
+bibrm:General         rdf:type  bibrm:ContactRole ;
+                      rdfs:label "General information"@en;
+                      rdfs:label "Allgemeine Informationen"@de ;
+                      rdfs:comment "A Person who acts as contact for general questions"@en;
+                      rdfs:comment "Eine Person die als Ansprechpartner für allgemeine Fragen auftritt"@de .
+                      
 bibrm:CustomerSupport rdf:type  bibrm:ContactRole ;
-                      rdfs:label "Customer Support"@en , "Kundenbetreuung"@de ;
-                      rdfs:comment "Customer support …"@en , "…"@de .
+                      rdfs:label "Customer Support"@en;
+                      rdfs:label "Kundenbetreuung"@de ;
+                      rdfs:comment "A Person who acts as contact for customer concerns"@en;
+                      rdfs:comment "Eine Person die als Ansprechpartner für Anliegen von Kunden auftritt"@de .
+                      
+bibrm:TechnicalSupport rdf:type  bibrm:ContactRole ;
+                      rdfs:label "Technical Support"@en;
+                      rdfs:label "Technische Probleme"@de ;
+                      rdfs:comment "A Person who acts as contact for technical questions"@en;
+                      rdfs:comment "Eine Person die als Ansprechpartner für technische Probleme auftritt"@de .
+
+bibrm:PublicRelations rdf:type  bibrm:ContactRole ;
+                      rdfs:label "Public Relations"@en;
+                      rdfs:label "Öffentlichkeitsarbeit"@de ;
+                      rdfs:comment "A Person who acts as contact for public relations"@en;
+                      rdfs:comment "Eine Person die als Ansprechpartner für Öffentlichkeitsarbeit auftritt"@de .
+
+bibrm:Sales           rdf:type  bibrm:ContactRole ;
+                      rdfs:label "Sales"@en;
+                      rdfs:label "Verkauf"@de ;
+                      rdfs:comment "A Person who acts as contact for sale concerns"@en;
+                      rdfs:comment "Eine Person die als Ansprechpartner für den Verkauf auftritt"@de .
