@@ -49,10 +49,6 @@ bibrm:LicenseContract rdf:type        owl:Class ;
                                       owl:minCardinality "0"^^xsd:nonNegativeInteger ;
                                       ] ,
                                       [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:package ;
-                                      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
                                       owl:onProperty bibrm:price ;
                                       owl:minCardinality "0"^^xsd:nonNegativeInteger ;
                                       owl:maxCardinality "1"^^xsd:nonNegativeInteger
@@ -182,10 +178,6 @@ bibrm:LicensePackage rdf:type        owl:Class ;
                                      owl:cardinality "1"^^xsd:nonNegativeInteger
                                      ] ,
                                      [ rdf:type owl:Restriction ;
-                                     owl:onProperty bibrm:package ;
-                                     owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
                                      owl:onProperty bibrm:availableAt ;
                                      owl:minCardinality "1"^^xsd:nonNegativeInteger
                                      ] .
@@ -210,26 +202,19 @@ bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:range  bibrm:Interface .
 
 bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
+              rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;pac
               rdfs:label  "has item"@en ;
               rdfs:label  "besitzt"@de ;
-              rdfs:isDefinedBy <> ;
-              rdfs:domain bibrm:ContractItem ;
-              rdfs:range  bibrm:BibliographicResource .
+              rdfs:isDefinedBy <> .
 
-bibrm:package rdf:type    owl:ObjectProperty, rdf:Property ;
-              rdfs:label  "package"@en ;
-              rdfs:label  "Paket"@de ;
-              rdfs:isDefinedBy <> ;
-              rdfs:domain bibrm:ContractItem ;
-              rdfs:range  bibrm:LicensePackage .
 
-bibrm:hasPISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:hasPISSN  rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "has P-ISSN"@en ;
                 rdfs:label  "hat die P-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
 
-bibrm:hasEISSN    rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:hasEISSN  rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "has E-ISSN"@en ;
                 rdfs:label  "hat die E-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
@@ -240,7 +225,7 @@ bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:comment    "The party of a contract offering the lawfull object/license"@en ;
                 rdfs:comment    "Die Vertragspartei, die eine Lizenz zur Verfügung stellt"@de ;
                 rdfs:isDefinedBy <> ;
-                rdfs:domain     bibrm:Contract ;
+                rdfs:domain     bibrm:LicenseContract ;
                 rdfs:range      foaf:Organization .
 
 bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
@@ -249,7 +234,7 @@ bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:comment    "The party of a contract receiving the lawfull object/license"@en ;
                 rdfs:comment    "Die Vertragspartei, die eine Lizenz erhält"@de ;
                 rdfs:isDefinedBy <> ;
-                rdfs:domain     bibrm:Contract .
+                rdfs:domain     bibrm:LicenseContract .
 
 bibrm:usagedatasetupstatus  a            rdf:Property ;
                             rdfs:label   "Usage Data Setup Status" ;
@@ -309,7 +294,7 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                        rdfs:comment "The date on which a license agreement terminates"@en ; 
                        rdfs:comment "Das Datum, an welchem ein Lizenzvertrag endet"@en ; 
                        rdfs:isDefinedBy <> ;
-                       rdfs:domain bibrm:Contract ;
+                       rdfs:domain bibrm:LicenseContract ;
                        rdfs:range  xsd:date .
 
 bibrm:field    rdf:type     owl:DatatypeProperty, rdf:Property ;
@@ -351,7 +336,7 @@ bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:comment "The date on which a license agreement comes into effect"@en ; 
                 rdfs:comment "Das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@en ; 
                 rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:Contract ;
+                rdfs:domain bibrm:LicenseContract ;
                 rdfs:range  xsd:date .
 
 bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
@@ -360,7 +345,7 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:comment "The date on which a license agreement loses it's effect"@en ; 
                 rdfs:comment "Das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@en ; 
                 rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:Contract ;
+                rdfs:domain bibrm:LicenseContract ;
                 rdfs:range  xsd:date .
 
 #################################
