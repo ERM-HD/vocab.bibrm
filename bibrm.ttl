@@ -79,6 +79,7 @@ bibrm:BibliographicResource rdf:type owl:Class ;
 
 
 bibrm:Organization rdf:type owl:Class ;
+                   rdfs:subClassOf foaf:Organization ;
                    rdfs:label      "Organization"@en ;
                    rdfs:label      "Organisation"@de ;
                    rdfs:comment    "A class containing entities like publishers or license agents"@en ;
@@ -219,6 +220,7 @@ bibrm:hasEISSN  rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "hat die E-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
+                
 bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "licensor"@en ;
                 rdfs:label      "Lizenzgeber"@de ;
@@ -226,7 +228,7 @@ bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:comment    "Die Vertragspartei, die eine Lizenz zur Verfügung stellt"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain     bibrm:LicenseContract ;
-                rdfs:range      foaf:Organization .
+                rdfs:range      bibrm:LicensingAgent .
 
 bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "licensee"@en ;
