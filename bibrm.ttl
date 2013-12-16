@@ -203,7 +203,7 @@ bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:range  bibrm:Interface .
 
 bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
-              rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;pac
+              rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;
               rdfs:label  "has item"@en ;
               rdfs:label  "besitzt"@de ;
               rdfs:isDefinedBy <> .
