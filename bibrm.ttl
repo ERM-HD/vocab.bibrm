@@ -204,6 +204,7 @@ bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
 
 bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
               rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;
+              rdfs:comment "Verknüpft Dinge, die Teil eines Lizenzpakets oder eines Lizenzvertrags sind"@de ;
               rdfs:label  "has item"@en ;
               rdfs:label  "besitzt"@de ;
               rdfs:isDefinedBy <> .
@@ -307,11 +308,15 @@ bibrm:field    rdf:type     owl:DatatypeProperty, rdf:Property ;
                rdfs:isDefinedBy <> ;
                rdfs:domain  bibrm:BibItem .
 
-bibrm:name   rdf:type            owl:DatatypeProperty, rdf:Property ;
+bibrm:name   rdf:type     owl:DatatypeProperty, rdf:Property ;
+             rdfs:label   "name"@en ;
+             rdfs:label   "Name"@de ;
              rdfs:isDefinedBy <> ;
              rdfs:subPropertyOf  foaf:name .
 
 bibrm:shortname  rdf:type            owl:DatatypeProperty, rdf:Property ;
+                 rdfs:label   "shortname"@en ;
+                 rdfs:label   "Kurzname"@de ;
                  rdfs:isDefinedBy <> ;
                  rdfs:subPropertyOf  foaf:name .
 
