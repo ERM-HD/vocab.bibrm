@@ -31,8 +31,8 @@
 bibrm:LicenseContract rdf:type        owl:Class ;
                       rdfs:label      "LicenseContract"@en ;
                       rdfs:label      "Lizenzvertrag"@de ;
-                      rdfs:comment    "A class modeling a business contract between the library and one or more parties. Item of the contract are licenses."@en ;
-                      rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Gegenstand des Vertrags sind Lizenzen."@de ;
+                      rdfs:comment    "A class modeling a business contract between the library and one or more parties."@en ;
+                      rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern."@de ;
                       rdfs:isDefinedBy <> ;
                       rdfs:subClassOf bibrm:ContractItem ,
                                       dct:LicenseDocument ,
