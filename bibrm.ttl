@@ -99,30 +99,12 @@ bibrm:Contact rdf:type        owl:Class ;
                               owl:cardinality "1"^^xsd:nonNegativeInteger
                               ] .
 
-# TODO Think over if neccessary
 bibrm:ContractItem  rdf:type        owl:Class ;
                     rdfs:label      "Contract item"@en ;
                     rdfs:label      "Vertragsgegenstand"@de ;
                     rdfs:comment    "The object/thing of a contract"@en ;
                     rdfs:comment    "Der Gegenstand eines Vertrags"@de ;
                     rdfs:isDefinedBy <> .
-
-bibrm:Journal rdf:type        owl:Class ;
-              rdfs:label      "Journal"@en ;
-              rdfs:label      "Zeitschrift"@en ;
-              rdfs:comment    "A Journal. This class can be used if a unique reference to either the electronic or printed version of a journal is not given"@en ;
-              rdfs:comment    "Eine Zeitschrift, zu welcher die eindeutige Refferenz auf die elektronische oder gedruckte Ausgabe nicht gegeben ist."@de ;
-              rdfs:isDefinedBy <> ;
-              rdfs:subClassOf bibrm:BibliographicResource ,
-                              bibo:Journal ,
-                              [ rdf:type owl:Restriction ;
-                              owl:onProperty bibrm:hasPISSN ;
-                              owl:minCardinality "0"^^xsd:nonNegativeInteger
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                              owl:onProperty bibrm:hasEISSN ;
-                              owl:minCardinality "0"^^xsd:nonNegativeInteger
-                              ] .
 
 bibrm:Publisher rdf:type        owl:Class ;
                 rdfs:label      "Publisher"@en ;
@@ -221,7 +203,6 @@ bibrm:hasEISSN  rdf:type    owl:ObjectProperty, rdf:Property ;
                 rdfs:label  "hat die E-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
-                
 bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:label      "licensor"@en ;
                 rdfs:label      "Lizenzgeber"@de ;
