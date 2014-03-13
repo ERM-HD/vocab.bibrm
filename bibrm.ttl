@@ -336,6 +336,82 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:domain bibrm:LicenseContract ;
                 rdfs:range  xsd:date .
 
+bibrm:LicenseTerm owl:oneOf (
+            bibrm:permittedExplicit
+            bibrm:prohibitedExplicit
+            bibrm:permittedInterpreted
+            bibrm:prohibitedInterpreted
+            bibrm:silentUninterpreted
+            bibrm:notApplicable
+          ) .
+
+bibrm:permittedExplicit a bibrm:LicenseTermValue ;
+    rdfs:label "erlaubt (explizit)"@de .
+
+bibrm:prohibitedExplicit a bibrm:LicenseTermValue ;
+    rdfs:label "verboten (explizit)"@de .
+
+bibrm:permittedInterpreted a bibrm:LicenseTermValue ;
+    rdfs:label "erlaubt (Auslegung)"@de .
+
+bibrm:prohibitedInterpreted a bibrm:LicenseTermValue ;
+    rdfs:label "verboten (Auslegung)"@de .
+
+bibrm:silentUninterpreted a bibrm:LicenseTermValue ;
+    rdfs:label "unerwähnt"@de .
+
+bibrm:notApplicable a bibrm:LicenseTermValue ;
+    rdfs:label "nicht zutreffend"@de .
+
+bibrm:ExtendedBoolean owl:oneOf (
+            bibrm:yes
+            bibrm:no
+            bibrm:undetermined
+          ) .
+
+bibrm:yes a bibrm:ExtendedBooleanValue ;
+    rdfs:label "Ja"@de .
+
+bibrm:no a bibrm:ExtendedBooleanValue ;
+    rdfs:label "Nein"@de .
+
+bibrm:undetermined a bibrm:ExtendedBooleanValue ;
+    rdfs:label "nicht festgelegt"@de .
+
+bibrm:UserGroup owl:oneOf (
+            bibrm:students
+            bibrm:staff
+            bibrm:teachingHospitals
+            bibrm:walkIns
+          ) .
+
+bibrm:students a bibrm:UserGroupValue ;
+    rdfs:label "Studierende"@de .
+
+bibrm:staff a bibrm:UserGroupValue ;
+    rdfs:label "Mitarbeiter"@de .
+
+bibrm:teachingHospitals a bibrm:UserGroupValue ;
+    rdfs:label "Lehrbeauftrage Lehrkrankenhäuser"@de .
+
+bibrm:walkIns a bibrm:UserGroupValue ;
+    rdfs:label "Walk-Ins"@de .
+
+bibrm:OrganizationType owl:oneOf (
+            bibrm:library
+            bibrm:consortium
+            bibrm:enterprise
+          ) .
+
+bibrm:library a bibrm:OrganizationTypeValue ;
+    rdfs:label "Bibliothek"@de .
+
+bibrm:consortium a bibrm:OrganizationTypeValue ;
+    rdfs:label "Konsortium"@de .
+
+bibrm:enterprise a bibrm:OrganizationTypeValue ;
+    rdfs:label "Unternehmen"@de .
+
 #################################
 ######### License terms #########
 #################################
@@ -347,7 +423,7 @@ bibrm:autousers rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Autorisierte Nutzer"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:UserGroup .
 
 bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials."@en ;
@@ -356,7 +432,7 @@ bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Kopie digital"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:pcopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right of the licensee and authorized users to print a portion of the licensed materials."@en ;
@@ -365,7 +441,7 @@ bibrm:pcopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Kopie print"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:scholarlysharing rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use"@en ;
@@ -374,7 +450,7 @@ bibrm:scholarlysharing rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Kopie digital"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:illprintorfax rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"@en ;
@@ -383,7 +459,7 @@ bibrm:illprintorfax rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Fernleihe print / Fax"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:illelectronic rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right to provide the licensed materials via interlibrary loan by way of electronic copies"@en ;
@@ -392,7 +468,7 @@ bibrm:illelectronic rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Fernleihe elektronisch"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursereservep rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  " The right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en ;
@@ -401,7 +477,7 @@ bibrm:coursereservep rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Semesterapparat print"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursereserveecopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right to make electronic copies of the licensed materials and store them on a secure network"@en ;
@@ -410,7 +486,7 @@ bibrm:coursereserveecopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Semesterapparat elektronisch"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursepackp rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
@@ -419,7 +495,7 @@ bibrm:coursepackp rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Reader print"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursepacke rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction"@en ;
@@ -428,7 +504,7 @@ bibrm:coursepacke rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Reader elektronisch"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:LicenseTerm .
 
 bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
@@ -437,4 +513,4 @@ bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Remote Access"@de ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:___ ;
-                  rdfs:range  bibrm:___ .
+                  rdfs:range  bibrm:ExtendedBoolean .
