@@ -381,6 +381,7 @@ bibrm:undetermined a bibrm:ExtendedBooleanValue ;
 bibrm:UserGroup owl:oneOf (
             bibrm:students
             bibrm:staff
+            bibrm:uniMember
             bibrm:teachingHospitals
             bibrm:walkIns
           ) .
@@ -396,6 +397,9 @@ bibrm:teachingHospitals a bibrm:UserGroupValue ;
 
 bibrm:walkIns a bibrm:UserGroupValue ;
     rdfs:label "Walk-Ins"@de .
+
+bibrm:uniMember a bibrm:UserGroupValue ;
+    rdfs:label "Uni-Angehörige"@de .
 
 bibrm:OrganizationType owl:oneOf (
             bibrm:library
