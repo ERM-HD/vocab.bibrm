@@ -337,11 +337,11 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:range  xsd:date .
 
 bibrm:LicenseTerm owl:oneOf (
+            bibrm:silentUninterpreted
             bibrm:permittedExplicit
             bibrm:prohibitedExplicit
             bibrm:permittedInterpreted
             bibrm:prohibitedInterpreted
-            bibrm:silentUninterpreted
             bibrm:notApplicable
           ) .
 
