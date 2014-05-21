@@ -420,6 +420,15 @@ bibrm:enterprise a bibrm:OrganizationTypeValue ;
 ######### License terms #########
 #################################
 
+bibrm:remoteaccess rdf:type    owl:ObjectProperty, rdf:Property ;
+                  rdfs:comment  "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
+                  rdfs:comment  "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen "@de ;
+                  rdfs:label  "Remote Access"@en ;
+                  rdfs:label  "remote access"@de ;
+                  rdfs:isDefinedBy <> ;
+                  rdfs:domain bibrm:___ ;
+                  rdfs:range  bibrm:UserGroup .
+
 bibrm:autousers rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:comment  "Groups of users that are authorized for the licensed product"@en ;
                   rdfs:comment  "Eine oder mehrere Nutzergruppen, die für das lizensierte Produkt autorisiert sind."@de ;
