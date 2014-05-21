@@ -426,7 +426,7 @@ bibrm:remoteaccess rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Remote Access"@en ;
                   rdfs:label  "remote access"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:UserGroup .
 
 bibrm:autousers rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -435,7 +435,7 @@ bibrm:autousers rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Authorized User Definition"@en ;
                   rdfs:label  "Autorisierte Nutzer"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:UserGroup .
 
 bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -444,7 +444,7 @@ bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Digitally Copy "@en ;
                   rdfs:label  "Kopie digital"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:pcopy rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -453,7 +453,7 @@ bibrm:pcopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Print Copy "@en ;
                   rdfs:label  "Kopie print"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:scholarlysharing rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -462,7 +462,7 @@ bibrm:scholarlysharing rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Scholarly Sharing "@en ;
                   rdfs:label  "Kopie digital"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:illprintorfax rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -471,7 +471,7 @@ bibrm:illprintorfax rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Interlibrary Loan Print or Fax"@en ;
                   rdfs:label  "Fernleihe print / Fax"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:illelectronic rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -480,7 +480,7 @@ bibrm:illelectronic rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Interlibrary  Loan Electronic"@en ;
                   rdfs:label  "Fernleihe elektronisch"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursereservep rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -489,7 +489,7 @@ bibrm:coursereservep rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Course Reserve Print"@en ;
                   rdfs:label  "Semesterapparat print"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursereserveecopy rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -498,7 +498,7 @@ bibrm:coursereserveecopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Course Reserve Electronic"@en ;
                   rdfs:label  "Semesterapparat elektronisch"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursepackp rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -507,7 +507,7 @@ bibrm:coursepackp rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Course Pack Print"@en ;
                   rdfs:label  "Reader print"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:coursepacke rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -516,7 +516,7 @@ bibrm:coursepacke rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Course Pack Electronic"@en ;
                   rdfs:label  "Reader elektronisch"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
 bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
@@ -525,5 +525,5 @@ bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:label  "Remote Access "@en ;
                   rdfs:label  "Remote Access"@de ;
                   rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:___ ;
+                  rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:ExtendedBoolean .
