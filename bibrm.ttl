@@ -175,7 +175,7 @@ bibrm:ContactRole rdf:type      rdfs:Class ;
 ########################################
 
 
-bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:availableAt rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "Points to an interface that is usable with a license package"@en ;
                   rdfs:comment  "Ein Hinweis über welches Portal/Interface die Inhalte eines Paktes betrachtet werden können."@de ;
                   rdfs:label  "available at"@en ;
@@ -184,7 +184,7 @@ bibrm:availableAt rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:LicensePackage ;
                   rdfs:range  bibrm:Interface .
 
-bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:hasItem rdf:type    owl:ObjectProperty ;
               rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;
               rdfs:comment "Verknüpft Dinge, die Teil eines Lizenzpakets oder eines Lizenzvertrags sind"@de ;
               rdfs:label  "has item"@en ;
@@ -192,18 +192,18 @@ bibrm:hasItem rdf:type    owl:ObjectProperty, rdf:Property ;
               rdfs:isDefinedBy <> .
 
 
-bibrm:hasPISSN  rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:hasPISSN  rdf:type    owl:ObjectProperty ;
                 rdfs:label  "has P-ISSN"@en ;
                 rdfs:label  "hat die P-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
 
-bibrm:hasEISSN  rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:hasEISSN  rdf:type    owl:ObjectProperty ;
                 rdfs:label  "has E-ISSN"@en ;
                 rdfs:label  "hat die E-ISSN"@de ;
                 rdfs:isDefinedBy <> ;
                 rdfs:domain bibrm:Journal .
-bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
+bibrm:licensor  rdf:type        owl:ObjectProperty ;
                 rdfs:label      "licensor"@en ;
                 rdfs:label      "Lizenzgeber"@de ;
                 rdfs:comment    "The party of a contract offering the lawfull object/license"@en ;
@@ -212,7 +212,7 @@ bibrm:licensor  rdf:type        owl:ObjectProperty, rdf:Property ;
                 rdfs:domain     bibrm:LicenseContract ;
                 rdfs:range      bibrm:LicensingAgent .
 
-bibrm:licensee  rdf:type        owl:ObjectProperty, rdf:Property ;
+bibrm:licensee  rdf:type        owl:ObjectProperty ;
                 rdfs:label      "licensee"@en ;
                 rdfs:label      "Lizenznehmer"@de ;
                 rdfs:comment    "The party of a contract receiving the lawfull object/license"@en ;
@@ -272,7 +272,7 @@ bibrm:counterreporttype a            rdf:Property ;
 ########### Datatypes ###########
 #################################
 
-bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty ;
                        rdfs:label  "license end date"@en ;
                        rdfs:label  "Vertragsende"@de ;
                        rdfs:comment "The date on which a license agreement terminates"@en ; 
@@ -281,7 +281,7 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                        rdfs:domain bibrm:LicenseContract ;
                        rdfs:range  xsd:date .
 
-bibrm:field    rdf:type     owl:DatatypeProperty, rdf:Property ;
+bibrm:field    rdf:type     owl:DatatypeProperty ;
                rdfs:label   "field"@en ;
                rdfs:label   "Fachgebiet"@de ;
                rdfs:comment "The field predicate can be used to classify bibliographic items"@en ;
@@ -289,19 +289,19 @@ bibrm:field    rdf:type     owl:DatatypeProperty, rdf:Property ;
                rdfs:isDefinedBy <> ;
                rdfs:domain  bibrm:BibItem .
 
-bibrm:name   rdf:type     owl:DatatypeProperty, rdf:Property ;
+bibrm:name   rdf:type     owl:DatatypeProperty ;
              rdfs:label   "name"@en ;
              rdfs:label   "Name"@de ;
              rdfs:isDefinedBy <> ;
              rdfs:subPropertyOf  foaf:name .
 
-bibrm:shortname  rdf:type            owl:DatatypeProperty, rdf:Property ;
+bibrm:shortname  rdf:type            owl:DatatypeProperty ;
                  rdfs:label   "shortname"@en ;
                  rdfs:label   "Kurzname"@de ;
                  rdfs:isDefinedBy <> ;
                  rdfs:subPropertyOf  foaf:name .
 
-bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:price   rdf:type    owl:DatatypeProperty ;
             rdfs:label  "price"@en ;
             rdfs:label  "Preis"@de ;
             rdfs:comment    "The price a bibliographic resource costs the library to offer that item to their users"@en ;
@@ -310,7 +310,7 @@ bibrm:price   rdf:type    owl:DatatypeProperty, rdf:Property ;
             rdfs:domain bibrm:BibItem ;
             rdfs:range  xsd:double .
 
-bibrm:publisher  rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:publisher  rdf:type    owl:DatatypeProperty ;
                rdfs:label  "publisher"@en ;
                rdfs:label  "Verlag"@de ;
                rdfs:comment    "The organization which owns the license for a bibliographic resource"@en ;
@@ -318,7 +318,7 @@ bibrm:publisher  rdf:type    owl:DatatypeProperty, rdf:Property ;
                rdfs:isDefinedBy <> ;
                rdfs:subPropertyOf  dc:publisher .
 
-bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty ;
                 rdfs:label  "license start date"@en ;
                 rdfs:label  "Vertragsbeginn"@de ;
                 rdfs:comment "The date on which a license agreement comes into effect"@en ; 
@@ -327,7 +327,7 @@ bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
                 rdfs:domain bibrm:LicenseContract ;
                 rdfs:range  xsd:date .
 
-bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty, rdf:Property ;
+bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty ;
                 rdfs:label  "license end date"@en ;
                 rdfs:label  "Vertragsende"@de ;
                 rdfs:comment "The date on which a license agreement loses it's effect"@en ; 
@@ -420,7 +420,7 @@ bibrm:enterprise a bibrm:OrganizationTypeValue ;
 ######### License terms #########
 #################################
 
-bibrm:remoteaccess rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:remoteaccess rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
                   rdfs:comment  "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen "@de ;
                   rdfs:label  "Remote Access"@en ;
@@ -429,7 +429,7 @@ bibrm:remoteaccess rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:UserGroup .
 
-bibrm:autousers rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:autousers rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "Groups of users that are authorized for the licensed product"@en ;
                   rdfs:comment  "Eine oder mehrere Nutzergruppen, die für das lizensierte Produkt autorisiert sind."@de ;
                   rdfs:label  "Authorized User Definition"@en ;
@@ -438,7 +438,7 @@ bibrm:autousers rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:UserGroup .
 
-bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:digitallycopy rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials."@en ;
                   rdfs:comment  "Das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de ;
                   rdfs:label  "Digitally Copy "@en ;
@@ -447,7 +447,7 @@ bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:pcopy rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:pcopy rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right of the licensee and authorized users to print a portion of the licensed materials."@en ;
                   rdfs:comment  "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de ;
                   rdfs:label  "Print Copy "@en ;
@@ -456,7 +456,7 @@ bibrm:pcopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:scholarlysharing rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:scholarlysharing rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use"@en ;
                   rdfs:comment  "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de ;
                   rdfs:label  "Scholarly Sharing "@en ;
@@ -465,7 +465,7 @@ bibrm:scholarlysharing rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:illprintorfax rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:illprintorfax rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"@en ;
                   rdfs:comment  "Das Recht lizensiertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de ;
                   rdfs:label  "Interlibrary Loan Print or Fax"@en ;
@@ -474,7 +474,7 @@ bibrm:illprintorfax rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:illelectronic rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:illelectronic rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right to provide the licensed materials via interlibrary loan by way of electronic copies"@en ;
                   rdfs:comment  "Das Recht lizensiertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de ;
                   rdfs:label  "Interlibrary  Loan Electronic"@en ;
@@ -483,7 +483,7 @@ bibrm:illelectronic rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:coursereservep rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:coursereservep rdf:type    owl:ObjectProperty ;
                   rdfs:comment  " The right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en ;
                   rdfs:comment  "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de ;
                   rdfs:label  "Course Reserve Print"@en ;
@@ -492,7 +492,7 @@ bibrm:coursereservep rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:coursereserveecopy rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:coursereserveecopy rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right to make electronic copies of the licensed materials and store them on a secure network"@en ;
                   rdfs:comment  "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de ;
                   rdfs:label  "Course Reserve Electronic"@en ;
@@ -501,7 +501,7 @@ bibrm:coursereserveecopy rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:coursepackp rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:coursepackp rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
                   rdfs:comment  "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ;
                   rdfs:label  "Course Pack Print"@en ;
@@ -510,7 +510,7 @@ bibrm:coursepackp rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:coursepacke rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:coursepacke rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction"@en ;
                   rdfs:comment  "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ;
                   rdfs:label  "Course Pack Electronic"@en ;
@@ -519,7 +519,7 @@ bibrm:coursepacke rdf:type    owl:ObjectProperty, rdf:Property ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:LicenseTerm .
 
-bibrm:digitallycopy rdf:type    owl:ObjectProperty, rdf:Property ;
+bibrm:digitallycopy rdf:type    owl:ObjectProperty ;
                   rdfs:comment  "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
                   rdfs:comment  "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen"@de ;
                   rdfs:label  "Remote Access "@en ;
