@@ -336,15 +336,6 @@ bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty ;
                 rdfs:domain bibrm:LicenseContract ;
                 rdfs:range  xsd:date .
 
-bibrm:LicenseTerm owl:oneOf (
-            bibrm:silentUninterpreted
-            bibrm:permittedExplicit
-            bibrm:prohibitedExplicit
-            bibrm:permittedInterpreted
-            bibrm:prohibitedInterpreted
-            bibrm:notApplicable
-          ) .
-
 bibrm:permittedExplicit a bibrm:LicenseTermValue ;
     rdfs:label "erlaubt (explizit)"@de .
 
@@ -363,12 +354,6 @@ bibrm:silentUninterpreted a bibrm:LicenseTermValue ;
 bibrm:notApplicable a bibrm:LicenseTermValue ;
     rdfs:label "nicht zutreffend"@de .
 
-bibrm:ExtendedBoolean owl:oneOf (
-            bibrm:yes
-            bibrm:no
-            bibrm:undetermined
-          ) .
-
 bibrm:yes a bibrm:ExtendedBooleanValue ;
     rdfs:label "Ja"@de .
 
@@ -377,14 +362,6 @@ bibrm:no a bibrm:ExtendedBooleanValue ;
 
 bibrm:undetermined a bibrm:ExtendedBooleanValue ;
     rdfs:label "nicht festgelegt"@de .
-
-bibrm:UserGroup owl:oneOf (
-            bibrm:students
-            bibrm:staff
-            bibrm:uniMember
-            bibrm:teachingHospitals
-            bibrm:walkIns
-          ) .
 
 bibrm:students a bibrm:UserGroupValue ;
     rdfs:label "Studierende"@de .
@@ -400,12 +377,6 @@ bibrm:walkIns a bibrm:UserGroupValue ;
 
 bibrm:uniMember a bibrm:UserGroupValue ;
     rdfs:label "Uni-Angehörige"@de .
-
-bibrm:OrganizationType owl:oneOf (
-            bibrm:library
-            bibrm:consortium
-            bibrm:enterprise
-          ) .
 
 bibrm:library a bibrm:OrganizationTypeValue ;
     rdfs:label "Bibliothek"@de .
@@ -527,3 +498,61 @@ bibrm:digitallycopy rdf:type    owl:ObjectProperty ;
                   rdfs:isDefinedBy <> ;
                   rdfs:domain bibrm:License ;
                   rdfs:range  bibrm:ExtendedBoolean .
+
+bibrm:UserGroup owl:oneOf (
+            bibrm:students
+            bibrm:staff
+            bibrm:uniMember
+            bibrm:teachingHospitals
+            bibrm:walkIns
+          ) .
+
+bibrm:LicenseTerm owl:oneOf (
+            bibrm:silentUninterpreted
+            bibrm:permittedExplicit
+            bibrm:prohibitedExplicit
+            bibrm:permittedInterpreted
+            bibrm:prohibitedInterpreted
+            bibrm:notApplicable
+          ) .
+
+bibrm:ExtendedBoolean owl:oneOf (
+            bibrm:yes
+            bibrm:no
+            bibrm:undetermined
+          ) .
+
+bibrm:OrganizationType owl:oneOf (
+            bibrm:library
+            bibrm:consortium
+            bibrm:enterprise
+          ) .
+
+
+bibrm:ShibbolethNote owl:oneOf (
+            bibrm:Impossible 
+            bibrm:Possible 
+            bibrm:Implemented ) .
+
+bibrm:Impossible a bibrm:ShibbolethNoteValue .
+
+bibrm:Possible a bibrm:ShibbolethNoteValue .
+
+bibrm:Implemented a bibrm:ShibbolethNoteValue . 
+
+bibrm:ERType owl:oneOf (
+            bibrm:Database 
+            bibrm:Ejournal 
+            bibrm:EjournalPackage 
+            bibrm:Ebook 
+            bibrm:EbookPackage) .
+
+bibrm:Database a bibrm:ERTypeValue .
+
+bibrm:Ejournal a bibrm:ERTypeValue .
+
+bibrm:EjournalPackage a bibrm:ERTypeValue .
+
+bibrm:Ebook a bibrm:ERTypeValue .
+
+bibrm:EbookPackage a bibrm:ERTypeValue . 
