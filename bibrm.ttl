@@ -1,5 +1,4 @@
-@base <http://vocab.ub.uni-leipzig.de/bibrm/> . 
-@prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
+@prefix :  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 @prefix bibo:   <http://purl.org/ontology/bibo/> .
 @prefix cc:     <http://creativecommons.org/ns#> .
 @prefix dc:     <http://purl.org/dc/elements/1.1/> .
@@ -13,7 +12,7 @@
 @prefix vann:   <http://purl.org/vocab/vann/>.
 @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
 
-<> a owl:Ontology;
+<http://vocab.ub.uni-leipzig.de/bibrm/> a owl:Ontology;
   foaf:maker <http://aksw.org/NormanRadtke>, <http://aksw.org/AndreasNareike>, <http://aksw.org/NatanaelArndt>, <http://aksw.org/ThomasRiechert>, <http://aksw.org/Partner/LydiaUnterdoerfel>, <http://aksw.org/Partner/BjoernMuschall>, <http://aksw.org/Partner/LeanderSeige> ;
   doap:maintainer <http://aksw.org/NormanRadtke>;
   doap:homepage <http://aksw.org/Projects/ERM>;
@@ -24,535 +23,595 @@
   rdfs:label "Vocabulary for Library Electronic Resource Management";
   rdfs:isDefinedBy <> .
 
-#################################
-############ Classes ############
-#################################
+:Budget
+    rdfs:type rdfs:Class ;
+    rdfs:label "Budget"@de, "budget"@en .
 
-bibrm:LicenseContract rdf:type        owl:Class ;
-                      rdfs:label      "LicenseContract"@en ;
-                      rdfs:label      "Lizenzvertrag"@de ;
-                      rdfs:comment    "A class modeling a business contract between the library and one or more parties."@en ;
-                      rdfs:comment    "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern."@de ;
-                      rdfs:isDefinedBy <> ;
-                      rdfs:subClassOf bibrm:ContractItem ,
-                                      dct:LicenseDocument ,
-                                      [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:licensee ;
-                                      owl:minCardinality "1"^^xsd:nonNegativeInteger
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:licensor ;
-                                      owl:minCardinality "1"^^xsd:nonNegativeInteger
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:hasItem ;
-                                      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:price ;
-                                      owl:minCardinality "0"^^xsd:nonNegativeInteger ;
-                                      owl:maxCardinality "1"^^xsd:nonNegativeInteger
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:licenseStartDate ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                      owl:onProperty bibrm:licenseEndDate ;
-                                      owl:cardinality "1"^^xsd:nonNegativeInteger
-                                      ] .
+:Contact
+    rdfs:type rdfs:Class ;
+    rdfs:comment "A Person related with further Information, Links etc."@en, "Eine Person zu welcher weitere Kontaktinformationen, Verknüpfungen u.ä. gehören"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Kontakt"@de, "contact"@en .
 
-bibrm:BibliographicResource rdf:type owl:Class ;
-                            rdfs:label      "Bibliographic Item"@en;
-                            rdfs:label      "Bibliographische Ressource"@de ;
-                            rdfs:comment    "A class containing all items a library offers it's users."@en ;
-                            rdfs:comment    "Bibliographische Ressourcen sind alle Dinge, welche die Bibliothek ihren Nutzern anbietet."@de ;
-                            rdfs:isDefinedBy <> ;
-                            rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                            owl:onProperty dc:publisher ;
-                                            owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                            ] ,
-                                            [ rdf:type owl:Restriction ;
-                                            owl:onProperty dc:title ;
-                                            owl:cardinality "1"^^xsd:nonNegativeInteger
-                                            ] .
+:ContractItem
+    rdfs:type rdfs:Class ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Vertragsposition"@de, "contract item"@en .
 
+:Database
+    rdfs:type :ERTypeValue .
 
-bibrm:Organization rdf:type owl:Class ;
-                   rdfs:subClassOf foaf:Organization ;
-                   rdfs:label      "Organization"@en ;
-                   rdfs:label      "Organisation"@de ;
-                   rdfs:comment    "A class containing entities like publishers or license agents"@en ;
-                   rdfs:comment    "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizenzierung von bibrm:BibliographicResources"@de ;
-                   rdfs:isDefinedBy <> .
+:EISSN
+    rdfs:type owl:ObjectProperty ;
+    rdfs:domain :Journal ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "has E-ISSN"@en, "hat die E-ISSN"@de .
 
-#TODO should become a subclass of contacts defined by schema.org
-bibrm:Contact rdf:type        owl:Class ;
-              rdfs:label      "Contact"@en ;
-              rdfs:label      "Kontakt"@de ;
-              rdfs:comment    "A class containing name, adress, phone number, organization and other contact information about a person "@en ;
-              rdfs:comment    "Diese Klasse beinhaltet Kontaktinformationen einer Person, z.B. Name, Adresse, Organisation usw."@de ;
-              rdfs:isDefinedBy <> ;
-              rdfs:subClassOf foaf:Person ,
-                              [ rdf:type owl:Restriction ;
-                              owl:onProperty foaf:name ;
-                              owl:cardinality "1"^^xsd:nonNegativeInteger
-                              ] .
+:Ebook
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:type :ERTypeValue .
 
-bibrm:ContractItem  rdf:type        owl:Class ;
-                    rdfs:label      "Contract item"@en ;
-                    rdfs:label      "Vertragsgegenstand"@de ;
-                    rdfs:comment    "The object/thing of a contract"@en ;
-                    rdfs:comment    "Der Gegenstand eines Vertrags"@de ;
-                    rdfs:isDefinedBy <> .
+:EbookPackage
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:type :ERTypeValue .
 
-bibrm:Publisher rdf:type        owl:Class ;
-                rdfs:label      "Publisher"@en ;
-                rdfs:label      "Verlag"@de ;
-                rdfs:comment    "A Class for containing organizations in a role of a publisher "@en ;
-                rdfs:comment    "Eine Klasse für Organisation, die als Verlag auftreten."@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:subClassOf  bibrm:Organization .
+:Ejournal
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:type :ERTypeValue .
 
-bibrm:LicensingAgent rdf:type        owl:Class ;
-                     rdfs:label      "Licensing Agent"@en ;
-                     rdfs:label      "Lieferant"@de ;
-                     rdfs:comment    "A Class for containing organizations in a role of a licensing agent "@en ;
-                     rdfs:comment    "Diese Klasse modelliert Organisationen, die als Zahlungsempfänger/Zwischenhändler auftreten"@de ;
-                     rdfs:isDefinedBy <> ;
-                     rdfs:subClassOf  bibrm:Organization .
+:EjournalPackage
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:type :ERTypeValue .
 
-bibrm:Library   rdf:type        owl:Class ;
-                rdfs:label      "Library"@en ;
-                rdfs:label      "Bibliothek"@de ;
-                rdfs:comment    "A class modeling organizations in the role of a library"@en ;
-                rdfs:comment    "Ein Modell für Organisationen in der Rolle einer Bibliothek"@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:subClassOf  bibrm:Organization .
+:License
+    rdfs:type rdfs:Class ;
+    rdfs:comment "A class modeling rdfs:type business contract between the library and one or more parties. This one contains the static properties of rdfs:type contract."@en, "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Dieser Vertragsteil beinhaltet die statischen Eigenschaften eines Vertrages."@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Vertrag-statisch"@de, "contract-static"@en .
 
-bibrm:Consortium rdf:type       owl:Class ;
-                 rdfs:label      "Consortium"@en ;
-                 rdfs:label      "Konsortium"@de ;
-                 rdfs:comment    "A Class for containing organizations in the role of a consortium, a cooporation of libraries."@en ;
-                 rdfs:comment    "Diese Klasse modelliert Organisationen, die als Konsortium, einem Zusammenschluss von Bibliotheken, auftreten"@de ;
-                 rdfs:isDefinedBy <> ;
-                 rdfs:subClassOf  bibrm:Organization .
+:LicenseContract
+    rdfs:type rdfs:Class ;
+    rdfs:comment "A class modeling rdfs:type business contract between the library and one or more parties. This one contains the dynamic properties of rdfs:type contract"@en, "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Dieser Vertragsteil beinhaltet die sich regelmäßig ändernden Eigenschaften eines Vertrags."@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Vertrag-dynamisch"@de, "contract-dynamic"@en .
 
-bibrm:Interface rdf:type        owl:Class ;
-                rdfs:label      "Interface"@en ;
-                rdfs:label      "Schnittstelle"@de ;
-                rdfs:comment    "A Class for interfaces that can be used to get information about journals or to read the journals "@en ;
-                rdfs:comment    "Eine Klasse für Schittstellen um elektronische Medien oder Informationen zu solchen zu lesen"@de ;
-                rdfs:isDefinedBy <> .
+:LicensePackage
+    rdfs:type rdfs:Class ;
+    rdfs:comment "A package containing items (e.g. e-journals, e-books) rdfs:type library offers it's customers"@en, "Ein Paket beinhaltet elektronische Bücher oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "License Package"@en, "Paket"@de .
 
-bibrm:LicensePackage rdf:type        owl:Class ;
-                     rdfs:label      "License Package"@en ;
-                     rdfs:label      "Paket"@de ;
-                     rdfs:comment    "A package containing items (e.g. e-journals, e-books) a library offers it's customers"@en ;
-                     rdfs:comment    "Ein Paket beinhaltet elektronische Bücher oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de ;
-                     rdfs:isDefinedBy <> ;
-                     rdfs:subClassOf bibrm:ContractItem ,
-                                     [ rdf:type owl:Restriction ;
-                                     owl:onProperty bibrm:hasItem ;
-                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                     owl:onProperty bibrm:price ;
-                                     owl:cardinality "1"^^xsd:nonNegativeInteger
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                     owl:onProperty bibrm:availableAt ;
-                                     owl:minCardinality "1"^^xsd:nonNegativeInteger
-                                     ] .
+:Organization
+    rdfs:comment "A class containing entities like publishers or license agents"@en, "Diese Klasse beinhaltet Institutionen wie Verlage oder Unternehmen für den Vertrieb bzw. die Lizenzierung von :BibliographicResources"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Organisation"@de, "Organization"@en .
 
-bibrm:ContactRole rdf:type      rdfs:Class ;
-                  rdfs:label    "Contact Role"@en , "Kontaktart"@de ;
-                  rdfs:comment  "A contact role can be used to categorize contacts e.g. customer support, technical support, public relations"@en ,
-                                "Eine Kontaktart dient der Einordnung von Kontakten in bestimmte Kategorien bzw. Rollen (z.B. Kundenservice, technischer Support/Service, Marketing usw.)"@de .
+:PISSN
+    rdfs:type owl:ObjectProperty ;
+    rdfs:domain :Journal ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "has P-ISSN"@en, "hat die P-ISSN"@de .
 
-########################################
-########### ObjectProperties ###########
-########################################
+:annualPrice
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Jahrespreis"@de, "annual price"@en .
 
+:archivingNote
+    rdfs:comment "Additional information related to archiving rights, product, and format"@en, "Informationen zur Verfügbarkeite der ER nach Vertragsende (Archivrecht, Format...)"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Verfügbarkeit nach Vertragsende"@de, "availability after termination"@en .
 
-bibrm:availableAt rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "Points to an interface that is usable with a license package"@en ;
-                  rdfs:comment  "Ein Hinweis über welches Portal/Interface die Inhalte eines Paktes betrachtet werden können."@de ;
-                  rdfs:label  "available at"@en ;
-                  rdfs:label  "verfügbar bei"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:LicensePackage ;
-                  rdfs:range  bibrm:Interface .
+:autousers
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Eine oder mehrere Nutzergruppen, die für das lizensierte Produkt autorisiert sind."@de, "Groups of users that are authorized for the licensed product"@en ;
+    rdfs:label "Authorized User Definition"@en, "Autorisierte Nutzer"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :UserGroup .
 
-bibrm:hasItem rdf:type    owl:ObjectProperty ;
-              rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;
-              rdfs:comment "Verknüpft Dinge, die Teil eines Lizenzpakets oder eines Lizenzvertrags sind"@de ;
-              rdfs:label  "has item"@en ;
-              rdfs:label  "besitzt"@de ;
-              rdfs:isDefinedBy <> .
+:availableAt
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Ein Hinweis über welches Portal/Interface die Inhalte eines Paktes betrachtet werden können."@de, "Points to an interface that is usable with rdfs:type license package"@en ;
+    rdfs:domain :LicensePackage ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "available at"@en, "verfügbar bei"@de ;
+    rdfs:range :Interface .
 
+:campus
+    rdfs:type :LicenseTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Campuslizenz"@de .
 
-bibrm:hasPISSN  rdf:type    owl:ObjectProperty ;
-                rdfs:label  "has P-ISSN"@en ;
-                rdfs:label  "hat die P-ISSN"@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:Journal .
+:campusWithoutVPN
+    rdfs:type :LicenseTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Campuslizenz ohne VPN-Zugang"@de .
 
-bibrm:hasEISSN  rdf:type    owl:ObjectProperty ;
-                rdfs:label  "has E-ISSN"@en ;
-                rdfs:label  "hat die E-ISSN"@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:Journal .
-bibrm:licensor  rdf:type        owl:ObjectProperty ;
-                rdfs:label      "licensor"@en ;
-                rdfs:label      "Lizenzgeber"@de ;
-                rdfs:comment    "The party of a contract offering the lawfull object/license"@en ;
-                rdfs:comment    "Die Vertragspartei, die eine Lizenz zur Verfügung stellt"@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:domain     bibrm:LicenseContract ;
-                rdfs:range      bibrm:LicensingAgent .
+:chiefNegotiator
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Die Organisation, die einen Vertrag ausgehandelt hat"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Verhandlungsführer"@de, "chief negotiator"@en .
 
-bibrm:licensee  rdf:type        owl:ObjectProperty ;
-                rdfs:label      "licensee"@en ;
-                rdfs:label      "Lizenznehmer"@de ;
-                rdfs:comment    "The party of a contract receiving the lawfull object/license"@en ;
-                rdfs:comment    "Die Vertragspartei, die eine Lizenz erhält"@de ;
-                rdfs:isDefinedBy <> ;
-                rdfs:domain     bibrm:LicenseContract .
+:concuser
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Die Anzahl der in den Lizenzbedingungen angegeben Parallelzugriffe"@de, "The licensed number of concurrent users for rdfs:type resource"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Parallelzugriffe"@de, "concurrent users"@en .
 
-bibrm:usagedatasetupstatus  a            rdf:Property ;
-                            rdfs:label   "Usage Data Setup Status" ;
-                            rdfs:comment "The StatususagedatasetupstatusThes of the library's arrangement to receive usage data for the product" .
+:consortium
+    rdfs:type :OrganizationTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Konsortium"@de, "consortium"@en .
 
-bibrm:usagestatsaddressee   a            rdf:Property ;
-                            rdfs:label   "Usage Statistics Addressee" ;
-                            rdfs:comment "The local person to whom usagee statistics are sent" .
+:contactNote
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Notiz zum Kontakt"@de, "contact note"@en .
 
-bibrm:usagestatsavail   a            rdf:Property ;
-                        rdfs:label   "Usage Statistics Availability Indicator" ;
-                        rdfs:comment "The availability of usage statistics for the product" .
+:contractLink
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "A url that links to rdfs:type digital version of the original contract document the licensee recieved from the licensor.", "Ein Link/URL, der auf die digitale Version das originalen Vertragsdokuments verweist, welches der Lizenznehmer von Lizenzgeber enthält."@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Link zum Vertrag"@de, "url to the contract"@en .
 
-bibrm:usagestatsdelivery    a            rdf:Property ;
-                            rdfs:label   "Usage Statisticsstics Delivery Method" ;
-                            rdfs:comment "The manner in which usage StatususagedatasetupstatusThesistics are made available" .
+:costCenter
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "A cost center is part of an organization that does not produce direct profit and adds to the cost of running rdfs:type company."@en, "Eine Kostenstelle ist der Ort der Kostenentstehung und der Leistungserbringung. Sie ist ein Kostenrechnungsobjekt mit der Aufgabe, die in einem Unternehmensteil, meist einer Abteilung, angefallenen Kosten zu sammeln."@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Kostenstelle"@de, "cost center"@en .
 
-bibrm:usagestatsformat  a            rdf:Property ;
-                        rdfs:label   "Usage Statistics Format" ;
-                        rdfs:comment "The bibrmformat(s) in which usage statistics are made available" .
+:coursepacke
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de, "The right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in rdfs:type class for purposes of instruction"@en ;
+    rdfs:label "Course Pack Electronic"@en, "Reader elektronisch"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:usagestatsfrequency   a            rdf:Property ;
-                            rdfs:label   "Usage Statistics Frequency" ;
-                            rdfs:comment "The frequency with which usage statistics are made available" .
+:coursepackp
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de, "The right to use licensed materials in collections or compilations of materials assembled in rdfs:type print format by faculty members for use by students in rdfs:type class for purposes of instruction."@en ;
+    rdfs:label "Course Pack Print"@en, "Reader print"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:usagestatslocallystored   a            rdf:Property ;
-                                rdfs:label   "Information about and/or links to locally-stored usage data" ;
-                                rdfs:comment "Usage Statistics Locally Stored" .
+:coursereserveecopy
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de, "The right to make electronic copies of the licensed materials and store them on rdfs:type secure network"@en ;
+    rdfs:label "Course Reserve Electronic"@en, "Semesterapparat elektronisch"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:usagestatsnote    a            rdf:Property ;
-                        rdfs:label   "Usage DatatypesStatistics Note" ;
-                        rdfs:comment "Additional information regarding usage shortnametatistics" .
+:coursereservep
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment " The right to make print copies of the licensed materials and place them in rdfs:type controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en, "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de, "Das Recht gedruckte Kopien des lizensierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen." ;
+    rdfs:label "Course Reserve Print"@en, "Semesterapparat print"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:usagestatsonlinelocation  a            rdf:Property ;
-                                rdfs:label   "Usage Statistics Online Location" ;
-                                rdfs:comment "The online location at which usage statistics can be accessed" .
+:dataAvailability
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "(Meta-)Datenverfügbarkeit"@de, "(meta) data availability"@en .
 
-bibrm:usagestatspassword    a            rdf:Property ;
-                            rdfs:label   "Usage Statistics Password" ;
-                            rdfs:comment "The password used for online access to bibrmthe usage statistics management site or dataset" .
+:description
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "An account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents). Source of definition: Dublin Core Metadata Initiative"@en, "Die Beschreibung des Inhalts der ER. Es können Links zu weiteren relevanten Dokumenten (z. B. Inhaltsverzeichnis) enthalten sein. Quelle der Definition: Dublin Core Metadata Initiative"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Beschreibung"@de, "description"@en .
 
-bibrm:usagestatsuserid  a            rdf:Property ;
-                        rdfs:label   "Usage Statistics User Identifier" ;
-                        rdfs:comment "The identifier used for online access to the usage statisticstics file" .
+:digitallycopy
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de, "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen"@de, "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en, "The right of the licensee and authorized users to download and digitally copy rdfs:type reasonable portion of the licensed materials."@en ;
+    rdfs:label "Digitally Copy "@en, "Kopie digital"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:counterreporttype a            rdf:Property ;
-                        rdfs:label   "COUNTER Report Type" ;
-                        rdfs:comment "JR1 etc., s. Dokumentation (multivalue)" .
-
-#################################
-########### Datatypes ###########
-#################################
-
-bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty ;
-                       rdfs:label  "license end date"@en ;
-                       rdfs:label  "Vertragsende"@de ;
-                       rdfs:comment "The date on which a license agreement terminates"@en ; 
-                       rdfs:comment "Das Datum, an welchem ein Lizenzvertrag endet"@en ; 
-                       rdfs:isDefinedBy <> ;
-                       rdfs:domain bibrm:LicenseContract ;
-                       rdfs:range  xsd:date .
-
-bibrm:field    rdf:type     owl:DatatypeProperty ;
-               rdfs:label   "field"@en ;
-               rdfs:label   "Fachgebiet"@de ;
-               rdfs:comment "The field predicate can be used to classify bibliographic items"@en ;
-               rdfs:comment "Das Prädikat ermgölicht die Angabe von Fachgebieten"@de ;
-               rdfs:isDefinedBy <> ;
-               rdfs:domain  bibrm:BibItem .
-
-bibrm:name   rdf:type     owl:DatatypeProperty ;
-             rdfs:label   "name"@en ;
-             rdfs:label   "Name"@de ;
-             rdfs:isDefinedBy <> ;
-             rdfs:subPropertyOf  foaf:name .
-
-bibrm:shortname  rdf:type            owl:DatatypeProperty ;
-                 rdfs:label   "shortname"@en ;
-                 rdfs:label   "Kurzname"@de ;
-                 rdfs:isDefinedBy <> ;
-                 rdfs:subPropertyOf  foaf:name .
-
-bibrm:price   rdf:type    owl:DatatypeProperty ;
-            rdfs:label  "price"@en ;
-            rdfs:label  "Preis"@de ;
-            rdfs:comment    "The price a bibliographic resource costs the library to offer that item to their users"@en ;
-            rdfs:comment    "Der Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de ;
-            rdfs:isDefinedBy <> ;
-            rdfs:domain bibrm:BibItem ;
-            rdfs:range  xsd:double .
-
-bibrm:publisher  rdf:type    owl:DatatypeProperty ;
-               rdfs:label  "publisher"@en ;
-               rdfs:label  "Verlag"@de ;
-               rdfs:comment    "The organization which owns the license for a bibliographic resource"@en ;
-               rdfs:comment    "Die Institution, die das Recht an einer Bibliographischen Ressource besitzt"@de ;
-               rdfs:isDefinedBy <> ;
-               rdfs:subPropertyOf  dc:publisher .
-
-bibrm:licenseStartDate   rdf:type    owl:DatatypeProperty ;
-                rdfs:label  "license start date"@en ;
-                rdfs:label  "Vertragsbeginn"@de ;
-                rdfs:comment "The date on which a license agreement comes into effect"@en ; 
-                rdfs:comment "Das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@en ; 
-                rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:LicenseContract ;
-                rdfs:range  xsd:date .
-
-bibrm:licenseEndDate   rdf:type    owl:DatatypeProperty ;
-                rdfs:label  "license end date"@en ;
-                rdfs:label  "Vertragsende"@de ;
-                rdfs:comment "The date on which a license agreement loses it's effect"@en ; 
-                rdfs:comment "Das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@en ; 
-                rdfs:isDefinedBy <> ;
-                rdfs:domain bibrm:LicenseContract ;
-                rdfs:range  xsd:date .
-
-bibrm:permittedExplicit a bibrm:LicenseTermValue ;
-    rdfs:label "erlaubt (explizit)"@de .
-
-bibrm:prohibitedExplicit a bibrm:LicenseTermValue ;
-    rdfs:label "verboten (explizit)"@de .
-
-bibrm:permittedInterpreted a bibrm:LicenseTermValue ;
-    rdfs:label "erlaubt (Auslegung)"@de .
-
-bibrm:prohibitedInterpreted a bibrm:LicenseTermValue ;
-    rdfs:label "verboten (Auslegung)"@de .
-
-bibrm:silentUninterpreted a bibrm:LicenseTermValue ;
-    rdfs:label "unerwähnt"@de .
-
-bibrm:notApplicable a bibrm:LicenseTermValue ;
-    rdfs:label "nicht zutreffend"@de .
-
-bibrm:yes a bibrm:ExtendedBooleanValue ;
-    rdfs:label "Ja"@de .
-
-bibrm:no a bibrm:ExtendedBooleanValue ;
-    rdfs:label "Nein"@de .
-
-bibrm:undetermined a bibrm:ExtendedBooleanValue ;
-    rdfs:label "nicht festgelegt"@de .
-
-bibrm:students a bibrm:UserGroupValue ;
-    rdfs:label "Studierende"@de .
-
-bibrm:staff a bibrm:UserGroupValue ;
-    rdfs:label "Mitarbeiter"@de .
-
-bibrm:teachingHospitals a bibrm:UserGroupValue ;
-    rdfs:label "Lehrbeauftrage Lehrkrankenhäuser"@de .
-
-bibrm:walkIns a bibrm:UserGroupValue ;
-    rdfs:label "Walk-Ins"@de .
-
-bibrm:uniMember a bibrm:UserGroupValue ;
-    rdfs:label "Uni-Angehörige"@de .
-
-bibrm:library a bibrm:OrganizationTypeValue ;
-    rdfs:label "Bibliothek"@de .
-
-bibrm:consortium a bibrm:OrganizationTypeValue ;
-    rdfs:label "Konsortium"@de .
-
-bibrm:enterprise a bibrm:OrganizationTypeValue ;
+:enterprise
+    rdfs:type :OrganizationTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
     rdfs:label "Unternehmen"@de .
 
-#################################
-######### License terms #########
-#################################
+:eralttitle
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "A variation in the title proper of the resource, including acronyms, parallel titles, titles in other languages, etc."@en, "Eine Variation des Haupttitels der Ressource, z.B. Akronyme, Paralleltitel usw."@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Alternativer Titel"@de, "alternate titel"@en .
 
-bibrm:remoteaccess rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
-                  rdfs:comment  "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen "@de ;
-                  rdfs:label  "Remote Access"@en ;
-                  rdfs:label  "remote access"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:UserGroup .
+:expectedPrice
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Der Preis, welcher im vorhergehenden Jahr für die Ressource eingeplant wurde"@de, "The price for the ER you have expected last year"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Planpreis"@de, "expected price"@en .
 
-bibrm:autousers rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "Groups of users that are authorized for the licensed product"@en ;
-                  rdfs:comment  "Eine oder mehrere Nutzergruppen, die für das lizensierte Produkt autorisiert sind."@de ;
-                  rdfs:label  "Authorized User Definition"@en ;
-                  rdfs:label  "Autorisierte Nutzer"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:UserGroup .
+:faculty
+    rdfs:type :LicenseTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Fakultätslizenz (Class C Subnetz)"@de .
 
-bibrm:digitallycopy rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials."@en ;
-                  rdfs:comment  "Das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de ;
-                  rdfs:label  "Digitally Copy "@en ;
-                  rdfs:label  "Kopie digital"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:field
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Das Prädikat ermgölicht die Angabe von Fachgebieten"@de, "The field predicate can be used to classify bibliographic items"@en ;
+    rdfs:domain :BibItem ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Fachgebiet"@de, "field"@en .
 
-bibrm:pcopy rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right of the licensee and authorized users to print a portion of the licensed materials."@en ;
-                  rdfs:comment  "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de ;
-                  rdfs:label  "Print Copy "@en ;
-                  rdfs:label  "Kopie print"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasConsortium
+    rdfs:type owl:ObjectProperty ;
+    rdfs:label "beteiligtes Konsortium"@de, "has consortium"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range foaf:Organization .
 
-bibrm:scholarlysharing rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use"@en ;
-                  rdfs:comment  "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de ;
-                  rdfs:label  "Scholarly Sharing "@en ;
-                  rdfs:label  "Kopie digital"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasContact
+    rdfs:comment "A local contact person of the licensee"@en, "Der verantwortliche Ansprechpartner auf Seiten des Lizenznehmers"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Ansprechpartner UBL"@de, "local person in charge"@en .
 
-bibrm:illprintorfax rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"@en ;
-                  rdfs:comment  "Das Recht lizensiertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de ;
-                  rdfs:label  "Interlibrary Loan Print or Fax"@en ;
-                  rdfs:label  "Fernleihe print / Fax"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasERType
+    rdfs:type owl:ObjectProperty ;
+    rdfs:label "ER type"@en, "Produktart"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :ERType .
 
-bibrm:illelectronic rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right to provide the licensed materials via interlibrary loan by way of electronic copies"@en ;
-                  rdfs:comment  "Das Recht lizensiertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de ;
-                  rdfs:label  "Interlibrary  Loan Electronic"@en ;
-                  rdfs:label  "Fernleihe elektronisch"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasItem
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Links to items that are part of rdfs:type license package or rdfs:type license contract"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "gültig für"@de, "has item"@en ;
+    rdfs:range :ContractItem .
 
-bibrm:coursereservep rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  " The right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en ;
-                  rdfs:comment  "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de ;
-                  rdfs:label  "Course Reserve Print"@en ;
-                  rdfs:label  "Semesterapparat print"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasLicenseTerms
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Die Lizenzbedingungen, die zum Vertrag gehören"@de, "The license (terms) assigned to the contract" ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "assigned license terms"@en, "zugehörige Lizenzbedingungen"@de .
 
-bibrm:coursereserveecopy rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right to make electronic copies of the licensed materials and store them on a secure network"@en ;
-                  rdfs:comment  "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de ;
-                  rdfs:label  "Course Reserve Electronic"@en ;
-                  rdfs:label  "Semesterapparat elektronisch"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasOrganizationType
+    rdfs:type owl:ObjectProperty ;
+    rdfs:label "Kategorie"@de, "organization type"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :OrganizationType .
 
-bibrm:coursepackp rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
-                  rdfs:comment  "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ;
-                  rdfs:label  "Course Pack Print"@en ;
-                  rdfs:label  "Reader print"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:hasShibbolethNote a rdf:Property;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :ShibbolethNote .
 
-bibrm:coursepacke rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction"@en ;
-                  rdfs:comment  "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de ;
-                  rdfs:label  "Course Pack Electronic"@en ;
-                  rdfs:label  "Reader elektronisch"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:LicenseTerm .
+:illelectronic
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht lizensiertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de, "The right to provide the licensed materials via interlibrary loan by way of electronic copies"@en ;
+    rdfs:label "Fernleihe elektronisch"@de, "Interlibrary  Loan Electronic"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:digitallycopy rdf:type    owl:ObjectProperty ;
-                  rdfs:comment  "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
-                  rdfs:comment  "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen"@de ;
-                  rdfs:label  "Remote Access "@en ;
-                  rdfs:label  "Remote Access"@de ;
-                  rdfs:isDefinedBy <> ;
-                  rdfs:domain bibrm:License ;
-                  rdfs:range  bibrm:ExtendedBoolean .
+:illprintorfax
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht lizensiertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de, "The right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"@en ;
+    rdfs:label "Fernleihe print / Fax"@de, "Interlibrary Loan Print or Fax"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
 
-bibrm:UserGroup owl:oneOf (
-            bibrm:students
-            bibrm:staff
-            bibrm:uniMember
-            bibrm:teachingHospitals
-            bibrm:walkIns
-          ) .
+:initialAcquisitionDate
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Das Datum, an welchem das Produkt zum ersten Mal erworben wurde", "The date on which the license was purchased by the licensee for the first time"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Ersterwerbungsdatum"@de, "initial acquisition date"@en ;
+    rdfs:range xsd:date .
 
-bibrm:LicenseTerm owl:oneOf (
-            bibrm:silentUninterpreted
-            bibrm:permittedExplicit
-            bibrm:prohibitedExplicit
-            bibrm:permittedInterpreted
-            bibrm:prohibitedInterpreted
-            bibrm:notApplicable
-          ) .
+:interfaceprovider
+    rdfs:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Plattform"@de, "interface provider"@en .
 
-bibrm:ExtendedBoolean owl:oneOf (
-            bibrm:yes
-            bibrm:no
-            bibrm:undetermined
-          ) .
+:invoicePrice
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Rechnungspreis"@de, "invoice price"@en .
 
-bibrm:OrganizationType owl:oneOf (
-            bibrm:library
-            bibrm:consortium
-            bibrm:enterprise
-          ) .
+:isMember
+    rdfs:type owl:ObjectProperty ;
+    rdfs:label "is member of"@en, "ist Mitglied von"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range foaf:Organization .
+
+:isRelatedTo
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:type owl:ObjectProperty .
+
+:library
+    rdfs:type :OrganizationTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Bibliothek"@de .
+
+:licenseEndDate
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@en, "Das Datum, an welchem ein Lizenzvertrag endet"@en, "The date on which rdfs:type license agreement loses it's effect"@en, "The date on which rdfs:type license agreement terminates"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Vertragsende"@de, "license end date"@en ;
+    rdfs:range xsd:date .
+
+:licenseStartDate
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@en, "The date on which rdfs:type license agreement comes into effect"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Vertragsbeginn"@de, "license start date"@en ;
+    rdfs:range xsd:date .
+
+:licenseType
+    rdfs:type owl:ObjectPropery ;
+    rdfs:comment "Art der Lizenz, welche Zugang zur ER erlaubt"@de, "The kind of license that governs access to the product"@en ;
+    rdfs:label "Lizenzart"@de, "license type"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseType .
+
+:licensee
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Die Vertragspartei, die eine Lizenz erhält"@de, "The party of rdfs:type contract receiving the lawfull object/license"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Lizenznehmer"@de, "licensee"@en ;
+    rdfs:range foaf:Organization .
+
+:licensingNote
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Additional information regarding the license, the negotiation of the license, the product, etc."@en, "Zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen."@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Bemerkungen zum Vertrag"@de, "licensing note"@en .
+
+:licensingagent
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "An organization (such as rdfs:type subscription agent) or an individual that facilitates rdfs:type licensing transaction on behalf of one or more parties"@de ;
+    rdfs:label "Zahlungsempfänger"@de, "licensing agent"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range foaf:Organization .
+
+:licensor
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Die Vertragspartei, die eine Lizenz zur Verfügung stellt. Für uns wird hier immer der Verlag eingetragen. (s. weitere Felder: Konsortium, Zahlungsempfänger, Hersteller [Creator])"@de, "The party of rdfs:type contract offering the lawfull object/license"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Lizenzgeber"@de, "licensor"@en ;
+    rdfs:range foaf:Organization .
+
+:linkToBalance
+    rdfs:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Link zum Über-/Fehlbetrag"@de, "link to balance"@en .
+
+:linkToInvoice
+    rdfs:type owl:ObjectProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Link zur Rechnung"@de, "link to invoice"@en .
+
+:localsystemnumber
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Die Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt"@de, "The record number that is assigned by rdfs:type local library management system (LMS) to the bibliographic record for the resource"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Nummer aus Lokalsystem"@de, "local system number"@en .
+
+:name
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:subPropertyOf foaf:name .
+
+:networkIndependent
+    rdfs:type :LicenseTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "netzunabhängig"@de .
+
+:no
+    rdfs:type :ExtendedBooleanValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Nein"@de .
+
+:notApplicable
+    rdfs:type :LicenseTermValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "nicht zutreffend"@de .
+
+:orgnote
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Notiz zur Organisation"@de, "organization note"@en .
+
+:pcopy
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de, "The right of the licensee and authorized users to print rdfs:type portion of the licensed materials."@en ;
+    rdfs:label "Kopie print"@de, "Print Copy "@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
+
+:permittedExplicit
+    rdfs:type :LicenseTermValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "erlaubt (explizit)"@de .
+
+:permittedInterpreted
+    rdfs:type :LicenseTermValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "erlaubt (Auslegung)"@de .
+
+:price
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Der Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de, "The price rdfs:type bibliographic resource costs the library to offer that item to their users"@en ;
+    rdfs:domain :BibItem ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Preis"@de, "price"@en ;
+    rdfs:range xsd:double .
+
+:prohibitedExplicit
+    rdfs:type :LicenseTermValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "verboten (explizit)"@de .
+
+:prohibitedInterpreted
+    rdfs:type :LicenseTermValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "verboten (Auslegung)"@de .
+
+:remoteAccess
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen "@de, "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
+    rdfs:label "Remote Access"@de, "remote access"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :ExtendedBoolean .
+
+:scholarlysharing
+    rdfs:type owl:ObjectProperty ;
+    rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de, "The right of authorized users and/or the licensee to transmit hard copy or an electronic copy of rdfs:type portion of the licensed materials to rdfs:type third party for personal, scholarly, educational, scientific or professional use"@en ;
+    rdfs:label "Scholarly Sharing "@de, "Scholarly Sharing "@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range :LicenseTerm .
+
+:shortname
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Kürzel"@de, "shortname"@en .
+
+:silentUninterpreted
+    rdfs:type :LicenseTermValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "unerwähnt"@de .
+
+:single
+    rdfs:type :LicenseTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Einzelplatzlizenz"@de .
+
+:staff
+    rdfs:type :UserGroupValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Mitarbeiter"@de .
+
+:students
+    rdfs:type :UserGroupValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Studierende"@de .
+
+:teachingHospitals
+    rdfs:type :UserGroupValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Lehrbeauftrage Lehrkrankenhäuser"@de .
+
+:terminationAlert
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de, "The last possible date on which rdfs:type contract/subscription can be terminated"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:label "last possible termination date"@en, "letztmöglicher Kündigungstag"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range xsd:date .
+
+:terminationDate
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Das Datum, an welchem ein Vertrag/Abo gekündigt wurde"@de, "The date on which rdfs:type contract/subscription was terminated"@en ;
+    rdfs:domain :LicenseContract ;
+    rdfs:label "gekündigt am"@de, "termination date"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:range xsd:date .
+
+:terminationReason
+    rdfs:type owl:DatatypeProperty ;
+    rdfs:comment "Der Grund für die Kündigung eines Vertrags"@de, "The reason rdfs:type subscription was terminated"@en ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Kündigungsgrund"@de, "termination reason"@en .
+
+:undetermined
+    rdfs:type :ExtendedBooleanValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "nicht festgelegt"@de .
+
+:uniMember
+    rdfs:type :UserGroupValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Uni-Angehörige"@de .
+
+:usagestatsnote
+    rdfs:comment "Information regarding usage statistics"@en, "Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle"@de ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Nutzungsstatistik"@de, "usage statistics"@en .
+
+:walkIns
+    rdfs:type :UserGroupValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Walk-Ins"@de .
+
+:yes
+    rdfs:type :ExtendedBooleanValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
+    rdfs:label "Ja"@de .
+
+:Impossible a bibrm:ShibbolethNoteValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:Possible a bibrm:ShibbolethNoteValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:Implemented a bibrm:ShibbolethNoteValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:ERType owl:oneOf (
+            :Database 
+            :Ejournal 
+            :EjournalPackage 
+            :Ebook 
+            :EbookPackage) ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:Database a bibrm:ERTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:Ejournal a bibrm:ERTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:EjournalPackage a bibrm:ERTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:Ebook a bibrm:ERTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:EbookPackage a bibrm:ERTypeValue ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:UserGroup owl:oneOf (
+            :students
+            :staff
+            :uniMember
+            :teachingHospitals
+            :walkIns
+          ) ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:LicenseTerm owl:oneOf (
+            :silentUninterpreted
+            :permittedExplicit
+            :prohibitedExplicit
+            :permittedInterpreted
+            :prohibitedInterpreted
+            :notApplicable
+          ) ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:ExtendedBoolean owl:oneOf (
+            :yes
+            :no
+            :undetermined
+          ) ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
+
+:OrganizationType owl:oneOf (
+            :library
+            :consortium
+            :enterprise
+          ) ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 
-bibrm:ShibbolethNote owl:oneOf (
-            bibrm:Impossible 
-            bibrm:Possible 
-            bibrm:Implemented ) .
+:ShibbolethNote owl:oneOf (
+            :Impossible
+            :Possible
+            :Implemented
+          ) ;
+    rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-bibrm:Impossible a bibrm:ShibbolethNoteValue .
-
-bibrm:Possible a bibrm:ShibbolethNoteValue .
-
-bibrm:Implemented a bibrm:ShibbolethNoteValue . 
-
-bibrm:ERType owl:oneOf (
-            bibrm:Database 
-            bibrm:Ejournal 
-            bibrm:EjournalPackage 
-            bibrm:Ebook 
-            bibrm:EbookPackage) .
-
-bibrm:Database a bibrm:ERTypeValue .
-
-bibrm:Ejournal a bibrm:ERTypeValue .
-
-bibrm:EjournalPackage a bibrm:ERTypeValue .
-
-bibrm:Ebook a bibrm:ERTypeValue .
-
-bibrm:EbookPackage a bibrm:ERTypeValue . 
