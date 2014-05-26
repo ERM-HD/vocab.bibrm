@@ -48,38 +48,3 @@ Used prefixes and their namespace
     @prefix skos:   <http://www.w3.org/2004/02/skos/core#> .
     @prefix vann:   <http://purl.org/vocab/vann/>.
     @prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
-
-The class `bibrm:Journal` as a subclass of `bibo:Journal`
-
-    bibrm:Journal rdf:type        owl:Class ;
-                  rdfs:subClassOf bibo:Journal .
-
-The class `bibrmLicenseContract` as a subclass of `dct:LicenseDocument`
-
-    bibrm:LicenseContract rdf:type        owl:Class ;
-                          rdfs:subClassOf dct:LicenseDocument .
-
-Restrictions on the usage of `dc:publisher` and `dc:title` for bibrm:BibliographicResource`
-
-    bibrm:BibliographicResource rdf:type owl:Class ;
-                                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                                owl:onProperty dc:publisher ;
-                                                owl:minCardinality "0"^^xsd:nonNegativeInteger
-                                                ] ,
-                                                [ rdf:type owl:Restriction ;
-                                                owl:onProperty dc:title ;
-                                                owl:cardinality "1"^^xsd:nonNegativeInteger
-                                                ] .
-
-Example of an instance of a `bibrm:Journal` to show how we reference ISSN 
-
-    <http://ub.uni-leipzig.de/vokab/resource/examplejournal>    a bibrm:Journal ;
-                                                                bibrm:hasEISSN <urn:ISSN:1234-5678> .
-
-In connection with `bibrm:field a owl:ObjectProperty` we use `aiiso:Faculty` of
-the [Academic Institution Internal Structure Ontology](http://vocab.org/aiiso/schema). This provides further oportunities for reporting.
-
-        <http://erm-hd/faculty/MedizinischeFakultät> a aiiso:Faculty ;
-                                                     bibrm:name "Medizinische Fakultät" ;
-                                                     bibrm:shortname "Med" ;
-                                                     rdfs:label "Medizinische Fakultät" .
