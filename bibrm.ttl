@@ -542,13 +542,13 @@
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
     rdfs:label "Ja"@de .
 
-:Impossible a bibrm:ShibbolethNoteValue ;
+:Impossible a :ShibbolethNoteValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:Possible a bibrm:ShibbolethNoteValue ;
+:Possible a :ShibbolethNoteValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:Implemented a bibrm:ShibbolethNoteValue ;
+:Implemented a :ShibbolethNoteValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 :ERType owl:oneOf (
@@ -559,19 +559,19 @@
             :EbookPackage) ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:Database a bibrm:ERTypeValue ;
+:Database a :ERTypeValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:Ejournal a bibrm:ERTypeValue ;
+:Ejournal a :ERTypeValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:EjournalPackage a bibrm:ERTypeValue ;
+:EjournalPackage a :ERTypeValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:Ebook a bibrm:ERTypeValue ;
+:Ebook a :ERTypeValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
-:EbookPackage a bibrm:ERTypeValue ;
+:EbookPackage a :ERTypeValue ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 :UserGroup owl:oneOf (
