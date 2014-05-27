@@ -231,7 +231,7 @@
 
 :field
     rdfs:type owl:DatatypeProperty ;
-    rdfs:comment "Das Prädikat ermgölicht die Angabe von Fachgebieten"@de, "The field predicate can be used to classify bibliographic items"@en ;
+    rdfs:comment "Das Prädikat ermöglicht die Angabe von Fachgebieten"@de, "The field predicate can be used to classify bibliographic items"@en ;
     rdfs:domain :BibItem ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
     rdfs:label "Fachgebiet"@de, "field"@en .
