@@ -557,6 +557,8 @@
             :EjournalPackage 
             :Ebook 
             :EbookPackage) ;
+    rdfs:comment "A collection containing :Database :Ejournal :EjournalPackage :Ebook :EbookPackage"@en ;
+    rdfs:comment "Eine Sammlung die :Database :Ejournal :EjournalPackage :Ebook :EbookPackage enthält"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 :Database a :ERTypeValue ;
@@ -581,6 +583,8 @@
             :teachingHospitals
             :walkIns
           ) ;
+    rdfs:comment "A collection containing :students :staff :uniMember :teachingHospitals :walkIns"@en ;
+    rdfs:comment "Eine Sammlung die :students :staff :uniMember :teachingHospitals :walkIns enthält"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 :LicenseTerm owl:oneOf (
@@ -591,6 +595,8 @@
             :prohibitedInterpreted
             :notApplicable
           ) ;
+    rdfs:comment "A collection containing :silentUninterprete :permittedExplicit :prohibitedExplicit :permittedInterpreted :prohibitedInterpreted :notApplicable"@en ;
+    rdfs:comment "Eine Sammlung die :silentUninterprete :permittedExplicit :prohibitedExplicit :permittedInterpreted :prohibitedInterpreted :notApplicable enthält"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 :ExtendedBoolean owl:oneOf (
@@ -598,6 +604,8 @@
             :no
             :undetermined
           ) ;
+    rdfs:comment "A collection containing :yes :no :undetermined"@en ;
+    rdfs:comment "Eine Sammlung die :yes :no :undetermined enthält"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 :OrganizationType owl:oneOf (
@@ -605,6 +613,8 @@
             :consortium
             :enterprise
           ) ;
+    rdfs:comment "A collection containing :library :consortium :enterprise"@en ;
+    rdfs:comment "Eine Sammlung die :library :consortium :enterprisei enthält"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
 
@@ -613,5 +623,7 @@
             :Possible
             :Implemented
           ) ;
+    rdfs:comment "A collection containing :Impossible :Possible :Implemented"@en ;
+    rdfs:comment "Eine Sammlung die :Impossible :Possible :Implemented enthält"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> .
 
