@@ -36,6 +36,10 @@ Usage:
 
 outputUri = None
 inputUri = None
+
+bnodePrefix = "bnode"
+bnodeNamespace = "http://example.com/bnode/"
+
 for opt, arg in args:
     if opt in ("-i", "--input"):
         inputUri = "file:" + arg
@@ -61,12 +65,14 @@ ntrSerializer = RDF.NTriplesSerializer()
 string = ntrSerializer.serialize_stream_to_string(inStream)
 
 bnode = re.compile(r'_(:[r0-9]+)')
-string = re.sub(bnode, r'<bnode\1>', string)
+string = re.sub(bnode, r'bnode\1', string)
+
+string = "@prefix " + bnodePrefix + ": <" + bnodeNamespace + "> .\n" + string
 
 outStream = ttlParser.parse_string_as_stream(string, inputUri)
 
 ttlSerializer = RDF.Serializer(name="turtle")
-ttlSerializer.set_namespace("bnode", "http://example.com/bnode/")
+ttlSerializer.set_namespace(bnodePrefix, bnodeNamespace)
 for prefix, uri in namespaces.iteritems():
     ttlSerializer.set_namespace(prefix, uri)
 
