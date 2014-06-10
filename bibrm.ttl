@@ -1,4 +1,5 @@
 @prefix :  <http://vocab.ub.uni-leipzig.de/bibrm/> .
+@prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 @prefix bibo:   <http://purl.org/ontology/bibo/> .
 @prefix cc:     <http://creativecommons.org/ns#> .
 @prefix dc:     <http://purl.org/dc/elements/1.1/> .
