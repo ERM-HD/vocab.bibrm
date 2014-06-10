@@ -12,7 +12,7 @@ We are still collecting and searching ideas from existing vocabularies and model
 * ermi
 * [bibframe](http://bibframe.org/)  
 
-An output of the vocabulary in HTML using the [OntoWiki's](http://ontowiki.net) [Site-Extension](https://github.com/AKSW/site.ontowiki/) can be seen [here](http://vocab.ub.uni-leipzig.de/bibrm/.html)
+An overview of the vocabulary in HTML can be seen [here](http://vocab.ub.uni-leipzig.de/bibrm/)
 
 About this vocabulary
 ---------------------
