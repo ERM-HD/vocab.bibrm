@@ -445,7 +445,7 @@
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
     rdfs:label "Uni-Angehörige"@de .
 
-:usagestatsnote a rdf:Property .
+:usagestatsnote a rdf:Property ;
     rdfs:comment "Information regarding usage statistics"@en, "Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle"@de ;
     rdfs:isDefinedBy <http://vocab.ub.uni-leipzig.de/bibrm/> ;
     rdfs:label "Nutzungsstatistik"@de, "usage statistics"@en .
