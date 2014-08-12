@@ -23,5 +23,5 @@ smartdiff() {
     fi
 }
 
-smartdiff -I genid <((rapper $1 -i turtle -o ntriples | sort) 2> /dev/null) \
-                   <((rapper $2 -i turtle -o ntriples | sort) 2> /dev/null)
+smartdiff -I genid <((rapper $1 -i turtle -o ntriples | sort -u) 2> /dev/null) \
+                   <((rapper $2 -i turtle -o ntriples | sort -u) 2> /dev/null)
