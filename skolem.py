@@ -23,19 +23,21 @@ import getopt
 import re
 import RDF
 
-args, opts = getopt.getopt(sys.argv[1:], "i:o:h", ["input=", "output=", "help"])
+args, opts = getopt.getopt(sys.argv[1:], "i:o:bh", ["input=", "output=", "backward", "help"])
 
 def help():
     sys.stderr.write("""
 Usage:
   -i --input=     The input file
   -o --output=    The output file (optional)
+  -b --backward   Switch to \"deskolemize\" the turtle file (optional)
   -h --help       Usage information
 
 """)
 
 outputUri = None
 inputUri = None
+forward = True
 
 bnodePrefix = "bnode"
 bnodeNamespace = "http://example.com/bnode/"
@@ -45,6 +47,8 @@ for opt, arg in args:
         inputUri = "file:" + arg
     elif opt in ("-o", "--output"):
         outputUri = arg
+    elif opt in ("-b", "--backward"):
+        forward = False
     elif opt in ("-h", "--help"):
         help()
         sys.exit(0)
@@ -64,10 +68,14 @@ ntrSerializer = RDF.NTriplesSerializer()
 
 string = ntrSerializer.serialize_stream_to_string(inStream)
 
-bnode = re.compile(r'_(:[r0-9]+)')
-string = re.sub(bnode, r'bnode\1', string)
+if (forward) :
+    bnode = re.compile(r'_(:[r0-9]+)')
+    string = re.sub(bnode, r'bnode\1', string)
 
-string = "@prefix " + bnodePrefix + ": <" + bnodeNamespace + "> .\n" + string
+    string = "@prefix " + bnodePrefix + ": <" + bnodeNamespace + "> .\n" + string
+else:
+    bnode = re.compile(r'<' + bnodeNamespace + '([r0-9]+)>')
+    string = re.sub(bnode, r'_:\1', string)
 
 outStream = ttlParser.parse_string_as_stream(string, inputUri)
 
