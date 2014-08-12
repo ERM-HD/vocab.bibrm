@@ -1,3 +1,4 @@
+@base  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 @prefix :  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 @prefix bibrm:  <http://vocab.ub.uni-leipzig.de/bibrm/> .
 @prefix bibo:   <http://purl.org/ontology/bibo/> .
