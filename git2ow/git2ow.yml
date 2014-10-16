@@ -1,0 +1,12 @@
+prefixes:
+    owl    : http://www.w3.org/2002/07/owl# 
+    sysont : http://ns.ontowiki.net/SysOnt/
+    bibrm  : http://vocab.ub.uni-leipzig.de/bibrm/
+    foaf   : http://xmlns.com/foaf/0.1/
+    doap   : http://usefulinc.com/ns/doap#
+    vann   : http://purl.org/vocab/vann/
+    cc     : http://creativecommons.org/ns#
+orderProperty: http://ns.ontowiki.net/SysOnt/order
+dropdownDesignator:
+    property : http://ns.ontowiki.net/SysOnt/displayAs
+    value    : dropdown
