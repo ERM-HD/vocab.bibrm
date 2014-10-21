@@ -14,6 +14,7 @@ parser.add_argument("file")
 parser.add_argument("-i", "--input", default="turtle", help="Input format")
 parser.add_argument("-o", "--output", default="turtle", help="Output format")
 parser.add_argument("-v", "--verbose", help="verbose output", action="store_true")
+parser.add_argument("-n", "--only_new", help="only new triples", action="store_true")
 
 # reading parameters
 args = parser.parse_args()
@@ -241,13 +242,32 @@ if args.mode == 'git2ow':
 
     # updating graph
 
+    if args.only_new:
+        gtemp = rdflib.Graph()
+
     for row in qres:
         collClass = row[0]
         print("Processing <%s>" % collClass, file=sys.stderr)
-        g.update(getDesignatorInsert(collClass))
-        g.update(getOrderInsert(collClass))
-        g.update(getCollectionDelete(collClass))
+        if args.only_new:
+            designator = getDesignatorInsert(collClass)
+            designator = designator.replace('INSERT {', 'CONSTRUCT {')
+            temp1 = g.query(designator)
+            orders = getOrderInsert(collClass)
+            orders = orders.replace('INSERT {', 'CONSTRUCT {')
+            temp2 = g.query(orders)
+            for r in temp1:
+                gtemp.add(r)
+            for r in temp2:
+                gtemp.add(r)
+        else:
+            g.update(getDesignatorInsert(collClass))
+            g.update(getOrderInsert(collClass))
+            g.update(getCollectionDelete(collClass))
+
 
     # output graph
+    if args.only_new:
+        print(gtemp.serialize(format=args.output).decode('utf-8'))
+    else:
+        print(g.serialize(format=args.output).decode('utf-8'))
 
-    print(g.serialize(format=args.output).decode('utf-8'))
