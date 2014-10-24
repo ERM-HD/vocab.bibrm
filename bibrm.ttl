@@ -10,6 +10,26 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+
+bibrm: a owl:Ontology ;
+    rdfs:label "Vocabulary for Library Electronic Resource Management" ;
+    cc:attributionName "AKSW & Universitätsbibliothek Leipzig" ;
+    vann:changes <https://github.com/ERM-HD/vocab.bibrm/commits/master/bibrm.ttl> ;
+    vann:preferredNamespacePrefix "bibrm" ;
+    vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/bibrm/" ;
+    doap:homepage <http://aksw.org/Projects/ERM> ;
+    doap:maintainer <http://aksw.org/NormanRadtke> ;
+    foaf:maker <http://aksw.org/AndreasNareike>,
+        <http://aksw.org/NatanaelArndt>,
+        <http://aksw.org/NormanRadtke>,
+        <http://aksw.org/Partner/BjoernMuschall>,
+        <http://aksw.org/Partner/LydiaUnterdoerfel>,
+        <http://aksw.org/ThomasRiechert> .
+
+
+######################## Classes #####################################
+
+
 bibrm:AnnualContractData a rdfs:Class ;
     rdfs:label "Vertragsjahresdaten (konsortial)"@de,
         "annual contract data (consortial)"@en ;
@@ -47,33 +67,18 @@ bibrm:Template a rdfs:Class ;
     rdfs:label "Vorlage"@de,
         "Template"@en .
 
-bibrm: a owl:Ontology ;
-    rdfs:label "Vocabulary for Library Electronic Resource Management" ;
-    cc:attributionName "AKSW & Universitätsbibliothek Leipzig" ;
-    vann:changes <https://github.com/ERM-HD/vocab.bibrm/commits/master/bibrm.ttl> ;
-    vann:preferredNamespacePrefix "bibrm" ;
-    vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/bibrm/" ;
-    doap:homepage <http://aksw.org/Projects/ERM> ;
-    doap:maintainer <http://aksw.org/NormanRadtke> ;
-    foaf:maker <http://aksw.org/AndreasNareike>,
-        <http://aksw.org/NatanaelArndt>,
-        <http://aksw.org/NormanRadtke>,
-        <http://aksw.org/Partner/BjoernMuschall>,
-        <http://aksw.org/Partner/LydiaUnterdoerfel>,
-        <http://aksw.org/ThomasRiechert> .
 
-bibrm:EISSN a rdf:Property,
+######################## Properties #####################################
+
+
+bibrm:eissn a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "hat die E-ISSN"@de,
         "has E-ISSN"@en ;
     rdfs:domain bibrm:ContractItem .
 
-bibrm:Organization rdfs:label "Unternehmen + Konsortien (bibrm)"@de,
-        "Organization (bibrm)"@en ;
-    rdfs:comment "Diese Klasse beinhaltet Instanzen der Institutionstypen Konsortium und Unternehmen (z. B. als Lizenzgeber, Plattform, Zahlungsempfänger, Hersteller) vom Typ bibrm:organisation"@de,
-        "A class containing entities of the type consortia or enterprise (e.g. as a licensor, interface provider, licensing agent, creator)"@en .
 
-bibrm:PISSN a rdf:Property,
+bibrm:pissn a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "hat die P-ISSN"@de,
         "has P-ISSN"@en ;
@@ -90,7 +95,7 @@ bibrm:archivingNote a owl:DataTypeProperty ;
     rdfs:comment "Informationen zur Verfügbarkeite der ER nach Vertragsende (Archivrecht, Format...)"@de,
         "Additional information related to archiving rights, product, and format"@en .
 
-bibrm:autousers a owl:ObjectProperty ;
+bibrm:authorizedUser a owl:ObjectProperty ;
     rdfs:label "Autorisierte Nutzer"@de,
         "Authorized User Definition"@en ;
     rdfs:comment "Eine oder mehrere Nutzergruppen, die für das lizensierte Produkt autorisiert sind."@de,
@@ -102,7 +107,7 @@ bibrm:bindsClass a owl:ObjectProperty ;
     rdfs:label "gehört zur Klasse"@de,
         "binds Class"@en .
 
-bibrm:concuser a owl:DatatypeProperty ;
+bibrm:concUser a owl:DatatypeProperty ;
     rdfs:label "Parallelzugriffe"@de,
         "concurrent users"@en ;
     rdfs:comment "Die Anzahl der in den Lizenzbedingungen angegeben Parallelzugriffe"@de,
@@ -114,7 +119,7 @@ bibrm:contactNote a owl:DatatypeProperty ;
         "contact note"@en ;
     rdfs:domain foaf:Person .
 
-bibrm:contractLink a rdf:Property,
+bibrm:linkToContract a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Link zum Vertrag"@de,
         "url to the contract"@en ;
@@ -130,7 +135,7 @@ bibrm:costCenter a rdf:Property,
         "A cost center is part of an organization that does not produce direct profit and adds to the cost of running a company."@en ;
     rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
 
-bibrm:coursepacke a owl:ObjectProperty ;
+bibrm:coursePackE a owl:ObjectProperty ;
     rdfs:label "Reader elektronisch"@de,
         "Course Pack Electronic"@en ;
     rdfs:comment "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
@@ -138,7 +143,7 @@ bibrm:coursepacke a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:coursepackp a owl:ObjectProperty ;
+bibrm:coursePackP a owl:ObjectProperty ;
     rdfs:label "Reader print"@de,
         "Course Pack Print"@en ;
     rdfs:comment "Das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
@@ -146,7 +151,7 @@ bibrm:coursepackp a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:coursereserveecopy a owl:ObjectProperty ;
+bibrm:courseReserveE a owl:ObjectProperty ;
     rdfs:label "Semesterapparat elektronisch"@de,
         "Course Reserve Electronic"@en ;
     rdfs:comment "Das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de,
@@ -154,7 +159,7 @@ bibrm:coursereserveecopy a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:coursereservep a owl:ObjectProperty ;
+bibrm:courseReserveP a owl:ObjectProperty ;
     rdfs:label "Semesterapparat print"@de,
         "Course Reserve Print"@en ;
     rdfs:comment "Das Recht gedruckte Kopien des lizensierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen.",
@@ -174,9 +179,9 @@ bibrm:description a rdf:Property,
         "description"@en ;
     rdfs:comment "Die Beschreibung des Inhalts der ER. Es können Links zu weiteren relevanten Dokumenten (z. B. Inhaltsverzeichnis) enthalten sein. Quelle der Definition: Dublin Core Metadata Initiative"@de,
         "An account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents). Source of definition: Dublin Core Metadata Initiative"@en ;
-    rdfs:domain bibrm:AnnualContractData .
+    rdfs:domain bibrm:BasicContractData .
 
-bibrm:descriptionURL a rdf:Property,
+bibrm:linkToDescription a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "URL der Anbieterbeschreibung"@de,
         "URL to the description "@en ;
@@ -184,9 +189,9 @@ bibrm:descriptionURL a rdf:Property,
         "The URL to the description of the creator/privider of an Electronic Product"@en ;
     rdfs:domain bibrm:BasicContractData .
 
-bibrm:digitallycopy a owl:ObjectProperty ;
+bibrm:bibrm:digitallyCopy a owl:ObjectProperty ;
     rdfs:label "Kopie digital"@de,
-        "Digitally Copy "@en ;
+        "Digital Copy "@en ;
     rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de,
         "Das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen"@de,
         "The right of an authorized user to gain access to an Electronic Product from an offsite location"@en,
@@ -194,7 +199,7 @@ bibrm:digitallycopy a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:eralttitle a rdf:Property,
+bibrm:erAltTitle a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Alternativer Titel"@de,
         "alternate titel"@en ;
@@ -233,13 +238,13 @@ bibrm:field a rdf:Property,
         "The field predicate can be used to classify bibliographic items"@en ;
     rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
 
-bibrm:hasAcqnote a rdf:Property,
+bibrm:acqMethod a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Erwerbungsart"@de,
         "Acquisition Method"@en ;
-    rdfs:range bibrm:Acqnote .
+    rdfs:range bibrm:AcqNote .
 
-bibrm:hasAnnualContractData a rdf:Property,
+bibrm:annualContractData a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "zugehörige Vertragsjahresdaten"@de,
         "assigned annual contact data"@en ;
@@ -248,13 +253,13 @@ bibrm:hasAnnualContractData a rdf:Property,
     rdfs:domain bibrm:LicensePackage ;
     rdfs:range bibrm:AnnualContractData .
 
-bibrm:hasAuthmethod a rdf:Property,
+bibrm:authMethod a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Authentifizierungsmethode"@de,
         "Authentication Method"@en ;
-    rdfs:range bibrm:Authmethod .
+    rdfs:range bibrm:AuthMethod .
 
-bibrm:hasBasicContractData a rdf:Property,
+bibrm:basicContractData a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Zugehörige Vertragsbasisdaten"@de,
         "associated basic contract data"@en ;
@@ -263,13 +268,13 @@ bibrm:hasBasicContractData a rdf:Property,
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range bibrm:BasicContractData .
 
-bibrm:hasBudget a owl:ObjectProperty ;
+bibrm:budget a owl:ObjectProperty ;
     rdfs:label "hat Budget"@de,
         "has budget"@en ;
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range bibrm:Budget .
 
-bibrm:hasConsortium a rdf:Property,
+bibrm:consortium a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Beteiligtes Konsortium"@de,
         "consortium"@en ;
@@ -277,47 +282,47 @@ bibrm:hasConsortium a rdf:Property,
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range foaf:Organization .
 
-bibrm:hasDBType a owl:ObjectProperty ;
+bibrm:dbType a owl:ObjectProperty ;
     rdfs:label "hat Datenbanktyp"@de,
         "has database type"@en ;
     rdfs:range bibrm:DBType .
 
-bibrm:hasERState a rdf:Property,
+bibrm:erStatus a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Status der ER"@de,
-        "State of the ER"@en ;
-    rdfs:range bibrm:ERState .
+        "Status of the ER"@en ;
+    rdfs:range bibrm:ERStatus .
 
-bibrm:hasERType a owl:ObjectProperty ;
+bibrm:erType a owl:ObjectProperty ;
     rdfs:label "Produktart"@de,
         "ER type"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:ERType .
 
-bibrm:hasExpectedInvoiceMonth a owl:ObjectProperty ;
+bibrm:expectedInvoiceMonth a owl:ObjectProperty ;
     rdfs:label "Erwarteter Rechnungsmonat"@de,
         "Expected Invoice Month"@en ;
     rdfs:range bibrm:Month .
 
-bibrm:hasILLNote a owl:DatatypeProperty ;
+bibrm:illNote a owl:DatatypeProperty ;
     rdfs:label "Fernleihnotiz"@de,
         "Interlibrary Loan Note"@en ;
     rdfs:comment "Dieses Feld dient der Erfassung weiterer Informationen zur Fernleihe"@de,
         "Used to note further information about Interlibrary Loan"@en ;
     rdfs:domain bibrm:BasicContractData .
 
-bibrm:hasILLSET a owl:ObjectProperty ;
+bibrm:illset a owl:ObjectProperty ;
     rdfs:label "Interlibrary Loan Secure Electronic Transmission"@de,
         "Interlibrary Loan Secure Electronic Transmission"@en ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:hasInvoiceState a rdf:Property,
+bibrm:invoiceRecieved a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Rechnung vorhanden?"@de,
         "Invoice recieved?"@en ;
     rdfs:range bibrm:Boolean .
 
-bibrm:hasItem a owl:ObjectProperty ;
+bibrm:contractItem a owl:ObjectProperty ;
     rdfs:label "hat Vertragsposition"@de,
         "has item"@en ;
     rdfs:comment "Links to items that are part of a license package or a licnense contract"@en ;
@@ -325,7 +330,7 @@ bibrm:hasItem a owl:ObjectProperty ;
         bibrm:LicensePackage ;
     rdfs:range bibrm:ContractItem .
 
-bibrm:hasNoticePeriod a rdf:Property,
+bibrm:noticePeriod a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Kündigungsfrist"@de,
         "Notice Period"@en ;
@@ -333,13 +338,13 @@ bibrm:hasNoticePeriod a rdf:Property,
         "The notice period must be recorded if no exact date can be identified"@en ;
     rdfs:domain bibrm:BasicContractData .
 
-bibrm:hasOrganizationType a owl:ObjectProperty ;
+bibrm:organizationType a owl:ObjectProperty ;
     rdfs:label "Kategorie"@de,
         "organization type"@en ;
     rdfs:domain foaf:Organization ;
     rdfs:range bibrm:OrganizationType .
 
-bibrm:hasPackage a rdf:Property,
+bibrm:licensePackage a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "hat Paket"@de,
         "has package"@en ;
@@ -348,7 +353,7 @@ bibrm:hasPackage a rdf:Property,
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range bibrm:LicensePackage .
 
-bibrm:hasPlatform a rdf:property,
+bibrm:platform a rdf:property,
         owl:ObjectProperty ;
     rdfs:label "via Plattform"@de,
         "via platform"@en ;
@@ -357,27 +362,21 @@ bibrm:hasPlatform a rdf:property,
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:Platform .
 
-bibrm:hasPrimaryAccessURI a rdf:Property,
+bibrm:primaryAccessURI a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "URL des Mediums"@de,
         "URL of the ER"@en ;
     rdfs:comment "The method of access, the location, and the file name of an Electronic Product"@en ;
     rdfs:domain bibrm:BasicContractData .
 
-bibrm:hasShibboleth a owl:ObjectProperty ;
-    rdfs:label "hat Shibboleth-Informationen"@de,
-        "has Shibboleth information"@en ;
-    rdfs:domain bibrm:BasicContractData ;
-    rdfs:range bibrm:Shibboleth .
-
-bibrm:hasShibbolethNote a rdf:Property,
+bibrm:shibbolethImplStatus a rdf:Property,
         owl:ObjectProperty ;
-    rdfs:label "Shibboleth-Status"@de,
-        "Shibboleth State"@en ;
+    rdfs:label "Status der Shibboleth Implementation"@de,
+        "Status of shibboleth implementation"@en ;
     rdfs:domain bibrm:Platform ;
-    rdfs:range bibrm:ShibbolethNote .
+    rdfs:range bibrm:ShibbolethImplStatus .
 
-bibrm:illelectronic a owl:ObjectProperty ;
+bibrm:illElectronic a owl:ObjectProperty ;
     rdfs:label "Fernleihe elektronisch"@de,
         "Interlibrary  Loan Electronic"@en ;
     rdfs:comment "Das Recht lizensiertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de,
@@ -385,7 +384,7 @@ bibrm:illelectronic a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:illprintorfax a owl:ObjectProperty ;
+bibrm:illPrintOrFax a owl:ObjectProperty ;
     rdfs:label "Fernleihe print / Fax"@de,
         "Interlibrary Loan Print or Fax"@en ;
     rdfs:comment "Das Recht lizensiertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de,
@@ -423,7 +422,7 @@ bibrm:invoicePrice a owl:DatatypeProperty ;
         "invoice price"@en ;
     rdfs:domain bibrm:AnnualContractData .
 
-bibrm:isMember a owl:ObjectProperty ;
+bibrm:isMemberOf a owl:ObjectProperty ;
     rdfs:label "ist Mitglied von"@de,
         "is member of"@en ;
     rdfs:domain foaf:Person ;
@@ -475,12 +474,11 @@ bibrm:licensingNote a owl:DatatypeProperty ;
         "Additional information regarding the license, the negotiation of the license, the product, etc."@en ;
     rdfs:domain bibrm:BasicContractData .
 
-bibrm:licensingagent a owl:ObjectProperty ;
+bibrm:licensingAgent a owl:ObjectProperty ;
     rdfs:label "Zahlungsempfänger"@de,
         "licensing agent"@en ;
     rdfs:comment "An organization (such as a subscription agent) or an individual that facilitates a licensing transaction on behalf of one or more parties",
-        """Ein Unternehmen, dass die Bezahlung einer ER abwickelt. \r
-Immer einzutragen, auch wenn mit weiteren Feldern (Konsortium, Plattform, Hersteller [Creator], Lizenzgeber) identisch."""@de,
+        """Ein Unternehmen, das die Bezahlung einer ER abwickelt. Immer einzutragen, auch wenn mit weiteren Feldern (Konsortium, Plattform, Hersteller [Creator], Lizenzgeber) identisch."""@de,
         "An organization (such as a subscription agent) or an individual that facilitates a licensing transaction on behalf of one or more parties"@en ;
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range foaf:Organization .
@@ -504,7 +502,7 @@ bibrm:linkToInvoice a owl:DatatypeProperty ;
         "link to invoice"@en ;
     rdfs:domain bibrm:AnnualContractData .
 
-bibrm:localsystemnumber a rdf:Property,
+bibrm:localSystemNumber a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Nummer aus Lokalsystem"@de,
         "local system number"@en ;
@@ -518,13 +516,13 @@ bibrm:optionalProperty a owl:ObjectProperty ;
     rdfs:label "Optionale Eigenschaft"@de,
         "optional property"@en .
 
-bibrm:orgnote a rdf:Property,
+bibrm:orgNote a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Notiz zur Organisation"@de,
         "organization note"@en ;
     rdfs:domain foaf:Organization .
 
-bibrm:pcopy a owl:ObjectProperty ;
+bibrm:pCopy a owl:ObjectProperty ;
     rdfs:label "Kopie print"@de,
         "Print Copy "@en ;
     rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de,
@@ -532,7 +530,7 @@ bibrm:pcopy a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:price a owl:DatatypeProperty ;
+bibrm:itemPrice a owl:DatatypeProperty ;
     rdfs:label "Preis in €"@de,
         "price"@en ;
     rdfs:comment "Der Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de,
@@ -550,14 +548,7 @@ bibrm:providesProperty a owl:ObjectProperty ;
         "provides property"@en ;
     rdfs:range rdf:Property .
 
-<http://vocab.ub.uni-leipzig.de/bibrm/rdf_Property/URL_des_Mediums> a rdf:Property,
-        owl:DatatypeProperty ;
-    rdfs:label "URL des Mediums"@de,
-        "URL of the ER"@en ;
-    rdfs:comment "The method of access, the location, and the file name of an Electronic Product"@en ;
-    rdfs:domain bibrm:BasicContractData .
-
-bibrm:remoteaccess a rdf:Property,
+bibrm:hasRemoteAccess a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Remote Access"@de,
         "remote access"@en ;
@@ -566,13 +557,67 @@ bibrm:remoteaccess a rdf:Property,
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:ExtendedBoolean .
 
-bibrm:scholarlysharing a owl:ObjectProperty ;
+bibrm:scholarlySharing a owl:ObjectProperty ;
     rdfs:label "Scholarly Sharing "@de,
         "Scholarly Sharing "@en ;
     rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de,
         "The right of authorized users and/or the licensee to transmit hard copy or an electronic copy of rdfs:type portion of the licensed materials to rdfs:type third party for personal, scholarly, educational, scientific or professional use"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
+
+bibrm:budgetAbbr a owl:DataTypeProperty ;
+    rdfs:label "Budgetkürzel"@de,
+        "budget token"@en ;
+    rdfs:domain bibrm:Budget .
+
+bibrm:facultyAbbr a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Kürzel der Fakultät"@de,
+        "shortname faculty"@en ;
+    rdfs:comment "Eine Abkürzung für eine Fakultät"@de,
+        "A short name for a faculty"@en ;
+    rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
+
+bibrm:shutDownDate a owl:DatatypeProperty ;
+    rdfs:label "Abschalttermin"@de,
+        "Shutdown date"@en ;
+    rdfs:comment "Der Tag, an dem der technische Zugang zum elektronischen Produkt endet."@de,
+        "The day access to the ER shuts down."@en ;
+    rdfs:domain bibrm:BasicContractData ;
+    rdfs:range xsd:date .
+
+bibrm:terminationAlert a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Letztmöglicher Kündigungstag"@de,
+        "last possible termination date"@en ;
+    rdfs:comment "Das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de,
+        "The last possible date on which a contract/subscription can be terminated"@en ;
+    rdfs:domain bibrm:BasicContractData ;
+    rdfs:range xsd:date .
+
+bibrm:terminationDate a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "gekündigt am"@de,
+        "termination date"@en ;
+    rdfs:comment "Das Datum, an welchem ein Vertrag/Abo gekündigt wurde"@de,
+        "The date on which a contract/subscription was terminated"@en ;
+    rdfs:domain bibrm:BasicContractData ;
+    rdfs:range xsd:date .
+
+bibrm:terminationReason a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Kündigungsgrund"@de,
+        "termination reason"@en ;
+    rdfs:comment "Der Grund für die Kündigung eines Vertrags"@de,
+        "The reason a subscription was terminated"@en ;
+    rdfs:domain bibrm:BasicContractData .
+
+bibrm:usageStatsNote a owl:DatatypeProperty ;
+    rdfs:label "Nutzungsstatistik"@de,
+        "usage statistics"@en ;
+    rdfs:comment "Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle"@de,
+        "Information regarding usage statistics"@en ;
+    rdfs:domain bibrm:AnnualContractData .
 
 bibrm:shareBioPharPsy a owl:DatatypeProperty ;
     rdfs:label "Anteil Fakultät für Biowissenschaften, Pharmazie und Psychologie"@de,
@@ -644,391 +689,343 @@ bibrm:shareTheo a owl:DatatypeProperty ;
         "share faculty for theology"@en ;
     rdfs:domain bibrm:AnnualContractData .
 
+
 bibrm:shareVeter a owl:DatatypeProperty ;
     rdfs:label "Anteil Veterinärmedizinische Fakultät"@de,
         "share faculty veterinary studies"@en ;
     rdfs:domain bibrm:AnnualContractData .
 
-bibrm:shortBudget a owl:DataTypeProperty ;
-    rdfs:label "Budgetkürzel"@de,
-        "budget token"@en ;
-    rdfs:domain bibrm:Budget .
 
-bibrm:shortFaculty a rdf:Property,
-        owl:DatatypeProperty ;
-    rdfs:label "Kürzel der Fakultät"@de,
-        "shortname faculty"@en ;
-    rdfs:comment "Eine Abkürzung für eine Fakultät"@de,
-        "A short name for a faculty"@en ;
-    rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
+  
+    
+    
+######################## Collections & Individuals #####################################
+    
+bibrm:AcqNote a owl:Class ;
+    owl:oneOf ( bibrm:Gift bibrm:AllianceLicense bibrm:PDA bibrm:ConsortialLicense bibrm:Unknown bibrm:Purchase bibrm:PPV bibrm:DedicatedLicense bibrm:NationalLicense ) . 
 
-bibrm:shutDownDate a owl:DatatypeProperty ;
-    rdfs:label "Abschalttermin"@de,
-        "Shutdown date"@en ;
-    rdfs:comment "Der Tag, an dem der technische Zugang zum elektronischen Produkt endet."@de,
-        "The day access to the ER shuts down."@en ;
-    rdfs:domain bibrm:BasicContractData ;
-    rdfs:range xsd:date .
-
-bibrm:terminationAlert a rdf:Property,
-        owl:DatatypeProperty ;
-    rdfs:label "Letztmöglicher Kündigungstag"@de,
-        "last possible termination date"@en ;
-    rdfs:comment "Das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de,
-        "The last possible date on which a contract/subscription can be terminated"@en ;
-    rdfs:domain bibrm:BasicContractData ;
-    rdfs:range xsd:date .
-
-bibrm:terminationDate a rdf:Property,
-        owl:DatatypeProperty ;
-    rdfs:label "gekündigt am"@de,
-        "termination date"@en ;
-    rdfs:comment "Das Datum, an welchem ein Vertrag/Abo gekündigt wurde"@de,
-        "The date on which a contract/subscription was terminated"@en ;
-    rdfs:domain bibrm:BasicContractData ;
-    rdfs:range xsd:date .
-
-bibrm:terminationReason a rdf:Property,
-        owl:DatatypeProperty ;
-    rdfs:label "Kündigungsgrund"@de,
-        "termination reason"@en ;
-    rdfs:comment "Der Grund für die Kündigung eines Vertrags"@de,
-        "The reason a subscription was terminated"@en ;
-    rdfs:domain bibrm:BasicContractData .
-
-bibrm:usagestatsnote a owl:DatatypeProperty ;
-    rdfs:label "Nutzungsstatistik"@de,
-        "usage statistics"@en ;
-    rdfs:comment "Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle"@de,
-        "Information regarding usage statistics"@en ;
-    rdfs:domain bibrm:AnnualContractData .
-
-bibrm:Active a bibrm:ERState ;
-    rdfs:label "Aktiv"@de,
-        "Active"@en .
-
-bibrm:AllianceLicense a bibrm:Acqnote ;
+bibrm:AllianceLicense a bibrm:AcqNote ;
     rdfs:label "Allianzlizenz"@de,
         "Alliance License"@en .
+        
+bibrm:ConsortialLicense a bibrm:AcqNote ;
+    rdfs:label "Konsortiallizenz"@de,
+        "Consortial License"@en .  
+        
+bibrm:DedicatedLicense a bibrm:AcqNote ;
+    rdfs:label "Eigene Lizenz"@de,
+        "Dedicated License"@en .
+                
+bibrm:Gift a bibrm:AcqNote ;
+    rdfs:label "Geschenk"@de,
+        "Gift"@en .        
+        
+bibrm:NationalLicense a bibrm:AcqNote ;
+    rdfs:label "Nationallizenz"@de,
+        "National License"@en .
 
-bibrm:April rdfs:label "April"@de,
-        "April"@en .
+bibrm:PDA a bibrm:AcqNote ;
+    rdfs:label "Patron Driven Acquisiton"@de,
+        "Patron Driven Acquisiton"@en .
+        
+bibrm:PPV a bibrm:AcqNote ;
+    rdfs:label "Pay per view / use"@de,
+        "Pay per view / use"@en .          
+        
+bibrm:Purchase a bibrm:AcqNote ;
+    rdfs:label "Kauf"@de,
+        "Purchase"@en .        
+        
+bibrm:Unknown a bibrm:AcqNote ;
+    rdfs:label "unbekannt"@de,
+        "Unknown"@en . 
 
-bibrm:August rdfs:label "August"@de,
-        "August"@en .
 
-bibrm:CancellationNominee a bibrm:ERState ;
+bibrm:AuthMethod a owl:Class ;
+    owl:oneOf ( bibrm:IPCampus bibrm:IPSubnet bibrm:IPSingle bibrm:Registration bibrm:Shibboleth bibrm:LandP ) .
+
+bibrm:IPCampus a bibrm:AuthMethod ;
+    rdfs:label "IP-Check Campusnetz"@de,
+        "IP-Check campus network"@en .
+        
+bibrm:IPSingle a bibrm:AuthMethod ;
+    rdfs:label "IP-Check Einzelplatz (IP: ) Campusnetz"@de,
+        "IP-Check Single Station"@en .
+        
+bibrm:IPSubnet a bibrm:AuthMethod ;
+    rdfs:label "IP-Check Subnetz (von - bis)"@de,
+        "IP-Check Subnet"@en .
+
+bibrm:LandP a bibrm:AuthMethod ;
+    rdfs:label "Login und Passwort"@de,
+        "Login and Password"@en .     
+          
+bibrm:Registration a bibrm:AuthMethod ;
+    rdfs:label "Registrierung"@de,
+        "Registration"@en .
+        
+bibrm:Shibboleth a bibrm:AuthMethod ;
+    rdfs:label "Shibboleth"@de ,
+    	"Shibboleth"@en .
+       
+        
+bibrm:Boolean a owl:Class ;
+    	rdfs:subclassOf bibrm:ExtendedBoolean ;
+	owl:oneOf ( bibrm:No bibrm:Yes ) .      
+
+
+bibrm:DBType a owl:Class ;
+    owl:oneOf ( bibrm:EmpirDB bibrm:FactDB bibrm:IndexDB bibrm:RealtimeDB bibrm:StrucDB bibrm:FulltextDB bibrm:AbstrDB bibrm:PicDB ) . 
+
+bibrm:AbstrDB rdfs:label "Abstractdatenbank"@de,
+        "abstracts database"@en .
+        
+bibrm:EmpirDB rdfs:label "empirische Datenbank"@de,
+        "empiric database"@en .
+
+bibrm:FactDB rdfs:label "Faktendatenbank"@de,
+        "facts database"@en .
+                
+bibrm:FulltextDB rdfs:label "Volltextdatenbank"@de,
+        "fulltext database"@en .
+
+bibrm:IndexDB rdfs:label "Indexdatenbank"@de,
+        "index database"@en .
+        
+bibrm:PicDB rdfs:label "Bilddatenbank"@de,
+        "picture database"@en .
+        
+bibrm:RealtimeDB rdfs:label "Realtime Datenbank"@de,
+        "realtime database"@en .
+        
+bibrm:StrucDB rdfs:label "Strukturdatenbank"@de,
+        "structure database"@en .  
+              
+
+bibrm:ERStatus a owl:Class ;
+    owl:oneOf ( bibrm:Cancelled  bibrm:Trial bibrm:Wish bibrm:CancellationNominee bibrm:Active bibrm:DBoD ) .  
+
+bibrm:Active a bibrm:ERStatus ;
+    rdfs:label "Aktiv"@de,
+        "Active"@en .
+        
+bibrm:CancellationNominee a bibrm:ERStatus ;
     rdfs:label "Abbestellkandidat"@de,
         "Nominee for Cancellation"@en .
-
-bibrm:ConsortialLicense a bibrm:Acqnote ;
-    rdfs:label "Konsortiallizenz"@de,
-        "Consortial License"@en .
-
-bibrm:DBType owl:oneOf ( bibrm:empirDB bibrm:factDB bibrm:indexDB bibrm:realtimeDB bibrm:strucDB bibrm:fulltextDB bibrm:abstrDB bibrm:picDB ) .
-
-bibrm:DBoD a bibrm:ERState ;
+        
+bibrm:Cancelled a bibrm:ERStatus ;
+    rdfs:label "Abbestellt"@de,
+        "Cancelled"@en .
+       
+bibrm:DBoD a bibrm:ERStatus ;
     rdfs:label "DBoD"@de,
         "Databank on Demand"@en .
+        
+        
+bibrm:Trial a bibrm:ERStatus ;
+    rdfs:label "Test"@de,
+        "Trial"@en .
+
+bibrm:Wish a bibrm:ERStatus ;
+    rdfs:label "Wunsch"@de,
+        "Wish"@en .
+  
+        
+bibrm:ERType  a owl:Class ;
+    owl:oneOf ( bibrm:Ebook bibrm:Ejournal bibrm:EjournalPackage bibrm:EbookPackage bibrm:Database ) .       
 
 bibrm:Database a bibrm:ERType ;
     rdfs:label "Datenbank"@de,
         "database"@en .
-
-bibrm:December rdfs:label "Dezember"@de,
-        "December"@en .
-
-bibrm:DedicatedLicense a bibrm:Acqnote ;
-    rdfs:label "Eigene Lizenz"@de,
-        "Dedicated License"@en .
-
-<http://vocab.ub.uni-leipzig.de/bibrm/ERState/Cancellation> a bibrm:ERState ;
-    rdfs:label "Abbestellt"@de,
-        "Cancelled"@en .
-
-<http://vocab.ub.uni-leipzig.de/bibrm/ERState/Wish> a bibrm:ERState ;
-    rdfs:label "Wunsch"@de,
-        "Wish"@en .
+        
+bibrm:EbookPackage a bibrm:ERType ;
+    rdfs:label "E-Book Paket"@de,
+        "e-book package"@en . 
 
 bibrm:Ebook a bibrm:ERType ;
     rdfs:label "E-Book"@de,
         "e-book"@en .
-
-bibrm:EbookPackage a bibrm:ERType ;
-    rdfs:label "E-Book Paket"@de,
-        "e-book package"@en .
-
+        
 bibrm:Ejournal a bibrm:ERType ;
     rdfs:label "E-Journal"@de,
         "e-journal"@en .
-
+        
 bibrm:EjournalPackage a bibrm:ERType ;
     rdfs:label "E-Journals-Paket"@de,
         "e-journal package"@en .
+ 
 
+bibrm:ExtendedBoolean  a owl:Class ;
+    owl:oneOf ( bibrm:Undetermined bibrm:No bibrm:Yes ) .
+
+bibrm:Yes a bibrm:ExtendedBoolean ;
+    rdfs:label "Ja"@de,
+        "yes"@en . 
+        
+bibrm:No a bibrm:ExtendedBoolean ;
+    rdfs:label "Nein"@de,
+        "no"@en .
+        
+bibrm:Undetermined a bibrm:ExtendedBoolean ;
+    rdfs:label "nicht festgelegt"@de,
+        "undetermined"@en .
+ 
+ 
+bibrm:LicenseTerm a owl:Class ;
+    owl:oneOf ( bibrm:ProhibitedInterpreted bibrm:NotApplicable bibrm:ProhibitedExplicit bibrm:SilentUninterpreted bibrm:PermittedExplicit bibrm:PermittedInterpreted ) .
+        
+bibrm:NotApplicable a bibrm:LicenseTerm ;
+    rdfs:label "nicht zutreffend"@de,
+        "not applicable"@en .
+        
+bibrm:ProhibitedExplicit a bibrm:LicenseTerm ;
+    rdfs:label "verboten (explizit)"@de,
+        "prohibited (explicit)"@en .  
+              
+bibrm:ProhibitedInterpreted a bibrm:LicenseTerm ;
+    rdfs:label "verboten (Auslegung)"@de,
+        "prohibited (interpreted)"@en .
+
+bibrm:PermittedExplicit a bibrm:LicenseTerm ;
+    rdfs:label "zulässig (explizit)"@de,
+        "permitted (explicit)"@en .
+                
+bibrm:PermittedInterpreted a bibrm:LicenseTerm ;
+    rdfs:label "zulässig (Auslegung)"@de,
+        "permitted (interpreted)"@en .
+        
+bibrm:SilentUninterpreted a bibrm:LicenseTerm ;
+    rdfs:label "unerwähnt"@de,
+        "unmentioned"@en .
+          
+   
+bibrm:LicenseType a owl:Class ;
+    owl:oneOf ( bibrm:Faculty bibrm:CampusWithoutVPN bibrm:Single bibrm:Campus bibrm:NetworkIndependent ) .               
+
+bibrm:Campus a bibrm:LicenseType ;
+    rdfs:label "Campuslizenz"@de,
+        "Campus license"@en .
+       
+bibrm:CampusWithoutVPN a bibrm:LicenseType ;
+    rdfs:label "Campuslizenz ohne VPN-Zugang"@de,
+        "Campus license without VPN"@en .
+        
+bibrm:Faculty a bibrm:LicenseType ;
+    rdfs:label "Fakultätslizenz (Class C Subnetz)"@de,
+        "faculty license"@en .               
+
+bibrm:NetworkIndependent a bibrm:LicenseType ;
+    rdfs:label "netzunabhängig"@de,
+        "Network independent"@en .
+        
+bibrm:Single a bibrm:LicenseType ;
+    rdfs:label "Einzelplatzlizenz"@de,
+        "single-position license"@en .  
+ 
+ 
+bibrm:Month a owl:Class ;
+    owl:oneOf ( bibrm:January bibrm:February bibrm:March bibrm:April bibrm:May bibrm:June bibrm:July bibrm:August bibrm:September bibrm:October bibrm:November bibrm:December ) .
+              
+bibrm:January rdfs:label "Januar"@de,
+        "January"@en .
+        
 bibrm:February rdfs:label "Februar"@de,
         "February"@en .
 
-bibrm:Gift a bibrm:Acqnote ;
-    rdfs:label "Geschenk"@de,
-        "Gift"@en .
-
-bibrm:IPCampus a bibrm:Authmethod ;
-    rdfs:label "IP-Check Campusnetz"@de,
-        "IP-Check campus network"@en .
-
-bibrm:IPSingle a bibrm:Authmethod ;
-    rdfs:label "IP-Check Einzelplatz (IP: ) Campusnetz"@de,
-        "IP-Check Single Station"@en .
-
-bibrm:IPSubnet a bibrm:Authmethod ;
-    rdfs:label "IP-Check Subnetz (von - bis)"@de,
-        "IP-Check Subnet"@en .
-
-bibrm:Implemented a bibrm:ShibbolethNote ;
-    rdfs:label "Ja"@de,
-        "Yes"@en .
-
-bibrm:Impossible a bibrm:ShibbolethNote ;
-    rdfs:label "Nein"@de,
-        "No"@en .
-
-bibrm:InProcess a bibrm:ShibbolethNote ;
-    rdfs:label "In Bearbeitung"@de,
-        "In Process"@en .
-
-bibrm:Inquired a bibrm:ShibbolethNote ;
-    rdfs:label "Angefragt"@de,
-        "Inquired"@en .
-
-bibrm:January rdfs:label "Januar"@de,
-        "January"@en .
-
-bibrm:July rdfs:label "Juli"@de,
-        "July"@en .
+bibrm:March rdfs:label "März"@de,
+        "March"@en .
+        
+bibrm:April rdfs:label "April"@de,
+        "April"@en .
+        
+bibrm:May rdfs:label "Mai"@de,
+        "May"@en .      
 
 bibrm:June rdfs:label "Juni"@de,
         "June"@en .
 
-bibrm:LandP a bibrm:Authmethod ;
-    rdfs:label "Login und Passwort"@de,
-        "Login and Password"@en .
-
-bibrm:March rdfs:label "März"@de,
-        "March"@en .
-
-bibrm:May rdfs:label "Mai"@de,
-        "May"@en .
-
-bibrm:Month a owl:Class ;
-    owl:oneOf ( bibrm:January bibrm:February bibrm:March bibrm:April bibrm:May bibrm:June bibrm:July bibrm:August bibrm:September bibrm:October bibrm:November bibrm:December ) .
-
-bibrm:NationalLicense a bibrm:Acqnote ;
-    rdfs:label "Nationallizenz"@de,
-        "National License"@en .
-
-bibrm:No a bibrm:Boolean ;
-    rdfs:label "Nein"@de,
-        "No"@en .
-
-bibrm:November rdfs:label "November"@de,
-        "November"@en .
-
-bibrm:October rdfs:label "Oktober"@de,
-        "October"@en .
-
-bibrm:PDA a bibrm:Acqnote ;
-    rdfs:label "Patron Driven Acquisiton"@de,
-        "Patron Driven Acquisiton"@en .
-
-bibrm:PPV a bibrm:Acqnote ;
-    rdfs:label "Pay per view / use"@de,
-        "Pay per view / use"@en .
-
-bibrm:Prospected a bibrm:ShibbolethNote ;
-    rdfs:label "In Aussicht"@de,
-        "Prospected"@en .
-
-bibrm:Purchase a bibrm:Acqnote ;
-    rdfs:label "Kauf"@de,
-        "Purchase"@en .
-
-bibrm:Registration a bibrm:Authmethod ;
-    rdfs:label "Registrierung"@de,
-        "Registration"@en .
-
+bibrm:July rdfs:label "Juli"@de,
+        "July"@en .
+        
+bibrm:August rdfs:label "August"@de,
+        "August"@en .
+   
 bibrm:September rdfs:label "September"@de,
-        "September"@en .
+        "September"@en .   
+        
+bibrm:October rdfs:label "Oktober"@de,
+        "October"@en .  
+        
+bibrm:November rdfs:label "November"@de,
+        "November"@en .              
+        
+bibrm:December rdfs:label "Dezember"@de,
+        "December"@en .        
 
-bibrm:Trial a bibrm:ERState ;
-    rdfs:label "Test"@de,
-        "Trial"@en .
 
-bibrm:Unknown a bibrm:Acqnote ;
-    rdfs:label "unbekannt"@de,
-        "Unknown"@en .
+      
+bibrm:OrganizationType a owl:Class ;
+    owl:oneOf ( bibrm:Consortium bibrm:Enterprise bibrm:Library ) .        
 
-bibrm:Wish a bibrm:ERState ;
-    rdfs:label "Wunsch"@de,
-        "Wish"@en .
-
-bibrm:Yes a bibrm:Boolean ;
-    rdfs:label "Ja"@de,
-        "Yes"@en .
-
-bibrm:abstrDB rdfs:label "Abstractdatenbank"@de,
-        "abstracts database"@en .
-
-bibrm:campus a bibrm:LicenseType ;
-    rdfs:label "Campuslizenz"@de,
-        "Campus license"@en .
-
-bibrm:campusWithoutVPN a bibrm:LicenseType ;
-    rdfs:label "Campuslizenz ohne VPN-Zugang"@de,
-        "Campus license without VPN"@en .
-
-bibrm:consortium a bibrm:OrganizationType ;
+bibrm:Consortium a bibrm:OrganizationType ;
     rdfs:label "Konsortium"@de,
         "consortium"@en .
 
-bibrm:empirDB rdfs:label "empirische Datenbank"@de,
-        "empiric database"@en .
-
-bibrm:enterprise a bibrm:OrganizationType ;
+bibrm:Enterprise a bibrm:OrganizationType ;
     rdfs:label "Unternehmen"@de,
-        "enterprise"@en .
-
-bibrm:factDB rdfs:label "Faktendatenbank"@de,
-        "facts database"@en .
-
-bibrm:faculty a bibrm:LicenseType ;
-    rdfs:label "Fakultätslizenz (Class C Subnetz)"@de,
-        "faculty license"@en .
-
-bibrm:fulltextDB rdfs:label "Volltextdatenbank"@de,
-        "fulltext database"@en .
-
-bibrm:indexDB rdfs:label "Indexdatenbank"@de,
-        "index database"@en .
-
-bibrm:library a bibrm:OrganizationType ;
+        "enterprise"@en .   
+             
+bibrm:Library a bibrm:OrganizationType ;
     rdfs:label "Bibliothek"@de,
         "library"@en .
+        
+        
+               
+bibrm:ShibbolethImplStatus a owl:Class ;
+    owl:oneOf ( bibrm:Implemented bibrm:Impossible bibrm:InProcess bibrm:Inquired bibrm:Prospected ) .
 
-bibrm:networkIndependent a bibrm:LicenseType ;
-    rdfs:label "netzunabhängig"@de,
-        "Network independent"@en .
+bibrm:Implemented a bibrm:ShibbolethImplStatus ;
+    rdfs:label "Impementiert"@de,
+        "Implemented"@en .
 
-bibrm:no a bibrm:ExtendedBoolean ;
+bibrm:Impossible a bibrm:ShibbolethImplStatus ;
     rdfs:label "Nein"@de,
-        "no"@en .
+        "No"@en .
 
-bibrm:notApplicable a bibrm:LicenseTerm ;
-    rdfs:label "nicht zutreffend"@de,
-        "not applicable"@en .
+bibrm:InProcess a bibrm:ShibbolethImplStatus ;
+    rdfs:label "In Bearbeitung"@de,
+        "In Process"@en .
 
-bibrm:permittedExplicit a bibrm:LicenseTerm ;
-    rdfs:label "erlaubt (explizit)"@de,
-        "permitted (explicit)"@en .
+bibrm:Inquired a bibrm:ShibbolethImplStatus ;
+    rdfs:label "Angefragt"@de,
+        "Inquired"@en .
+        
+bibrm:Prospected a bibrm:ShibbolethImplStatus ;
+    rdfs:label "In Aussicht"@de,
+        "Prospected"@en .
 
-bibrm:permittedInterpreted a bibrm:LicenseTerm ;
-    rdfs:label "erlaubt (Auslegung)"@de,
-        "permitted (interpreted)"@en .
 
-bibrm:picDB rdfs:label "Bilddatenbank"@de,
-        "picture database"@en .
-
-bibrm:prohibitedExplicit a bibrm:LicenseTerm ;
-    rdfs:label "verboten (explizit)"@de,
-        "prohibited (explicit)"@en .
-
-bibrm:prohibitedInterpreted a bibrm:LicenseTerm ;
-    rdfs:label "verboten (Auslegung)"@de,
-        "prohibited (interpreted)"@en .
-
-bibrm:realtimeDB rdfs:label "Realtime Datenbank"@de,
-        "realtime database"@en .
-
-bibrm:silentUninterpreted a bibrm:LicenseTerm ;
-    rdfs:label "unerwähnt"@de,
-        "unmentioned"@en .
-
-bibrm:single a bibrm:LicenseType ;
-    rdfs:label "Einzelplatzlizenz"@de,
-        "single-position license"@en .
-
-bibrm:staff a bibrm:UserGroup ;
+bibrm:UserGroup a owl:Class ;
+    owl:oneOf ( bibrm:Students bibrm:WalkIns bibrm:TeachingHospitals bibrm:Staff bibrm:UniMember ) .
+    
+bibrm:Staff a bibrm:UserGroup ;
     rdfs:label "Mitarbeiter"@de,
         "Staff"@en .
-
-bibrm:strucDB rdfs:label "Strukturdatenbank"@de,
-        "structure database"@en .
-
-bibrm:students a bibrm:UserGroup ;
+        
+bibrm:Students a bibrm:UserGroup ;
     rdfs:label "Studierende"@de,
         "Students"@en .
-
-bibrm:teachingHospitals a bibrm:UserGroup ;
+        
+bibrm:TeachingHospitals a bibrm:UserGroup ;
     rdfs:label "Lehrbeauftrage Lehrkrankenhäuser"@de,
-        "Hospital teachers"@en .
+        "Hospital teachers"@en .    
 
-bibrm:undetermined a bibrm:ExtendedBoolean ;
-    rdfs:label "nicht festgelegt"@de,
-        "undetermined"@en .
-
-bibrm:uniMember a bibrm:UserGroup ;
+bibrm:UniMembers a bibrm:UserGroup ;
     rdfs:label "Uni-Angehörige"@de,
         "University members"@en .
-
-bibrm:walkIns a bibrm:UserGroup ;
+                    
+bibrm:WalkIns a bibrm:UserGroup ;
     rdfs:label "Walk-Ins"@de,
         "Walk Ins"@en .
-
-bibrm:yes a bibrm:ExtendedBoolean ;
-    rdfs:label "Ja"@de,
-        "yes"@en .
-
-bibrm:Shibboleth a bibrm:Authmethod ;
-    rdfs:label "Shibboleth"@de,
-        "Shibboleth Informationen"@de,
-        "Shibboleth"@en,
-        "Shibboleth Information"@en ;
-    rdfs:comment "Diese Klasse beinhaltet bzgl Shibboleth weitere Informationen zu VBD"@de,
-        "Shibboleth includes further information about Shibboleth regarding basic contract data"@en .
-
-bibrm:Boolean rdfs:comment "Eine Sammlung die :yes und :no enthält"@de,
-        "A collection containing :Yes and :No"@en ;
-    owl:oneOf ( bibrm:No bibrm:Yes ) .
-
-bibrm:ExtendedBoolean rdfs:comment "Eine Sammlung die :yes :no :undetermined enthält"@de,
-        "A collection containing :yes :no :undetermined"@en ;
-    owl:oneOf ( bibrm:undetermined bibrm:no bibrm:yes ) .
-
-bibrm:OrganizationType rdfs:comment "Eine Sammlung die :library :consortium :enterprise enthält"@de,
-        "A collection containing :library :consortium :enterprise"@en ;
-    owl:oneOf ( bibrm:consortium bibrm:enterprise bibrm:library ) .
-
-bibrm:ERType rdfs:comment "Eine Sammlung die :Database :Ejournal :EjournalPackage :Ebook :EbookPackage enthält"@de,
-        "A collection containing :Database :Ejournal :EjournalPackage :Ebook :EbookPackage"@en ;
-    owl:oneOf ( bibrm:Ebook bibrm:Ejournal bibrm:EjournalPackage bibrm:EbookPackage bibrm:Database ) .
-
-bibrm:LicenseType owl:oneOf ( bibrm:faculty bibrm:campusWithoutVPN bibrm:single bibrm:campus bibrm:networkIndependent ) .
-
-bibrm:ShibbolethNote owl:oneOf ( bibrm:Implemented bibrm:Impossible bibrm:InProcess bibrm:Inquired bibrm:Prospected ) .
-
-bibrm:UserGroup rdfs:comment "Eine Sammlung die :students :staff :uniMember :teachingHospitals :walkIns enthält"@de,
-        "A collection containing :students :staff :uniMember :teachingHospitals :walkIns"@en ;
-    owl:oneOf ( bibrm:students bibrm:walkIns bibrm:teachingHospitals bibrm:staff bibrm:uniMember ) .
-
-bibrm:Authmethod owl:oneOf ( bibrm:IPCampus bibrm:IPSubnet bibrm:IPSingle bibrm:Registration bibrm:Shibboleth bibrm:LandP ) .
-
-bibrm:ERState owl:oneOf ( <http://vocab.ub.uni-leipzig.de/bibrm/ERState/Cancellation> <http://vocab.ub.uni-leipzig.de/bibrm/ERState/Wish> bibrm:Trial bibrm:Wish bibrm:CancellationNominee bibrm:Active bibrm:DBoD ) .
-
-bibrm:Acqnote owl:oneOf ( bibrm:Gift bibrm:AllianceLicense bibrm:PDA bibrm:ConsortialLicense bibrm:Unknown bibrm:Purchase bibrm:PPV bibrm:DedicatedLicense bibrm:NationalLicense ) .
-
-bibrm:LicenseTerm a owl:Class ;
-    rdfs:comment "Eine Sammlung die :silentUninterprete :permittedExplicit :prohibitedExplicit :permittedInterpreted :prohibitedInterpreted :notApplicable enthält"@de,
-        "A collection containing :silentUninterprete :permittedExplicit :prohibitedExplicit :permittedInterpreted :prohibitedInterpreted :notApplicable"@en ;
-    owl:oneOf ( bibrm:prohibitedInterpreted bibrm:notApplicable bibrm:prohibitedExplicit bibrm:silentUninterpreted bibrm:permittedExplicit bibrm:permittedInterpreted ) .
 
 
