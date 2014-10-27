@@ -123,7 +123,7 @@ bibrm:linkToContract a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Link zum Vertrag"@de,
         "url to the contract"@en ;
-    rdfs:comment "A url that links to a digital version of the original contract document the licensee recieved from the licensor.",
+    rdfs:comment "A url that links to a digital version of the original contract document the licensee received from the licensor.",
         "Ein Link/URL, der auf die digitale Version das originalen Vertragsdokuments verweist, welches der Lizenznehmer von Lizenzgeber enthält."@de ;
     rdfs:domain bibrm:AnnualContractData .
 
@@ -189,7 +189,7 @@ bibrm:linkToDescription a rdf:Property,
         "The URL to the description of the creator/privider of an Electronic Product"@en ;
     rdfs:domain bibrm:BasicContractData .
 
-bibrm:bibrm:digitallyCopy a owl:ObjectProperty ;
+bibrm:digitallyCopy a owl:ObjectProperty ;
     rdfs:label "Kopie digital"@de,
         "Digital Copy "@en ;
     rdfs:comment "Das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de,
@@ -316,10 +316,10 @@ bibrm:illset a owl:ObjectProperty ;
         "Interlibrary Loan Secure Electronic Transmission"@en ;
     rdfs:range bibrm:LicenseTerm .
 
-bibrm:invoiceRecieved a rdf:Property,
+bibrm:invoiceReceived a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "Rechnung vorhanden?"@de,
-        "Invoice recieved?"@en ;
+        "Invoice received?"@en ;
     rdfs:range bibrm:Boolean .
 
 bibrm:contractItem a owl:ObjectProperty ;
