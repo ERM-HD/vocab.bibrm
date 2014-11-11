@@ -74,7 +74,23 @@ bibrm:Template a rdfs:Class ;
 
 
 ######################## Properties #####################################
+bibrm:contractItemOf a owl:ObjectProperty ;
+    rdfs:label "ist Vertragsposition von"@de,
+        "ist contract item of"@en ;
+    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit den Vertragsjahresdaten oder dem  Lizenzpaket, in dem sie enthalten ist"@de,
+    	"Links a certain contract item with the annual contract data or a the license package that it is contaned in"@en ;
+    rdfs:domain bibrm:ContractItem  ;
+    rdfs:range [ a owl:Class ;
+    	owl:unionOf (bibrm:AnnualContractData  bibrm:LicensePackage)] .
 
+
+bibrm:contractContainingPackage a owl:ObjectProperty ;
+    rdfs:label "das Paket umfassender Vertrag"@de,
+        "contract containing the package"@en ;
+    rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört"@de ,
+    	"Links the the annual contact data a certain license package is associated with"@en ;        
+    rdfs:domain bibrm:LicensePackage ;
+    rdfs:range bibrm:AnnualContractData .
 
 bibrm:eissn a rdf:Property,
         owl:ObjectProperty ;
@@ -93,8 +109,8 @@ bibrm:pissn a rdf:Property,
     rdfs:domain bibrm:ContractItem .
 
 bibrm:annualPrice a owl:DatatypeProperty ;
-    rdfs:label "Jahrespreis in €"@de,
-        "annual price"@en ;
+    rdfs:label "Jahrespreis (EUR)"@de,
+        "annual price (EUR)"@en ;
     rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro"@de,
     	"Links the annual price of a license contract in euro"@en ;
     rdfs:domain bibrm:AnnualContractData .
@@ -221,11 +237,18 @@ bibrm:erAltTitle a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:expectedPrice a owl:DatatypeProperty ;
-    rdfs:label "Planpreis in €"@de,
-        "expected price"@en ;
-    rdfs:comment "Verknüpft den Preis, welcher für den Vertrag geschätzt und eingeplant wurde"@de,
-        "Links the price that was expected for the license"@en ;
+    rdfs:label "Planpreis laufendes Jahr (EUR)"@de,
+        "expected price current year (EUR)"@en ;
+    rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
+        "Links the price that was expected and planned for the license for the current year"@en ;
     rdfs:domain bibrm:AnnualContractData .
+    
+bibrm:expectedPriceFollowingYear a owl:DatatypeProperty ;
+    rdfs:label "Planpreis Folgejahr (EUR)"@de,
+        "expected price following year (EUR)"@en ;
+    rdfs:comment "Verknüpft den Preis, welcher für das nachfolgende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
+        "Links the price that was expected and planned for the license for the following year"@en ;
+    rdfs:domain bibrm:AnnualContractData .    
 
 bibrm:externalContact a owl:ObjectProperty ;
     rdfs:label "Externer Ansprechpartner"@de,
@@ -258,14 +281,6 @@ bibrm:acqMethod a owl:ObjectProperty ;
     rdfs:domain bibrm:BasicContractData ;    
     rdfs:range bibrm:AcqNote .
 
-bibrm:annualContractData a rdf:Property,
-        owl:ObjectProperty ;
-    rdfs:label "zugehörige Vertragsjahresdaten"@de,
-        "assigned annual contact data"@en ;
-    rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört"@de ,
-    	"Links the the annual contact data a certain license package is associated with"@en ;        
-    rdfs:domain bibrm:LicensePackage ;
-    rdfs:range bibrm:AnnualContractData .
 
 bibrm:authMethod a rdf:Property,
         owl:ObjectProperty ;
@@ -359,14 +374,7 @@ bibrm:invoiceReceived a rdf:Property,
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range bibrm:Boolean .
 
-bibrm:contractItem a owl:ObjectProperty ;
-    rdfs:label "hat Vertragsposition"@de,
-        "has item"@en ;
-    rdfs:comment "Verknüpft bestimmte Vertragsjahresdaten oder ein bestimmtes Lizenzpaket mit den Vertragspositionen, die in diesem enthalten sind"@de,
-    	"Links certain annual contract data or a certain license package with the therein contained contract items"@en ;
-    rdfs:domain [ a owl:Class ;
-    	owl:unionOf (bibrm:AnnualContractData  bibrm:LicensePackage)] ;
-    rdfs:range bibrm:ContractItem .
+
 
 bibrm:noticePeriod a owl:DatatypeProperty ;
     rdfs:label "Kündigungsfrist"@de,
@@ -383,14 +391,7 @@ bibrm:organizationType a owl:ObjectProperty ;
     rdfs:domain foaf:Organization ;
     rdfs:range bibrm:OrganizationType .
 
-bibrm:licensePackage a rdf:Property,
-        owl:ObjectProperty ;
-    rdfs:label "hat Paket"@de,
-        "has package"@en ;
-    rdfs:comment "Verknüpft ein Lizenzpaket"@de,
-    	"Links a license package"@en ;
-    rdfs:domain bibrm:AnnualContractData ;
-    rdfs:range bibrm:LicensePackage .
+
 
 bibrm:platform a  owl:ObjectProperty ;
     rdfs:label "via Plattform"@de,
@@ -453,13 +454,53 @@ bibrm:invoiceDate a owl:DatatypeProperty ;
         "links the day the invoice was processed"@en ;
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range xsd:date .
+   
 
-bibrm:invoicePrice a owl:DatatypeProperty ;
-    rdfs:label "Rechnungspreis in €"@de,
-        "invoice price"@en ;
-    rdfs:comment "Verknüpft den Rechnungspreis in Euro"@de ,
-    	"Links the invoice price in euro"@en ;
-    rdfs:domain bibrm:AnnualContractData .
+bibrm:invoicePriceNetEUR a owl:DatatypeProperty;
+	rdfs:label "Rechnungpreis netto (EUR)"@de,
+		"invoice price net (EUR)"@en ;
+	rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de,
+		"Links the invoice price net in euro."@en ;
+	rdfs:domain bibrm:AnnualContractData .
+	
+
+bibrm:invoicePriceGrossEUR  a owl:DatatypeProperty;
+	rdfs:label "Rechnungpreis brutto (EUR)"@de,
+		"invoice price gross (EUR)"@en ;
+	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de,
+		"Links the invoice price gross in euro."@en ;
+	rdfs:domain bibrm:AnnualContractData .
+
+bibrm:invoicePriceNetUSD a owl:DatatypeProperty;
+	rdfs:label "Rechnungpreis netto (USD)"@de,
+		"invoice price net (USD)"@en ;
+	rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de,
+		"Links the invoice price net in US-Dollar."@en ;
+	rdfs:domain bibrm:AnnualContractData .
+	
+
+bibrm:invoicePriceGrossUSD a owl:DatatypeProperty;
+	rdfs:label "Rechnungpreis brutto (USD)"@de,
+		"invoice price gross (USD)"@en ;
+	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de,
+		"Links the invoice price gross in US-Dollar."@en ;
+	rdfs:domain bibrm:AnnualContractData .
+
+bibrm:invoicePriceNetGBP  a owl:DatatypeProperty;
+	rdfs:label "Rechnungpreis netto (GBP)"@de,
+		"invoice price net (GBP)"@en ;
+	rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de,
+		"Links the invoice price net in pound sterling."@en ;
+	rdfs:domain bibrm:AnnualContractData .
+	
+
+bibrm:invoicePriceGrossGBP a owl:DatatypeProperty;
+	rdfs:label "Rechnungpreis brutto (GBP)"@de,
+		"invoice price gross (GBP)"@en ;
+	rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de,
+		"Links the invoice price gross in pound sterling."@en ;
+	rdfs:domain bibrm:AnnualContractData .
+    
 
 bibrm:isMemberOf a owl:ObjectProperty ;
     rdfs:label "ist Mitglied von"@de,
@@ -588,8 +629,8 @@ bibrm:previousContract a owl:ObjectProperty ;
     rdfs:range bibrm:BasicContractData .    
 
 bibrm:itemPrice a owl:DatatypeProperty ;
-    rdfs:label "Preis in €"@de,
-        "price"@en ;
+    rdfs:label "Preis einzelner Titel (EUR)"@de,
+        "price single title (EUR)"@en ;
     rdfs:comment "Verknüpft den Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de,
         "Links the acquisition/usage price for a bibliographic resource"@en ;
     rdfs:domain bibrm:ContractItem .
