@@ -409,7 +409,8 @@ bibrm:primaryAccessURI a  owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:shibbolethImplStatus a owl:ObjectProperty ;
-    rdfs:label "Verknüpft Informationen über den Status der Shibboleth Implementation"@de,
+    rdfs:label "Status Shibboleth Implementation"@de, "Shibboleth implementation status"@en ;
+    rdfs:comment "Verknüpft Informationen über den Status der Shibboleth Implementation"@de,
         "Links information on the status of the shibboleth implementation"@en ;
     rdfs:domain bibrm:Platform ;
     rdfs:range bibrm:ShibbolethImplStatus .
