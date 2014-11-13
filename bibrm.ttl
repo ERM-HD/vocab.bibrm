@@ -31,14 +31,14 @@ bibrm: a owl:Ontology ;
 
 
 bibrm:AnnualContractData a rdfs:Class ;
-    rdfs:label "Vertragsjahresdaten (konsortial)"@de,
-        "annual contract data (consortial)"@en ;
+    rdfs:label "Vertragsjahresdaten"@de,
+        "annual contract data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de,
         "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract"@en .
 
 bibrm:BasicContractData a rdfs:Class ;
-    rdfs:label "Vertragsbasisdaten (konsortial)"@de,
-        "basic contract data (consortial)"@en ;
+    rdfs:label "Vertragsbasisdaten"@de,
+        "basic contract data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de,
         "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
 
