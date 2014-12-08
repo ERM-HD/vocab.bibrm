@@ -9,6 +9,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix aiiso: <http://purl.org/vocab/aiiso/schema#> .
 
 
 bibrm: a owl:Ontology ;
@@ -32,111 +33,98 @@ bibrm: a owl:Ontology ;
 
 bibrm:AnnualContractData a rdfs:Class ;
     rdfs:label "Vertragsjahresdaten"@de,
-        "annual contract data"@en ;
-    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de,
-        "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract"@en .
+        "Annual Contract Data"@en ;
+    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Perteien. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de,
+        "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en .
 
 bibrm:BasicContractData a rdfs:Class ;
     rdfs:label "Vertragsbasisdaten"@de,
-        "basic contract data"@en ;
-    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Partnern. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de,
+        "Basic Contract Data"@en ;
+    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de,
         "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
 
 bibrm:Budget a rdfs:Class ;
     rdfs:label "Budget"@de,
-        "budget"@en ;
-    rdfs:comment "Budgets für die Medienerwerbung"@de,
-    	 "Budgets for media acquisition"@en .
+        "Budget"@en ;
+    rdfs:comment "Budgets für die Medienerwerbung."@de,
+    	 "Budgets for media acquisition."@en .
 
 bibrm:ContractItem a rdfs:Class ;
     rdfs:label "Vertragsposition"@de,
-        "contract item"@en ;
+        "Contract Item"@en ;
     rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
     	"Individual electronic resources that are contained in a license contract or package."@en .
 
 bibrm:LicensePackage a rdfs:Class ;
     rdfs:label "Paket"@de,
         "License Package"@en ;
-    rdfs:comment "Ein Paket beinhaltet elektronische Bücher oder Zeitschriften, welche eine Bibliothek ihren Nutzern anbietet"@de,
-        "A package containing items (e.g. e-journals, e-books) a library offers it's customers"@en .
+    rdfs:comment "Ein Lizenzvertrag kann aus mehreren Lizenzpaketen zusammengestellt sein."@de,
+        "A license contract can be made up by several license packages."@en .
 
 bibrm:Platform a rdfs:Class ;
     rdfs:label "Plattform"@de,
         "Platform"@en ;
-    rdfs:comment "Ein Unternehmen/Service/Portal, welches/r den Inhalt bereitstellt und zugänglich macht (Hosting der ER)"@de,
-        "The service providing the electronic content and the access to it (hosting of the ER)"@en .
+    rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de,
+        "The portal resp. service providing the electronic content and the access to it."@en .
 
-bibrm:Template a rdfs:Class ;
-    rdfs:label "Vorlage"@de,
-        "Template"@en ;
-    rdfs:comment "Vorlagen, die die Anzeige bestimmter Ressourcen in  Detailansicht und Formularen regeln"@de,
-    	 "Templates regulating the display of certain resources in detail view and forms"@en .    
+   
 
 
 ######################## Properties #####################################
 bibrm:contractItemOf a owl:ObjectProperty ;
     rdfs:label "ist Vertragsposition von"@de,
-        "ist contract item of"@en ;
-    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit den Vertragsjahresdaten oder dem  Lizenzpaket, in dem sie enthalten ist"@de,
-    	"Links a certain contract item with the annual contract data or a the license package that it is contaned in"@en ;
-    rdfs:domain bibrm:ContractItem  ;
+        "is contract item of"@en ;
+    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit den Vertragsjahresdaten bzw. dem  Lizenzpaket, in dem sie enthalten ist."@de,
+    	"Links a certain contract item with the annual contract data resp. the license package it is contained in."@en ;
     rdfs:range [ a owl:Class ;
-    	owl:unionOf (bibrm:AnnualContractData  bibrm:LicensePackage)] .
-
+    	owl:unionOf (bibrm:AnnualContractData  bibrm:LicensePackage)] ;
+    rdfs:domain bibrm:ContractItem  .
 
 bibrm:contractContainingPackage a owl:ObjectProperty ;
     rdfs:label "das Paket umfassender Vertrag"@de,
         "contract containing the package"@en ;
-    rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört"@de ,
-    	"Links the the annual contact data a certain license package is associated with"@en ;        
+    rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört."@de ,
+    	"Links the the annual contact data a certain license package is associated with."@en ;        
     rdfs:domain bibrm:LicensePackage ;
     rdfs:range bibrm:AnnualContractData .
 
 bibrm:eissn a rdf:Property,
         owl:ObjectProperty ;
-    rdfs:label "hat die E-ISSN"@de,
-        "has E-ISSN"@en ;
-    rdfs:comment "Verknüpft die E-ISSN eines Mediums"@de,
-    	"Links the e-ISSN of a medium"@en ;    
+    rdfs:label "E-ISSN"@de,
+        "E-ISSN"@en ;
+    rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de,
+    	"Links the E-ISSN of a medium."@en ;    
     rdfs:domain bibrm:ContractItem .
 
 bibrm:pissn a rdf:Property,
         owl:ObjectProperty ;
-    rdfs:label "hat die P-ISSN"@de,
-        "has P-ISSN"@en ;
-    rdfs:comment "Verknüpft die P-ISSN eines Mediums"@de,
-    	"Links the p-ISSN of a medium"@en ;    
+    rdfs:label "P-ISSN"@de,
+        "P-ISSN"@en ;
+    rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de,
+    	"Links the P-ISSN of a medium."@en ;    
     rdfs:domain bibrm:ContractItem .
 
 bibrm:annualPrice a owl:DatatypeProperty ;
     rdfs:label "Jahrespreis (EUR)"@de,
         "annual price (EUR)"@en ;
-    rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro"@de,
-    	"Links the annual price of a license contract in euro"@en ;
+    rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro."@de,
+    	"Links the annual price of a license contract in euro."@en ;
     rdfs:domain bibrm:AnnualContractData .
 
 bibrm:archivingNote a owl:DataTypeProperty ;
     rdfs:label "Verfügbarkeit nach Vertragsende"@de,
         "availability after termination"@en ;
-    rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der ER nach Vertragsende (Archivrecht, Format...)"@de,
-         "Links additional information related to archiving rights, product, and format"@en ;
+    rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der ER nach Vertragsende (Archivrecht, Format...)."@de,
+         "Links additional information related to archiving rights, product, and format."@en ;
     rdfs:domain bibrm:BasicContractData .     
 
 bibrm:authorizedUser a owl:ObjectProperty ;
     rdfs:label "Autorisierte Nutzer"@de,
-        "Authorized User Definition"@en ;
-    rdfs:comment "Verknüpft eine oder mehrere Nutzergruppen, die für zur Nutzung des lizensierten Produktes autorisiert sind."@de,
-        "Links one or several usersgroups that are authorized to use the licensed product"@en ;
+        "authorized users"@en ;
+    rdfs:comment "Verknüpft eine oder mehrere Nutzergruppen, die für zur Nutzung des lizenzierten Produktes autorisiert sind."@de,
+        "Links one or several usersgroups that are authorized to use the licensed product."@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:UserGroup .
-
-bibrm:bindsClass a owl:ObjectProperty ;
-    rdfs:label "gehört zur Klasse"@de,
-        "binds Class"@en ;
-    rdfs:comment "Verknüpft ein Template mit der Klasse, die es reguliert"@de ,
-    	"Links a template with the class it regulates"@en ;
-    rdfs:domain bibrm:Template ;
-    rdfs:range rdfs:Class.    
 
 bibrm:concUser a owl:DatatypeProperty ;
     rdfs:label "Parallelzugriffe"@de,
@@ -165,37 +153,37 @@ bibrm:costCenter a rdf:Property,
         "cost center"@en ;
     rdfs:comment "Verknüpft eine Kostenstelle. Diese ist der Ort der Kostenentstehung und der Leistungserbringung. Sie ist ein Kostenrechnungsobjekt mit der Aufgabe, die in einem Unternehmensteil, meist einer Abteilung, angefallenen Kosten zu sammeln."@de,
         "Links a cost center. It is part of an organization that does not produce direct profit and adds to the cost of running a company."@en ;
-    rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
+    rdfs:domain aiiso:Faculty .
 
 bibrm:coursePackE a owl:ObjectProperty ;
     rdfs:label "Reader elektronisch"@de,
         "Course Pack Electronic"@en ;
-    rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
-        "Links information on the right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in rdfs:type class for purposes of instruction"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
+        "Links information on the right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:coursePackP a owl:ObjectProperty ;
     rdfs:label "Reader print"@de,
         "Course Pack Print"@en ;
-    rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizensiertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
-        "Links information on the right to use licensed materials in collections or compilations of materials assembled in rdfs:type print format by faculty members for use by students in rdfs:type class for purposes of instruction."@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
+        "Links information on the right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:courseReserveE a owl:ObjectProperty ;
     rdfs:label "Semesterapparat elektronisch"@de,
         "Course Reserve Electronic"@en ;
-    rdfs:comment "Verknüpft Infomationen über das Recht digitale Kopien des lizensierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de,
-        "Links information on the right to make electronic copies of the licensed materials and store them on rdfs:type secure network"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht digitale Kopien des lizenzierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de,
+        "Links information on the right to make electronic copies of the licensed materials and store them on a secure network"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:courseReserveP a owl:ObjectProperty ;
     rdfs:label "Semesterapparat print"@de,
         "Course Reserve Print"@en ;
-    rdfs:comment "Verknüpft Infomationen über das Recht gedruckte Kopien des lizensierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen."@de,
-        "Links information on the right to make print copies of the licensed materials and place them in rdfs:type controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht gedruckte Kopien des lizenzierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen."@de,
+        "Links information on the right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
 
@@ -271,7 +259,7 @@ bibrm:field a owl:DatatypeProperty ;
         "field"@en ;
     rdfs:comment "Verknüpft Fakultäten mit ihren Fachgebieten"@de,
         "Links faculties with their field of activity"@en ;
-    rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
+    rdfs:domain aiiso:Faculty .
 
 bibrm:acqMethod a owl:ObjectProperty ;
     rdfs:label "Erwerbungsart"@de,
@@ -280,7 +268,6 @@ bibrm:acqMethod a owl:ObjectProperty ;
     	"Links the method of acquisition used to purchase the licenses"@en ;    
     rdfs:domain bibrm:BasicContractData ;    
     rdfs:range bibrm:AcqNote .
-
 
 bibrm:authMethod a rdf:Property,
         owl:ObjectProperty ;
@@ -374,14 +361,12 @@ bibrm:invoiceReceived a rdf:Property,
     rdfs:domain bibrm:AnnualContractData ;
     rdfs:range bibrm:Boolean .
 
-
-
 bibrm:noticePeriod a owl:DatatypeProperty ;
     rdfs:label "Kündigungsfrist"@de,
         "Notice Period"@en ;
     rdfs:comment "Verknüpft die einzuhaltende Kündigungsfrist eines Vertrages. Die Kündigungsfrist ist zu verwenden, wenn die vorliegenden Angaben kein Datum darstellen oder nicht sinnvoll in ein solches umgerechnet werden können"@de,
         "Links the the notice period to be adhered. The notice period must be recorded if no exact date can be identified"@en ;
-    rdfs:domain bibrm:BasicContractData .
+    rdfs:domain bibrm:AnnualContractData .
 
 bibrm:organizationType a owl:ObjectProperty ;
     rdfs:label "Kategorie"@de,
@@ -390,8 +375,6 @@ bibrm:organizationType a owl:ObjectProperty ;
     	"Links the category resp. type of an organization"@en ;    
     rdfs:domain foaf:Organization ;
     rdfs:range bibrm:OrganizationType .
-
-
 
 bibrm:platform a  owl:ObjectProperty ;
     rdfs:label "via Plattform"@de,
@@ -418,7 +401,7 @@ bibrm:shibbolethImplStatus a owl:ObjectProperty ;
 bibrm:illElectronic a owl:ObjectProperty ;
     rdfs:label "Fernleihe elektronisch"@de,
         "Interlibrary  Loan Electronic"@en ;
-    rdfs:comment "Verknüpft Informationen über das Recht lizensiertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de,
+    rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de,
         "Links information on the right to provide the licensed materials via interlibrary loan by way of electronic copies"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
@@ -426,7 +409,7 @@ bibrm:illElectronic a owl:ObjectProperty ;
 bibrm:illPrintOrFax a owl:ObjectProperty ;
     rdfs:label "Fernleihe print / Fax"@de,
         "Interlibrary Loan Print or Fax"@en ;
-    rdfs:comment "Verknüpft Informationen über das Recht lizensiertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de,
+    rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de,
         "Links information on the right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"@en ;
     rdfs:domain bibrm:BasicContractData ;
     rdfs:range bibrm:LicenseTerm .
@@ -458,7 +441,7 @@ bibrm:invoiceDate a owl:DatatypeProperty ;
    
 
 bibrm:invoicePriceNetEUR a owl:DatatypeProperty;
-	rdfs:label "Rechnungpreis netto (EUR)"@de,
+	rdfs:label "Rechnungspreis netto (EUR)"@de,
 		"invoice price net (EUR)"@en ;
 	rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de,
 		"Links the invoice price net in euro."@en ;
@@ -466,14 +449,14 @@ bibrm:invoicePriceNetEUR a owl:DatatypeProperty;
 	
 
 bibrm:invoicePriceGrossEUR  a owl:DatatypeProperty;
-	rdfs:label "Rechnungpreis brutto (EUR)"@de,
+	rdfs:label "Rechnungspreis brutto (EUR)"@de,
 		"invoice price gross (EUR)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de,
 		"Links the invoice price gross in euro."@en ;
 	rdfs:domain bibrm:AnnualContractData .
 
 bibrm:invoicePriceNetUSD a owl:DatatypeProperty;
-	rdfs:label "Rechnungpreis netto (USD)"@de,
+	rdfs:label "Rechnungspreis netto (USD)"@de,
 		"invoice price net (USD)"@en ;
 	rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de,
 		"Links the invoice price net in US-Dollar."@en ;
@@ -481,14 +464,14 @@ bibrm:invoicePriceNetUSD a owl:DatatypeProperty;
 	
 
 bibrm:invoicePriceGrossUSD a owl:DatatypeProperty;
-	rdfs:label "Rechnungpreis brutto (USD)"@de,
+	rdfs:label "Rechnungspreis brutto (USD)"@de,
 		"invoice price gross (USD)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de,
 		"Links the invoice price gross in US-Dollar."@en ;
 	rdfs:domain bibrm:AnnualContractData .
 
 bibrm:invoicePriceNetGBP  a owl:DatatypeProperty;
-	rdfs:label "Rechnungpreis netto (GBP)"@de,
+	rdfs:label "Rechnungspreis netto (GBP)"@de,
 		"invoice price net (GBP)"@en ;
 	rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de,
 		"Links the invoice price net in pound sterling."@en ;
@@ -496,7 +479,7 @@ bibrm:invoicePriceNetGBP  a owl:DatatypeProperty;
 	
 
 bibrm:invoicePriceGrossGBP a owl:DatatypeProperty;
-	rdfs:label "Rechnungpreis brutto (GBP)"@de,
+	rdfs:label "Rechnungspreis brutto (GBP)"@de,
 		"invoice price gross (GBP)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de,
 		"Links the invoice price gross in pound sterling."@en ;
@@ -516,7 +499,7 @@ bibrm:isRelatedTo a owl:ObjectProperty ;
     	"is related to"@en ;
     rdfs:comment "Verknüpft eine elektronische Ressourcen über deren ISSN mit einer thematisch passend zum Inhalt der Ressource ausgerichteten Fakultät"@de,
     	"Links an electronic resource via its ISSN with an thematically related faculty"@en ;    	
-    rdfs:range <http://purl.org/vocab/aiiso/schema#Faculty> .
+    rdfs:range aiiso:Faculty .
 
 bibrm:licenseEndDate a owl:DatatypeProperty ;
     rdfs:label "Vertragsende"@de,
@@ -598,14 +581,6 @@ bibrm:localSystemNumber a rdf:Property,
     rdfs:domain [ a owl:Class ;
     	owl:unionOf ( bibrm:AnnualContractData bibrm:ContractItem  bibrm:LicensePackage ) ] .
 
-bibrm:optionalProperty a owl:ObjectProperty ;
-    rdfs:label "Optionale Eigenschaft"@de,
-        "optional property"@en ;
-    rdfs:comment "Verknüpft eine in einem Template optionale Eigenschaft"@de ,
-    	"Links a property that is optional in a template"@en ;
-    rdfs:domain bibrm:Template ;
-    rdfs:range rdf:Property .
-
 bibrm:orgNote a  owl:DatatypeProperty ;
     rdfs:label "Notiz zur Organisation"@de,
         "organization note"@en ;
@@ -643,13 +618,6 @@ bibrm:proprietaryIdentifier a owl:DataTypeProperty ;
         "Links an identifier assigned to the resource by a publisher or other vendor. Used for easier ER identification when communicating with the vendor "@en ;
      rdfs:domain bibrm:ContractItem .
 
-bibrm:providesProperty a owl:ObjectProperty ;
-    rdfs:label "umfasst die Eigenschaften"@de,
-        "provides the properties"@en ;
-    rdfs:comment "Verknüpft eine von einem bestimmten Template umfasste Eigenschaft"@de ,
-    	"Links a property that a certain template provides"@en ;
-    rdfs:domain bibrm:Template ;  
-    rdfs:range rdf:Property .
 
 bibrm:hasRemoteAccess a rdf:Property,
         owl:ObjectProperty ;
@@ -681,7 +649,7 @@ bibrm:facultyAbbr a rdf:Property,
         "faculty abbreviation"@en ;
     rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung einer Fakultätsbezeichnung"@de,
     	"Links the internally common abbreviation of a faculty name"@en ;
-    rdfs:domain <http://purl.org/vocab/aiiso/schema#Faculty> .
+    rdfs:domain aiiso:Faculty .
 
 bibrm:shutDownDate a owl:DatatypeProperty ;
     rdfs:label "Abschalttermin"@de,
@@ -696,7 +664,7 @@ bibrm:terminationAlert a owl:DatatypeProperty ;
         "last possible termination date"@en ;
     rdfs:comment "Verknüpft das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de,
         "Links the last possible date on which a contract/subscription can be terminated"@en ;
-    rdfs:domain bibrm:BasicContractData ;
+    rdfs:domain bibrm:AnnualContractData ;
     rdfs:range xsd:date .
 
 bibrm:terminationDate a owl:DatatypeProperty ;
@@ -797,8 +765,16 @@ bibrm:Shibboleth a bibrm:AuthMethod ;
        
         
 bibrm:Boolean a owl:Class ;
-    	rdfs:subclassOf bibrm:ExtendedBoolean ;
-	owl:oneOf ( bibrm:Yes bibrm:No ) .      
+    	rdfs:subClassOf bibrm:ExtendedBoolean ;
+	owl:oneOf ( bibrm:Yes bibrm:No ) .  
+	
+bibrm:Yes a bibrm:Boolean ;
+    rdfs:label "Ja"@de,
+        "yes"@en . 
+        
+bibrm:No a bibrm:Boolean ;
+    rdfs:label "Nein"@de,
+        "no"@en .	    
 
 
 bibrm:DBType a owl:Class ;
@@ -830,7 +806,7 @@ bibrm:StrucDB rdfs:label "Strukturdatenbank"@de,
               
 
 bibrm:ERStatus a owl:Class ;
-    owl:oneOf ( bibrm:Active bibrm:CancellationNominee bibrm:Cancelled  bibrm:DBoD bibrm:Trial bibrm:Wish  ) .  
+    owl:oneOf ( bibrm:Active bibrm:CancellationNominee bibrm:Cancelled  bibrm:Trial bibrm:Wish  ) .  
 
 bibrm:Active a bibrm:ERStatus ;
     rdfs:label "Aktiv"@de,
@@ -842,12 +818,7 @@ bibrm:CancellationNominee a bibrm:ERStatus ;
         
 bibrm:Cancelled a bibrm:ERStatus ;
     rdfs:label "Abbestellt"@de,
-        "Cancelled"@en .
-       
-bibrm:DBoD a bibrm:ERStatus ;
-    rdfs:label "DBoD"@de,
-        "Databank on Demand"@en .
-        
+        "Cancelled"@en .       
         
 bibrm:Trial a bibrm:ERStatus ;
     rdfs:label "Test"@de,
@@ -884,14 +855,6 @@ bibrm:EjournalPackage a bibrm:ERType ;
 
 bibrm:ExtendedBoolean  a owl:Class ;
     owl:oneOf (  bibrm:Yes bibrm:No bibrm:Undetermined ) .
-
-bibrm:Yes a bibrm:ExtendedBoolean ;
-    rdfs:label "Ja"@de,
-        "yes"@en . 
-        
-bibrm:No a bibrm:ExtendedBoolean ;
-    rdfs:label "Nein"@de,
-        "no"@en .
         
 bibrm:Undetermined a bibrm:ExtendedBoolean ;
     rdfs:label "nicht festgelegt"@de,
@@ -1012,7 +975,7 @@ bibrm:ShibbolethImplStatus a owl:Class ;
     owl:oneOf ( bibrm:Implemented bibrm:Impossible bibrm:InProcess bibrm:Inquired bibrm:Prospected ) .
 
 bibrm:Implemented a bibrm:ShibbolethImplStatus ;
-    rdfs:label "Impementiert"@de,
+    rdfs:label "Implementiert"@de,
         "Implemented"@en .
 
 bibrm:Impossible a bibrm:ShibbolethImplStatus ;
