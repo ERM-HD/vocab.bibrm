@@ -93,16 +93,42 @@ bibrm:eissn a rdf:Property,
     rdfs:label "E-ISSN"@de,
         "E-ISSN"@en ;
     rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de,
-    	"Links the E-ISSN of a medium."@en ;    
-    rdfs:domain bibrm:ContractItem .
+    	"Links the E-ISSN of a medium."@en .
+
+bibrm:eisbn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "E-ISBN"@de,
+        "E-ISBN"@en ;
+    rdfs:comment "Verknüpft die E-ISBN eines Mediums."@de,
+    	"Links the E-ISBN of a medium."@en .
 
 bibrm:pissn a rdf:Property,
         owl:ObjectProperty ;
     rdfs:label "P-ISSN"@de,
         "P-ISSN"@en ;
     rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de,
-    	"Links the P-ISSN of a medium."@en ;    
-    rdfs:domain bibrm:ContractItem .
+    	"Links the P-ISSN of a medium."@en .
+
+bibrm:pisbn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "P-ISBN"@de,
+        "P-ISBN"@en ;
+    rdfs:comment "Verknüpft die P-ISBN eines Mediums."@de,
+    	"Links the P-ISBN of a medium."@en .
+    
+bibrm:proprietaryID a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Proprietäre ID"@de,
+        "Proprietary ID"@en ;
+    rdfs:comment "Verknüpft einen proprietären Identifier eines Mediums."@de,
+    	"Links a proprietary identifier of a medium."@en .
+    	
+bibrm:doi a rdf:Property,
+        owl:ObjectProperty ; 
+    rdfs:label "DOI"@de,
+        "DOI"@en ;
+    rdfs:comment "Verknüpft den DOI eines Mediums."@de,
+    	"Links the DOI of a medium."@en .
 
 bibrm:annualPrice a owl:DatatypeProperty ;
     rdfs:label "Jahrespreis (EUR)"@de,
