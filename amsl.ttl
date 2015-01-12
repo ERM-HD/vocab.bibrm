@@ -1,0 +1,1067 @@
+@prefix amsl: <http://vocab.ub.uni-leipzig.de/amsl/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sysont: <http://ns.ontowiki.net/SysOnt/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix aiiso: <http://purl.org/vocab/aiiso/schema#> .
+
+
+amsl: a owl:Ontology ;
+    rdfs:label "Vocabulary for Library Electronic Resource Management" ;
+    cc:attributionName "AKSW & Universitätsbibliothek Leipzig" ;
+    vann:changes <https://github.com/ERM-HD/vocab.bibrm/commits/master/bibrm.ttl> ;
+    vann:preferredNamespacePrefix "bibrm" ;
+    vann:preferredNamespaceUri "http://vocab.ub.uni-leipzig.de/amsl/" ;
+    doap:homepage <http://aksw.org/Projects/ERM> ;
+    doap:maintainer <http://aksw.org/NormanRadtke> ;
+    foaf:maker <http://aksw.org/AndreasNareike>,
+        <http://aksw.org/NatanaelArndt>,
+        <http://aksw.org/NormanRadtke>,
+        <http://aksw.org/Partner/BjoernMuschall>,
+        <http://aksw.org/Partner/LydiaUnterdoerfel>,
+        <http://aksw.org/ThomasRiechert> .
+
+
+######################## Classes #####################################
+
+
+amsl:AnnualContractData a rdfs:Class ;
+    rdfs:label "Vertragsjahresdaten"@de,
+        "Annual Contract Data"@en ;
+    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Perteien. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de,
+        "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en .
+
+amsl:BasicContractData a rdfs:Class ;
+    rdfs:label "Vertragsbasisdaten"@de,
+        "Basic Contract Data"@en ;
+    rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de,
+        "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
+
+amsl:Budget a rdfs:Class ;
+    rdfs:label "Budget"@de,
+        "Budget"@en ;
+    rdfs:comment "Budgets für die Medienerwerbung."@de,
+    	 "Budgets for media acquisition."@en .
+
+amsl:ContractItem a rdfs:Class ;
+    rdfs:label "Vertragsposition"@de,
+        "Contract Item"@en ;
+    rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
+    	"Individual electronic resources that are contained in a license contract or package."@en .
+
+amsl:LicensePackage a rdfs:Class ;
+    rdfs:label "Paket"@de,
+        "License Package"@en ;
+    rdfs:comment "Ein Lizenzvertrag kann aus mehreren Lizenzpaketen zusammengestellt sein."@de,
+        "A license contract can be made up by several license packages."@en .
+
+amsl:Platform a rdfs:Class ;
+    rdfs:label "Plattform"@de,
+        "Platform"@en ;
+    rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de,
+        "The portal resp. service providing the electronic content and the access to it."@en .
+
+   
+
+
+######################## Properties #####################################
+amsl:contractItemOf a owl:ObjectProperty ;
+    rdfs:label "ist Vertragsposition von"@de,
+        "is contract item of"@en ;
+    rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit den Vertragsjahresdaten bzw. dem  Lizenzpaket, in dem sie enthalten ist."@de,
+    	"Links a certain contract item with the annual contract data resp. the license package it is contained in."@en ;
+    rdfs:range [ a owl:Class ;
+    	owl:unionOf (amsl:AnnualContractData  amsl:LicensePackage)] ;
+    rdfs:domain amsl:ContractItem  .
+
+amsl:contractContainingPackage a owl:ObjectProperty ;
+    rdfs:label "das Paket umfassender Vertrag"@de,
+        "contract containing the package"@en ;
+    rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört."@de ,
+    	"Links the the annual contact data a certain license package is associated with."@en ;        
+    rdfs:domain amsl:LicensePackage ;
+    rdfs:range amsl:AnnualContractData .
+
+amsl:eissn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "E-ISSN"@de,
+        "E-ISSN"@en ;
+    rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de,
+    	"Links the E-ISSN of a medium."@en .
+
+amsl:eisbn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "E-ISBN"@de,
+        "E-ISBN"@en ;
+    rdfs:comment "Verknüpft die E-ISBN eines Mediums."@de,
+    	"Links the E-ISBN of a medium."@en .
+
+amsl:pissn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "P-ISSN"@de,
+        "P-ISSN"@en ;
+    rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de,
+    	"Links the P-ISSN of a medium."@en .
+
+amsl:pisbn a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "P-ISBN"@de,
+        "P-ISBN"@en ;
+    rdfs:comment "Verknüpft die P-ISBN eines Mediums."@de,
+    	"Links the P-ISBN of a medium."@en .
+    
+amsl:proprietaryID a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Proprietäre ID"@de,
+        "Proprietary ID"@en ;
+    rdfs:comment "Verknüpft einen proprietären Identifier eines Mediums."@de,
+    	"Links a proprietary identifier of a medium."@en .
+    	
+amsl:doi a rdf:Property,
+        owl:ObjectProperty ; 
+    rdfs:label "DOI"@de,
+        "DOI"@en ;
+    rdfs:comment "Verknüpft den DOI eines Mediums."@de,
+    	"Links the DOI of a medium."@en .
+
+amsl:annualPrice a owl:DatatypeProperty ;
+    rdfs:label "Jahrespreis (EUR)"@de,
+        "annual price (EUR)"@en ;
+    rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro."@de,
+    	"Links the annual price of a license contract in euro."@en ;
+    rdfs:domain amsl:AnnualContractData .
+
+amsl:archivingNote a owl:DataTypeProperty ;
+    rdfs:label "Verfügbarkeit nach Vertragsende"@de,
+        "availability after termination"@en ;
+    rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der ER nach Vertragsende (Archivrecht, Format...)."@de,
+         "Links additional information related to archiving rights, product, and format."@en ;
+    rdfs:domain amsl:BasicContractData .     
+
+amsl:authorizedUser a owl:ObjectProperty ;
+    rdfs:label "Autorisierte Nutzer"@de,
+        "authorized users"@en ;
+    rdfs:comment "Verknüpft eine oder mehrere Nutzergruppen, die für zur Nutzung des lizenzierten Produktes autorisiert sind."@de,
+        "Links one or several usersgroups that are authorized to use the licensed product."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:UserGroup .
+
+amsl:concUser a owl:DatatypeProperty ;
+    rdfs:label "Parallelzugriffe"@de,
+        "concurrent users"@en ;
+    rdfs:comment "Verknüpft die Anzahl der in den Lizenzbedingungen angegeben Parallelzugriffe"@de,
+        "Links the licensed number of concurrent users for a resource"@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:contactNote a owl:DatatypeProperty ;
+    rdfs:label "Notiz zum Kontakt"@de,
+        "contact note"@en ;
+    rdfs:comment "Verknüft weitere notierte Details zu einem Kontakt"@de,
+    	"Links further listed details on a contact"@en ;
+    rdfs:domain foaf:Person .
+
+amsl:linkToContract a owl:DatatypeProperty ;
+    rdfs:label "Link zum Vertrag"@de,
+        "url to the contract"@en ;
+    rdfs:comment "Verknüpft einen Link/eine URL, die auf die digitale Version das originalen Vertragsdokuments verweist, welches der Lizenznehmer vom Lizenzgeber enthält."@de,
+    	"Links a url linking to a digital version of the original contract document the licensee received from the licensor."@en ;
+    rdfs:domain amsl:AnnualContractData .
+
+amsl:costCenter a rdf:Property,
+        owl:DataTypeProperty ;
+    rdfs:label "Kostenstelle"@de,
+        "cost center"@en ;
+    rdfs:comment "Verknüpft eine Kostenstelle. Diese ist der Ort der Kostenentstehung und der Leistungserbringung. Sie ist ein Kostenrechnungsobjekt mit der Aufgabe, die in einem Unternehmensteil, meist einer Abteilung, angefallenen Kosten zu sammeln."@de,
+        "Links a cost center. It is part of an organization that does not produce direct profit and adds to the cost of running a company."@en ;
+    rdfs:domain aiiso:Faculty .
+
+amsl:coursePackE a owl:ObjectProperty ;
+    rdfs:label "Reader elektronisch"@de,
+        "Course Pack Electronic"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
+        "Links information on the right to use licensed materials in collections or compilations of materials assembled in an electronic format by faculty members for use by students in a class for purposes of instruction"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:coursePackP a owl:ObjectProperty ;
+    rdfs:label "Reader print"@de,
+        "Course Pack Print"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
+        "Links information on the right to use licensed materials in collections or compilations of materials assembled in a print format by faculty members for use by students in a class for purposes of instruction."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:courseReserveE a owl:ObjectProperty ;
+    rdfs:label "Semesterapparat elektronisch"@de,
+        "Course Reserve Electronic"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht digitale Kopien des lizenzierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de,
+        "Links information on the right to make electronic copies of the licensed materials and store them on a secure network"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:courseReserveP a owl:ObjectProperty ;
+    rdfs:label "Semesterapparat print"@de,
+        "Course Reserve Print"@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht gedruckte Kopien des lizenzierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen."@de,
+        "Links information on the right to make print copies of the licensed materials and place them in a controlled circulation area of the library for reserve reading in conjunction with specific courses of instruction"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:dataAvailability a owl:DatatypeProperty ;
+    rdfs:label "(Meta-)Datenverfügbarkeit"@de,
+        "(meta) data availability"@en ;
+    rdfs:comment "Verknüpft Informationen über die Verfügbarkeit von Metadaten zu den lizenzierten Medien"@de ,
+    	"Links information on the availability of metadata for the licensed media."@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:description a owl:DatatypeProperty ;
+    rdfs:label "Beschreibung"@de,
+        "description"@en ;
+    rdfs:comment "Verknüpft die Beschreibung des Inhalts der ER. Es können Links zu weiteren relevanten Dokumenten (z. B. Inhaltsverzeichnis) enthalten sein."@de,
+        "Links an account of the content of the resource. It may include pointers to other relevant objects (e.g., tables of contents)"@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:linkToDescription a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "URL der Anbieterbeschreibung"@de,
+        "URL to the description "@en ;
+    rdfs:comment "Verknüpft einen Link zur Beschreibung der ER des Anbieters"@de,
+        "Links the URL to the description of the creator/privider of an Electronic Product"@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:digitallyCopy a owl:ObjectProperty ;
+    rdfs:label "Kopie digital"@de,
+        "Digital Copy "@en ;
+    rdfs:comment "Verknüpft Infomationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de,
+        "Links information on the right of the licensee and authorized users to download and digitally copy a reasonable portion of the licensed materials."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:erAltTitle a owl:DatatypeProperty ;
+    rdfs:label "Alternativer Titel"@de,
+        "alternative title"@en ;
+    rdfs:comment "Verknüpft eine Variation des Haupttitels der Ressource, z.B. Akronyme, Paralleltitel usw."@de,
+        "Links a variation of the title of the resource, including acronyms, parallel titles, titles in other languages, etc."@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:expectedPrice a owl:DatatypeProperty ;
+    rdfs:label "Planpreis laufendes Jahr (EUR)"@de,
+        "expected price current year (EUR)"@en ;
+    rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
+        "Links the price that was expected and planned for the license for the current year"@en ;
+    rdfs:domain amsl:AnnualContractData .
+    
+amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
+    rdfs:label "Planpreis Folgejahr (EUR)"@de,
+        "expected price following year (EUR)"@en ;
+    rdfs:comment "Verknüpft den Preis, welcher für das nachfolgende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
+        "Links the price that was expected and planned for the license for the following year"@en ;
+    rdfs:domain amsl:AnnualContractData .    
+
+amsl:externalContact a owl:ObjectProperty ;
+    rdfs:label "Externer Ansprechpartner"@de,
+        "external contact"@en ;
+    rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten von Verlagen, Konsortien..."@de,
+        "Links the responsible contact person from publisher, licensing agent, consortium..."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range foaf:Person .
+
+amsl:feedbackDate a owl:DatatypeProperty ;
+    rdfs:label "Rückmeldetermin"@de,
+        "Feedback date"@en ;
+    rdfs:comment "Verknüpft den letztmöglichen Tag, an welchem eine Rückmeldung an Zahlungsempfänger, Lizenzgeber etc. erfolgen muss"@de,
+        "Links the last possible date to give feedback to licensing agent, licensor etc."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:date .
+
+amsl:field a owl:DatatypeProperty ;
+    rdfs:label "Fachgebiet"@de,
+        "field"@en ;
+    rdfs:comment "Verknüpft Fakultäten mit ihren Fachgebieten"@de,
+        "Links faculties with their field of activity"@en ;
+    rdfs:domain aiiso:Faculty .
+
+amsl:acqMethod a owl:ObjectProperty ;
+    rdfs:label "Erwerbungsart"@de,
+        "Acquisition Method"@en ;
+    rdfs:comment "Verknüpft die Art, auf die die Lizenzen des Vertrages erworben werden"@de,
+    	"Links the method of acquisition used to purchase the licenses"@en ;    
+    rdfs:domain amsl:BasicContractData ;    
+    rdfs:range amsl:AcqNote .
+
+amsl:authMethod a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Authentifizierungsmethode"@de,
+        "Authentication Method"@en ;
+    rdfs:comment "Verknüpft die nötige Authentifizierungsmethode, um Zugang zu den lizenzierten Medien zu erhalten"@de,
+    	"Links the method of authentification requiered to gain access to the licensed media"@en ;        
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:AuthMethod .
+
+amsl:basicContractData a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Zugehörige Vertragsbasisdaten"@de,
+        "associated basic contract data"@en ;
+    rdfs:comment "Vernüpft die Vertragsbasisdaten, zu denen bestimmte Vertragsbasisdaten gehören"@de,
+        "Links the basict contract data, certain annual contract data are associated with"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:BasicContractData .
+
+amsl:budget a owl:ObjectProperty ;
+    rdfs:label "hat Budget"@de,
+        "has budget"@en ;
+    rdf:comment "Verknüpft das Budget, aus dem die Kosten für einen Lizenzvertrag gezahlt werden."@de,
+    	"Links the budget charged with the costs of a license contract"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:Budget .
+
+amsl:consortium a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Beteiligtes Konsortium"@de,
+        "consortium"@en ;
+    rdfs:comment "Verknüpft ein beteiligtes Bibliothekskonsortium, d. h. einen Zusammenschluss von Bibliotheken"@de,
+    	"Links a n involved library consortium, that is an association of libraries"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range foaf:Organization .
+
+amsl:dbType a owl:ObjectProperty ;
+    rdfs:label "hat Datenbanktyp"@de,
+        "has database type"@en ;
+    rdfs:comment "Verknüpft den Typ einer Datenbank"@de ,
+    	"Links the type of a database"@en ;    
+    rdfs:domain amsl:BasicContractData ;    
+    rdfs:range amsl:DBType .
+
+amsl:erStatus a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Status der ER"@de,
+        "Status of the ER"@en ;
+    rdfs:comment "Verknüpft den Status der elektronischen Ressourcen bzw. des diese beinhaltenden Vertrages im Erwerbungsprozess"@de,
+    	"Links the status of the electronic resources resp. of the containing contract in the process of acquisition."@en ;
+    rdfs:domain amsl:BasicContractData ;    
+    rdfs:range amsl:ERStatus .
+
+amsl:erType a owl:ObjectProperty ;
+    rdfs:label "Produktart"@de,
+        "ER type"@en ;
+    rdfs:comment "Verknüpft die Produktart der in einem Vertrag lizenzierten elektronischen Ressourcen"@de,
+    	"Links the type of product of the electronic resources licensed in a contract"@en ; 
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:ERType .
+
+amsl:expectedInvoiceMonth a owl:ObjectProperty ;
+    rdfs:label "Erwarteter Rechnungsmonat"@de,
+        "Expected Invoice Month"@en ;
+    rdfs:comment "Verknüpft den Monat, in dem der Eingang der Rechnung zu einem Vertrag erwartet wird."@de, 
+    	"Línks the month the invoice receipt for a contract is expected"@en ;   
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:Month .
+
+amsl:illNote a owl:DatatypeProperty ;
+    rdfs:label "Fernleihnotiz"@de,
+        "Interlibrary Loan Note"@en ;
+    rdfs:comment "Verknüpft weitere Informationen über Fernleihbedingungen"@de,
+        "Links further information on terms concerning the Interlibrary Loan"@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:illset a owl:ObjectProperty ;
+    rdfs:label "Interlibrary Loan Secure Electronic Transmission"@de,
+        "Interlibrary Loan Secure Electronic Transmission"@en ;
+    rdfs:comment "Verknüpft Informationen über ILLSET"@de,
+    	"Links information on ILLSET"@en ;        
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:invoiceReceived a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Rechnung vorhanden?"@de,
+        "Invoice received?"@en ;
+    rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist"@de ,
+    	"Links the information, if the current invoice has alreday been received"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:Boolean .
+
+amsl:noticePeriod a owl:DatatypeProperty ;
+    rdfs:label "Kündigungsfrist"@de,
+        "Notice Period"@en ;
+    rdfs:comment "Verknüpft die einzuhaltende Kündigungsfrist eines Vertrages. Die Kündigungsfrist ist zu verwenden, wenn die vorliegenden Angaben kein Datum darstellen oder nicht sinnvoll in ein solches umgerechnet werden können"@de,
+        "Links the the notice period to be adhered. The notice period must be recorded if no exact date can be identified"@en ;
+    rdfs:domain amsl:AnnualContractData .
+
+amsl:organizationType a owl:ObjectProperty ;
+    rdfs:label "Kategorie"@de,
+        "organization type"@en ;
+    rdfs:comment "Verknüpft die Kategorie einer Organisation"@de,
+    	"Links the category resp. type of an organization"@en ;    
+    rdfs:domain foaf:Organization ;
+    rdfs:range amsl:OrganizationType .
+
+amsl:platform a  owl:ObjectProperty ;
+    rdfs:label "via Plattform"@de,
+        "via platform"@en ;
+    rdfs:comment "Verknüpft die Vertragsbasisdaten mit der Plattform, über die die Inhalte abrufbar sind."@de,
+        "Links basic contract data with the associated platform"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:Platform .
+
+amsl:primaryAccessURI a  owl:DatatypeProperty ;
+    rdfs:label "URL des Mediums"@de,
+        "URL of the ER"@en ;
+    rdfs:comment "Verknüpft die URI, unter der die lizenzierten Medien primär zugänglich sind"@de,
+    	"Links the URI under which the licensed media is primarily accessible"@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:shibbolethImplStatus a owl:ObjectProperty ;
+    rdfs:label "Status Shibboleth Implementation"@de, "Shibboleth implementation status"@en ;
+    rdfs:comment "Verknüpft Informationen über den Status der Shibboleth Implementation"@de,
+        "Links information on the status of the shibboleth implementation"@en ;
+    rdfs:domain amsl:Platform ;
+    rdfs:range amsl:ShibbolethImplStatus .
+
+amsl:illElectronic a owl:ObjectProperty ;
+    rdfs:label "Fernleihe elektronisch"@de,
+        "Interlibrary  Loan Electronic"@en ;
+    rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de,
+        "Links information on the right to provide the licensed materials via interlibrary loan by way of electronic copies"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:illPrintOrFax a owl:ObjectProperty ;
+    rdfs:label "Fernleihe print / Fax"@de,
+        "Interlibrary Loan Print or Fax"@en ;
+    rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de,
+        "Links information on the right to provide the licensed materials via interlibrary loan by way of print copies or facsimile transmission"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:initialAcquisitionDate a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Ersterwerbungsdatum"@de,
+        "initial acquisition date"@en ;
+    rdfs:comment "Verknüpft das Datum, an welchem das Produkt zum ersten Mal erworben wurde"@de,
+        "Links the date the license was purchased by the licensee for the first time"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range xsd:date .
+
+amsl:internalContact a owl:ObjectProperty ;
+    rdfs:label "Hausinterner Ansprechpartner"@de,
+        "inhouse contact"@en ;
+    rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten des Lizenznehmers"@de,
+        "Links the responsible inhouse contact person for the contract"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range foaf:Person .
+
+amsl:invoiceDate a owl:DatatypeProperty ;
+    rdfs:label "Rechnungsbearbeitungs-Datum"@de,
+        "Invoive processing date"@en ;
+    rdfs:comment "Verknüpft den Tag, an dem die Rechnung bearbeitet wurde"@de,
+        "links the day the invoice was processed"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:date .
+   
+
+amsl:invoicePriceNetEUR a owl:DatatypeProperty;
+	rdfs:label "Rechnungspreis netto (EUR)"@de,
+		"invoice price net (EUR)"@en ;
+	rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de,
+		"Links the invoice price net in euro."@en ;
+	rdfs:domain amsl:AnnualContractData .
+	
+
+amsl:invoicePriceGrossEUR  a owl:DatatypeProperty;
+	rdfs:label "Rechnungspreis brutto (EUR)"@de,
+		"invoice price gross (EUR)"@en ;
+	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de,
+		"Links the invoice price gross in euro."@en ;
+	rdfs:domain amsl:AnnualContractData .
+
+amsl:invoicePriceNetUSD a owl:DatatypeProperty;
+	rdfs:label "Rechnungspreis netto (USD)"@de,
+		"invoice price net (USD)"@en ;
+	rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de,
+		"Links the invoice price net in US-Dollar."@en ;
+	rdfs:domain amsl:AnnualContractData .
+	
+
+amsl:invoicePriceGrossUSD a owl:DatatypeProperty;
+	rdfs:label "Rechnungspreis brutto (USD)"@de,
+		"invoice price gross (USD)"@en ;
+	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de,
+		"Links the invoice price gross in US-Dollar."@en ;
+	rdfs:domain amsl:AnnualContractData .
+
+amsl:invoicePriceNetGBP  a owl:DatatypeProperty;
+	rdfs:label "Rechnungspreis netto (GBP)"@de,
+		"invoice price net (GBP)"@en ;
+	rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de,
+		"Links the invoice price net in pound sterling."@en ;
+	rdfs:domain amsl:AnnualContractData .
+	
+
+amsl:invoicePriceGrossGBP a owl:DatatypeProperty;
+	rdfs:label "Rechnungspreis brutto (GBP)"@de,
+		"invoice price gross (GBP)"@en ;
+	rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de,
+		"Links the invoice price gross in pound sterling."@en ;
+	rdfs:domain amsl:AnnualContractData .
+    
+
+amsl:isMemberOf a owl:ObjectProperty ;
+    rdfs:label "ist Mitglied von"@de,
+        "is member of"@en ;
+    rdfs:comment "Verknüpft die Organisation, bei der eine Person Mitglied ist"@de,
+    	"Links the organization a person is a member of"@en ;    
+    rdfs:domain foaf:Person ;
+    rdfs:range foaf:Organization .
+
+amsl:isRelatedTo a owl:ObjectProperty ;
+    rdfs:label "ist thematisch zugehörig zu"@de,
+    	"is related to"@en ;
+    rdfs:comment "Verknüpft eine elektronische Ressourcen über deren ISSN mit einer thematisch passend zum Inhalt der Ressource ausgerichteten Fakultät"@de,
+    	"Links an electronic resource via its ISSN with an thematically related faculty"@en ;    	
+    rdfs:range aiiso:Faculty .
+
+amsl:licenseEndDate a owl:DatatypeProperty ;
+    rdfs:label "Vertragsende"@de,
+        "license end date"@en ;
+    rdfs:comment "Verknüpft das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@de,
+        "Links the date on which a license agreement terminates"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:date .
+
+amsl:licenseStartDate a owl:DatatypeProperty ;
+    rdfs:label "Vertragsbeginn"@de,
+        "license start date"@en ;
+    rdfs:comment "Verknüpft das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@de,
+        "Links the date on which a license agreement comes into effect"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:date .
+
+amsl:licenseType a owl:ObjectProperty,
+        owl:ObjectPropery ;
+    rdfs:label "Lizenzart"@de,
+        "license type"@en ;
+    rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt"@de,
+        "Links information on the type of license that regulates access to the electronic resource"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:LicenseType .
+
+amsl:licensee a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Lizenznehmer"@de,
+        "licensee"@en ;
+    rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz erhält"@de,
+        "Links the contracting party obtaining the license"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range foaf:Organization .
+
+amsl:licensingNote a owl:DatatypeProperty ;
+    rdfs:label "Bemerkungen zum Vertrag"@de,
+        "licensing note"@en ;
+    rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen"@de,
+        "Links additional information regarding the license, the negotiation of the license, the product, etc."@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:licensingAgent a owl:ObjectProperty ;
+    rdfs:label "Zahlungsempfänger"@de,
+        "licensing agent"@en ;
+    rdfs:comment "Verknüpft ein Unternehmen, das die Bezahlung einer ER abwickelt."@de,
+    "Links an organization (such as a subscription agent) that facilitates a licensing transaction on behalf of one or more parties"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range foaf:Organization .
+
+amsl:licensor a owl:ObjectProperty ;
+    rdfs:label "Lizenzgeber"@de,
+        "licensor"@en ;
+    rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz zur Verfügung stellt"@de,
+        "Links the contracting party granting the license"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range foaf:Organization .
+
+amsl:linkToBalance a owl:DatatypeProperty ;
+    rdfs:label "Link zum Über-/Fehlbetrag"@de,
+        "Link tobalance"@en ;
+    rdfs:comment "Verknüpft einen Link zum Über-/Fehlbetrag"@de,
+        "Links a hyperlink to the balance"@en ;    
+    rdfs:domain amsl:AnnualContractData .
+
+amsl:linkToInvoice a owl:DatatypeProperty ;
+    rdfs:label "Link zur Rechnung"@de,
+        "link to invoice"@en ;
+    rdfs:comment "Verknüpft einen Link zur Rechnung"@de,
+        "Links a hyperlink to the invoice"@en ;    
+    rdfs:domain amsl:AnnualContractData .
+
+amsl:localSystemNumber a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Nummer aus Lokalsystem"@de,
+        "local system number"@en ;
+    rdfs:comment "Verknüpft eine Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt"@de,
+        "Links the record number that is assigned by a local integrated library system (ILS) to the bibliographic record for the resource"@en ;
+    rdfs:domain [ a owl:Class ;
+    	owl:unionOf ( amsl:AnnualContractData amsl:ContractItem  amsl:LicensePackage ) ] .
+
+amsl:orgNote a  owl:DatatypeProperty ;
+    rdfs:label "Notiz zur Organisation"@de,
+        "organization note"@en ;
+    rdfs:comment "Verknüpft weitere Informationen zu einer Organisation"@de,
+    	"Links further information on an organization"@en ;    
+    rdfs:domain foaf:Organization .
+
+amsl:pCopy a owl:ObjectProperty ;
+    rdfs:label "Kopie print"@de,
+        "Print Copy "@en ;
+    rdfs:comment "Verknüpft Informationen üas Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de,
+        "links information on the right of the licensee and authorized users to make a printed copy of the licensed resource."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+    
+amsl:previousContract a owl:ObjectProperty ;
+    rdfs:label "Vorgängervertrag"@de,
+    	"Previous contract"@en ;
+    rdfs:comment "Verknüpft vorhergehende Vertragsbasisdaten, die mit den jetzigen in Beziehung stehen."@de,
+    	"Links previous basic cobtract data that are related to the current."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:BasicContractData .    
+
+amsl:itemPrice a owl:DatatypeProperty ;
+    rdfs:label "Preis einzelner Titel (EUR)"@de,
+        "price single title (EUR)"@en ;
+    rdfs:comment "Verknüpft den Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de,
+        "Links the acquisition/usage price for a bibliographic resource"@en ;
+    rdfs:domain amsl:ContractItem .
+
+amsl:proprietaryIdentifier a owl:DataTypeProperty ;
+    rdfs:label "Verlags-ID"@de,
+        "proprietary identifier"@en ;
+    rdfs:comment "Verknüpft eine ID, die verlagsseitig für die ER vergeben wird. Zur besseren Identifikation von ER bei Kommunikation mit dem Verlag."@de,
+        "Links an identifier assigned to the resource by a publisher or other vendor. Used for easier ER identification when communicating with the vendor "@en ;
+     rdfs:domain amsl:ContractItem .
+
+
+amsl:hasRemoteAccess a rdf:Property,
+        owl:ObjectProperty ;
+    rdfs:label "Remote Access"@de,
+        "remote access"@en ;
+    rdfs:comment "Verknüpft Informationen über das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen "@de,
+        "Links information on the right of an authorized user to gain access to an Electronic Product from an offsite location"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:ExtendedBoolean .
+
+amsl:scholarlySharing a owl:ObjectProperty ;
+    rdfs:label "Scholarly Sharing "@de,
+        "Scholarly Sharing "@en ;
+    rdfs:comment "Verknüpft Informationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de,
+        "Links information on the right of authorized users and/or the licensee to transmit hard copy or an electronic copy of a portion of the licensed materials to a third party for personal, scholarly, educational, scientific or professional use"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:LicenseTerm .
+
+amsl:budgetAbbr a owl:DataTypeProperty ;
+    rdfs:label "Budgetkürzel"@de,
+        "budget abbreviation"@en ;
+    rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung einer Budgetbezeichnung"@de,
+    	"Links the internally common abbreviation of a budget name"@en ;
+    rdfs:domain amsl:Budget .
+
+amsl:facultyAbbr a rdf:Property,
+        owl:DatatypeProperty ;
+    rdfs:label "Fakultätskürzel"@de,
+        "faculty abbreviation"@en ;
+    rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung einer Fakultätsbezeichnung"@de,
+    	"Links the internally common abbreviation of a faculty name"@en ;
+    rdfs:domain aiiso:Faculty .
+
+amsl:shutDownDate a owl:DatatypeProperty ;
+    rdfs:label "Abschalttermin"@de,
+        "Shutdown date"@en ;
+    rdfs:comment "Verknüpft das Datum, an dem der technische Zugang zum elektronischen Produkt endet."@de,
+        "Links the date the access to the ER shuts down."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range xsd:date .
+
+amsl:terminationAlert a owl:DatatypeProperty ;
+    rdfs:label "Letztmöglicher Kündigungstag"@de,
+        "last possible termination date"@en ;
+    rdfs:comment "Verknüpft das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de,
+        "Links the last possible date on which a contract/subscription can be terminated"@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range xsd:date .
+
+amsl:terminationDate a owl:DatatypeProperty ;
+    rdfs:label "gekündigt am"@de,
+        "termination date"@en ;
+    rdfs:comment "Verknüpft das Datum, an welchem ein Vertrag/Abo gekündigt worden ist"@de,
+        "Links the date a contract/subscription has been terminated"@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range xsd:date .
+
+amsl:terminationReason a owl:DatatypeProperty ;
+    rdfs:label "Kündigungsgrund"@de,
+        "termination reason"@en ;
+    rdfs:comment "Verknüpft den Grund für die Kündigung eines Vertrags"@de,
+        "Links the reason a subscription was terminated"@en ;
+    rdfs:domain amsl:BasicContractData .
+
+amsl:usageStatsNote a owl:DatatypeProperty ;
+    rdfs:label "Nutzungsstatistik"@de,
+        "usage statistics"@en ;
+    rdfs:comment "Verknüpft allgemeine Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle"@de,
+        "Links general information regarding usage statistics"@en ;
+    rdfs:domain amsl:AnnualContractData .
+
+amsl:paymentPeriod  a owl:ObjectProperty ;
+    rdfs:label "Zahlungszeitraum"@de,
+        "payment period"@en ;
+    rdfs:comment "Verknüpft den Zeitraum, in dem die Zahlung einer Rechnung fällig wird."@de,
+        "Línks the period the payment of an invoice is due."@en ;
+    rdfs:domain amsl:AnnualContractData ;
+    rdfs:range amsl:PaymentPeriod .    
+
+
+
+  
+    
+    
+######################## Collections & Individuals #####################################
+    
+amsl:AcqNote a owl:Class ;
+    owl:oneOf ( amsl:AllianceLicense amsl:DedicatedLicense amsl:Gift amsl:Purchase amsl:ConsortialLicense amsl:NationalLicense amsl:PDA   amsl:PPV  amsl:Unknown ) . 
+
+amsl:AllianceLicense a amsl:AcqNote ;
+    rdfs:label "Allianzlizenz"@de,
+        "Alliance License"@en .
+        
+amsl:ConsortialLicense a amsl:AcqNote ;
+    rdfs:label "Konsortiallizenz"@de,
+        "Consortial License"@en .  
+        
+amsl:DedicatedLicense a amsl:AcqNote ;
+    rdfs:label "Eigene Lizenz"@de,
+        "Dedicated License"@en .
+                
+amsl:Gift a amsl:AcqNote ;
+    rdfs:label "Geschenk"@de,
+        "Gift"@en .        
+        
+amsl:NationalLicense a amsl:AcqNote ;
+    rdfs:label "Nationallizenz"@de,
+        "National License"@en .
+
+amsl:PDA a amsl:AcqNote ;
+    rdfs:label "Patron Driven Acquisiton"@de,
+        "Patron Driven Acquisiton"@en .
+        
+amsl:PPV a amsl:AcqNote ;
+    rdfs:label "Pay per view / use"@de,
+        "Pay per view / use"@en .          
+        
+amsl:Purchase a amsl:AcqNote ;
+    rdfs:label "Kauf"@de,
+        "Purchase"@en .        
+        
+amsl:Unknown a amsl:AcqNote ;
+    rdfs:label "unbekannt"@de,
+        "Unknown"@en . 
+
+
+amsl:AuthMethod a owl:Class ;
+    owl:oneOf ( amsl:IPCampus amsl:IPSingle amsl:IPSubnet amsl:LandP amsl:Registration amsl:Shibboleth  ) .
+
+amsl:IPCampus a amsl:AuthMethod ;
+    rdfs:label "IP-Check Campusnetz"@de,
+        "IP-Check campus network"@en .
+        
+amsl:IPSingle a amsl:AuthMethod ;
+    rdfs:label "IP-Check Einzelplatz (IP: ) Campusnetz"@de,
+        "IP-Check Single Station"@en .
+        
+amsl:IPSubnet a amsl:AuthMethod ;
+    rdfs:label "IP-Check Subnetz (von - bis)"@de,
+        "IP-Check Subnet"@en .
+
+amsl:LandP a amsl:AuthMethod ;
+    rdfs:label "Login und Passwort"@de,
+        "Login and Password"@en .     
+          
+amsl:Registration a amsl:AuthMethod ;
+    rdfs:label "Registrierung"@de,
+        "Registration"@en .
+        
+amsl:Shibboleth a amsl:AuthMethod ;
+    rdfs:label "Shibboleth"@de ,
+    	"Shibboleth"@en .
+       
+        
+amsl:Boolean a owl:Class ;
+    	rdfs:subClassOf amsl:ExtendedBoolean ;
+	owl:oneOf ( amsl:Yes amsl:No ) .  
+	
+amsl:Yes a amsl:Boolean ;
+    rdfs:label "Ja"@de,
+        "yes"@en . 
+        
+amsl:No a amsl:Boolean ;
+    rdfs:label "Nein"@de,
+        "no"@en .	    
+
+
+amsl:DBType a owl:Class ;
+    owl:oneOf ( amsl:EmpirDB amsl:FactDB amsl:IndexDB amsl:RealtimeDB amsl:StrucDB amsl:FulltextDB amsl:AbstrDB amsl:PicDB ) . 
+
+amsl:AbstrDB rdfs:label "Abstractdatenbank"@de,
+        "abstracts database"@en .
+        
+amsl:EmpirDB rdfs:label "empirische Datenbank"@de,
+        "empiric database"@en .
+
+amsl:FactDB rdfs:label "Faktendatenbank"@de,
+        "facts database"@en .
+                
+amsl:FulltextDB rdfs:label "Volltextdatenbank"@de,
+        "fulltext database"@en .
+
+amsl:IndexDB rdfs:label "Indexdatenbank"@de,
+        "index database"@en .
+        
+amsl:PicDB rdfs:label "Bilddatenbank"@de,
+        "picture database"@en .
+        
+amsl:RealtimeDB rdfs:label "Realtime Datenbank"@de,
+        "realtime database"@en .
+        
+amsl:StrucDB rdfs:label "Strukturdatenbank"@de,
+        "structure database"@en .  
+              
+
+amsl:ERStatus a owl:Class ;
+    owl:oneOf ( amsl:Active amsl:CancellationNominee amsl:Cancelled  amsl:Trial amsl:Wish  ) .  
+
+amsl:Active a amsl:ERStatus ;
+    rdfs:label "Aktiv"@de,
+        "Active"@en .
+        
+amsl:CancellationNominee a amsl:ERStatus ;
+    rdfs:label "Abbestellkandidat"@de,
+        "Nominee for Cancellation"@en .
+        
+amsl:Cancelled a amsl:ERStatus ;
+    rdfs:label "Abbestellt"@de,
+        "Cancelled"@en .       
+        
+amsl:Trial a amsl:ERStatus ;
+    rdfs:label "Test"@de,
+        "Trial"@en .
+
+amsl:Wish a amsl:ERStatus ;
+    rdfs:label "Wunsch"@de,
+        "Wish"@en .
+  
+        
+amsl:ERType  a owl:Class ;
+    owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage  ) .       
+
+amsl:Database a amsl:ERType ;
+    rdfs:label "Datenbank"@de,
+        "database"@en .
+        
+amsl:EbookPackage a amsl:ERType ;
+    rdfs:label "E-Book Paket"@de,
+        "e-book package"@en . 
+
+amsl:Ebook a amsl:ERType ;
+    rdfs:label "E-Book"@de,
+        "e-book"@en .
+        
+amsl:Ejournal a amsl:ERType ;
+    rdfs:label "E-Journal"@de,
+        "e-journal"@en .
+        
+amsl:EjournalPackage a amsl:ERType ;
+    rdfs:label "E-Journals-Paket"@de,
+        "e-journal package"@en .
+ 
+
+amsl:ExtendedBoolean  a owl:Class ;
+    owl:oneOf (  amsl:Yes amsl:No amsl:Undetermined ) .
+        
+amsl:Undetermined a amsl:ExtendedBoolean ;
+    rdfs:label "nicht festgelegt"@de,
+        "undetermined"@en .
+ 
+ 
+amsl:LicenseTerm a owl:Class ;
+    owl:oneOf ( amsl:NotApplicable amsl:SilentUninterpreted amsl:ProhibitedInterpreted  amsl:ProhibitedExplicit amsl:PermittedInterpreted  amsl:PermittedExplicit ) .
+        
+amsl:NotApplicable a amsl:LicenseTerm ;
+    rdfs:label "nicht zutreffend"@de,
+        "not applicable"@en .
+        
+amsl:ProhibitedExplicit a amsl:LicenseTerm ;
+    rdfs:label "verboten (explizit)"@de,
+        "prohibited (explicit)"@en .  
+              
+amsl:ProhibitedInterpreted a amsl:LicenseTerm ;
+    rdfs:label "verboten (Auslegung)"@de,
+        "prohibited (interpreted)"@en .
+
+amsl:PermittedExplicit a amsl:LicenseTerm ;
+    rdfs:label "zulässig (explizit)"@de,
+        "permitted (explicit)"@en .
+                
+amsl:PermittedInterpreted a amsl:LicenseTerm ;
+    rdfs:label "zulässig (Auslegung)"@de,
+        "permitted (interpreted)"@en .
+        
+amsl:SilentUninterpreted a amsl:LicenseTerm ;
+    rdfs:label "unerwähnt"@de,
+        "unmentioned"@en .
+          
+   
+amsl:LicenseType a owl:Class ;
+    owl:oneOf ( amsl:Faculty amsl:CampusWithoutVPN amsl:Single amsl:Campus amsl:NetworkIndependent ) .               
+
+amsl:Campus a amsl:LicenseType ;
+    rdfs:label "Campuslizenz"@de,
+        "Campus license"@en .
+       
+amsl:CampusWithoutVPN a amsl:LicenseType ;
+    rdfs:label "Campuslizenz ohne VPN-Zugang"@de,
+        "Campus license without VPN"@en .
+        
+amsl:Faculty a amsl:LicenseType ;
+    rdfs:label "Fakultätslizenz (Class C Subnetz)"@de,
+        "faculty license"@en .               
+
+amsl:NetworkIndependent a amsl:LicenseType ;
+    rdfs:label "netzunabhängig"@de,
+        "Network independent"@en .
+        
+amsl:Single a amsl:LicenseType ;
+    rdfs:label "Einzelplatzlizenz"@de,
+        "single-position license"@en .  
+ 
+ 
+amsl:Month a owl:Class ;
+    owl:oneOf ( amsl:January amsl:February amsl:March amsl:April amsl:May amsl:June amsl:July amsl:August amsl:September amsl:October amsl:November amsl:December ) .
+              
+amsl:January rdfs:label "Januar"@de,
+        "January"@en .
+        
+amsl:February rdfs:label "Februar"@de,
+        "February"@en .
+
+amsl:March rdfs:label "März"@de,
+        "March"@en .
+        
+amsl:April rdfs:label "April"@de,
+        "April"@en .
+        
+amsl:May rdfs:label "Mai"@de,
+        "May"@en .      
+
+amsl:June rdfs:label "Juni"@de,
+        "June"@en .
+
+amsl:July rdfs:label "Juli"@de,
+        "July"@en .
+        
+amsl:August rdfs:label "August"@de,
+        "August"@en .
+   
+amsl:September rdfs:label "September"@de,
+        "September"@en .   
+        
+amsl:October rdfs:label "Oktober"@de,
+        "October"@en .  
+        
+amsl:November rdfs:label "November"@de,
+        "November"@en .              
+        
+amsl:December rdfs:label "Dezember"@de,
+        "December"@en .        
+
+
+      
+amsl:OrganizationType a owl:Class ;
+    owl:oneOf ( amsl:Consortium amsl:Enterprise amsl:Library ) .        
+
+amsl:Consortium a amsl:OrganizationType ;
+    rdfs:label "Konsortium"@de,
+        "consortium"@en .
+
+amsl:Enterprise a amsl:OrganizationType ;
+    rdfs:label "Unternehmen"@de,
+        "enterprise"@en .   
+             
+amsl:Library a amsl:OrganizationType ;
+    rdfs:label "Bibliothek"@de,
+        "library"@en .
+        
+ 
+amsl:PaymentPeriod a owl:Class ;
+    owl:oneOf (amsl:PaymentInAdvance amsl:PaymentInLicensingYear) .
+
+amsl:PaymentInAdvance a amsl:PaymentPeriod ;
+    rdfs:label "Zahlung im Voraus"@de ,
+        "Payment in advance"@en .
+
+amsl:PaymentInLicensingYear a amsl:PaymentPeriod ;
+    rdfs:label "Zahlung im Lizenzjahr"@de ,
+        "Payment in licensing year"@en .
+
+
+               
+amsl:ShibbolethImplStatus a owl:Class ;
+    owl:oneOf ( amsl:Implemented amsl:Impossible amsl:InProcess amsl:Inquired amsl:Prospected ) .
+
+amsl:Implemented a amsl:ShibbolethImplStatus ;
+    rdfs:label "Implementiert"@de,
+        "Implemented"@en .
+
+amsl:Impossible a amsl:ShibbolethImplStatus ;
+    rdfs:label "Nein"@de,
+        "No"@en .
+
+amsl:InProcess a amsl:ShibbolethImplStatus ;
+    rdfs:label "In Bearbeitung"@de,
+        "In Process"@en .
+
+amsl:Inquired a amsl:ShibbolethImplStatus ;
+    rdfs:label "Angefragt"@de,
+        "Inquired"@en .
+        
+amsl:Prospected a amsl:ShibbolethImplStatus ;
+    rdfs:label "In Aussicht"@de,
+        "Prospected"@en .
+
+
+amsl:UserGroup a owl:Class ;
+    owl:oneOf ( amsl:TeachingHospitals  amsl:Staff amsl:Students  amsl:UniMember amsl:WalkIns ) .
+    
+amsl:Staff a amsl:UserGroup ;
+    rdfs:label "Mitarbeiter"@de,
+        "Staff"@en .
+        
+amsl:Students a amsl:UserGroup ;
+    rdfs:label "Studierende"@de,
+        "Students"@en .
+        
+amsl:TeachingHospitals a amsl:UserGroup ;
+    rdfs:label "Lehrbeauftrage Lehrkrankenhäuser"@de,
+        "Hospital teachers"@en .    
+
+amsl:UniMember a amsl:UserGroup ;
+    rdfs:label "Uni-Angehörige"@de,
+        "University members"@en .
+                    
+amsl:WalkIns a amsl:UserGroup ;
+    rdfs:label "Walk-Ins"@de,
+        "Walk Ins"@en .
+
+
