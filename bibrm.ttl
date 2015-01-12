@@ -715,6 +715,14 @@ bibrm:usageStatsNote a owl:DatatypeProperty ;
         "Links general information regarding usage statistics"@en ;
     rdfs:domain bibrm:AnnualContractData .
 
+bibrm:paymentPeriod  a owl:ObjectProperty ;
+    rdfs:label "Zahlungszeitraum"@de,
+        "payment period"@en ;
+    rdfs:comment "Verknüpft den Zeitraum, in dem die Zahlung einer Rechnung fällig wird."@de,
+        "Línks the period the payment of an invoice is due."@en ;
+    rdfs:domain bibrm:AnnualContractData ;
+    rdfs:range bibrm:PaymentPeriod .    
+
 
 
   
@@ -995,7 +1003,19 @@ bibrm:Library a bibrm:OrganizationType ;
     rdfs:label "Bibliothek"@de,
         "library"@en .
         
-        
+ 
+bibrm:PaymentPeriod a owl:Class ;
+    owl:oneOf (bibrm:PaymentInAdvance bibrm:PaymentInLicensingYear) .
+
+bibrm:PaymentInAdvance a bibrm:PaymentPeriod ;
+    rdfs:label "Zahlung im Voraus"@de ,
+        "Payment in advance"@en .
+
+bibrm:PaymentInLicensingYear a bibrm:PaymentPeriod ;
+    rdfs:label "Zahlung im Lizenzjahr"@de ,
+        "Payment in licensing year"@en .
+
+
                
 bibrm:ShibbolethImplStatus a owl:Class ;
     owl:oneOf ( bibrm:Implemented bibrm:Impossible bibrm:InProcess bibrm:Inquired bibrm:Prospected ) .
