@@ -355,13 +355,22 @@ amsl:erType a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:ERType .
 
-amsl:expectedInvoiceMonth a owl:ObjectProperty ;
+amsl:expectedInvoiceMonth a owl:DeprecatedProperty ;
     rdfs:label "Erwarteter Rechnungsmonat"@de,
         "Expected Invoice Month"@en ;
-    rdfs:comment "Verknüpft den Monat, in dem der Eingang der Rechnung zu einem Vertrag erwartet wird."@de, 
-    	"Línks the month the invoice receipt for a contract is expected"@en ;   
+    rdfs:comment "Überholt. Nutze amsl:expectedInvoiceDate."@de, 
+    	"Deprecated. Use amsl:expectedInvoiceDate."@en ;   
     rdfs:domain amsl:BasicContractData ;
-    rdfs:range amsl:Month .
+    rdfs:range amsl:Month  ;
+    owl:deprecated "true"^^xsd:boolean .
+
+amsl:expectedInvoiceDate a owl:DatatypeProperty ;
+    rdfs:label "Erwartetes Rechnungsdatum"@de,
+        "Expected Invoice Date"@en ;
+    rdfs:comment "Verknüpft das Datum, zu dem der Eingang der Rechnung zu einem Vertrag erwartet wird."@de, 
+    	"Línks the date the invoice receipt for a contract is expected"@en ;    
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range xsd:date .
 
 amsl:illNote a owl:DatatypeProperty ;
     rdfs:label "Fernleihnotiz"@de,
@@ -947,44 +956,57 @@ amsl:Single a amsl:LicenseType ;
         "single-position license"@en .  
  
  
-amsl:Month a owl:Class ;
-    owl:oneOf ( amsl:January amsl:February amsl:March amsl:April amsl:May amsl:June amsl:July amsl:August amsl:September amsl:October amsl:November amsl:December ) .
+amsl:Month a owl:DeprecatedClass ;
+    owl:oneOf ( amsl:January amsl:February amsl:March amsl:April amsl:May amsl:June amsl:July amsl:August amsl:September amsl:October amsl:November amsl:December ) ;
+    owl:deprecated "true"^^xsd:boolean .
               
 amsl:January rdfs:label "Januar"@de,
-        "January"@en .
+        "January"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 amsl:February rdfs:label "Februar"@de,
-        "February"@en .
+        "February"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:March rdfs:label "März"@de,
-        "March"@en .
+        "March"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 amsl:April rdfs:label "April"@de,
-        "April"@en .
+        "April"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 amsl:May rdfs:label "Mai"@de,
-        "May"@en .      
+        "May"@en ;
+    owl:deprecated "true"^^xsd:boolean .      
 
 amsl:June rdfs:label "Juni"@de,
-        "June"@en .
+        "June"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 amsl:July rdfs:label "Juli"@de,
-        "July"@en .
+        "July"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 amsl:August rdfs:label "August"@de,
-        "August"@en .
+        "August"@en ;
+    owl:deprecated "true"^^xsd:boolean .
    
 amsl:September rdfs:label "September"@de,
-        "September"@en .   
+        "September"@en   ;
+    owl:deprecated "true"^^xsd:boolean .
         
 amsl:October rdfs:label "Oktober"@de,
-        "October"@en .  
+        "October"@en ;
+    owl:deprecated "true"^^xsd:boolean . 
         
 amsl:November rdfs:label "November"@de,
-        "November"@en .              
+        "November"@en ;
+    owl:deprecated "true"^^xsd:boolean .              
         
 amsl:December rdfs:label "Dezember"@de,
-        "December"@en .        
+        "December"@en ;
+    owl:deprecated "true"^^xsd:boolean .        
 
 
       
@@ -1018,7 +1040,7 @@ amsl:PaymentInLicensingYear a amsl:PaymentPeriod ;
 
                
 amsl:ShibbolethImplStatus a owl:Class ;
-    owl:oneOf ( amsl:Implemented amsl:Impossible amsl:InProcess amsl:Inquired amsl:Prospected ) .
+    owl:oneOf ( amsl:Inquired amsl:Prospected amsl:InProcess amsl:Implemented amsl:Impossible   ) .
 
 amsl:Implemented a amsl:ShibbolethImplStatus ;
     rdfs:label "Implementiert"@de,
