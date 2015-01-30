@@ -369,7 +369,7 @@ amsl:expectedInvoiceDate a owl:DatatypeProperty ;
         "Expected Invoice Date"@en ;
     rdfs:comment "Verknüpft das Datum, zu dem der Eingang der Rechnung zu einem Vertrag erwartet wird."@de, 
     	"Línks the date the invoice receipt for a contract is expected"@en ;    
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain amsl:AnnualContractData ;
     rdfs:range xsd:date .
 
 amsl:illNote a owl:DatatypeProperty ;
