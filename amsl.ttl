@@ -10,6 +10,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix aiiso: <http://purl.org/vocab/aiiso/schema#> .
+@prefix gr: <http://purl.org/goodrelations/v1#> .
 
 
 amsl: a owl:Ontology ;
@@ -267,9 +268,10 @@ amsl:expectedPriceFollowingYear a owl:DatatypeProperty ;
 amsl:externalContact a owl:ObjectProperty ;
     rdfs:label "Externer Ansprechpartner"@de,
         "external contact"@en ;
-    rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten von Verlagen, Konsortien..."@de,
+    rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten von Verlagen, Konsortien, Metadatenprovidern..."@de,
         "Links the responsible contact person from publisher, licensing agent, consortium..."@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
 amsl:feedbackDate a owl:DatatypeProperty ;
@@ -420,11 +422,12 @@ amsl:platform a  owl:ObjectProperty ;
     rdfs:range amsl:Platform .
 
 amsl:primaryAccessURI a  owl:DatatypeProperty ;
-    rdfs:label "URL des Mediums"@de,
-        "URL of the ER"@en ;
-    rdfs:comment "Verknüpft die URI, unter der die lizenzierten Medien primär zugänglich sind"@de,
-    	"Links the URI under which the licensed media is primarily accessible"@en ;
-    rdfs:domain amsl:BasicContractData .
+    rdfs:label "Zugangs-URI"@de,
+        "Access URI"@en ;
+    rdfs:comment "Verknüpft die URI, unter der die lizenzierten Pridukte primär zugänglich sind"@de,
+    	"Links the URI under which the licensed products are primarily accessible"@en ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] .
 
 amsl:shibbolethImplStatus a owl:ObjectProperty ;
     rdfs:label "Status Shibboleth Implementation"@de, "Shibboleth implementation status"@en ;
@@ -463,7 +466,8 @@ amsl:internalContact a owl:ObjectProperty ;
         "inhouse contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten des Lizenznehmers"@de,
         "Links the responsible inhouse contact person for the contract"@en ;
-    rdfs:domain amsl:BasicContractData ;
+    rdfs:domain  [ a owl:Class ;
+        owl:unionOf ( amsl:BasicContractData amsl:MetadataSource ) ] ;
     rdfs:range foaf:Person .
 
 amsl:invoiceDate a owl:DatatypeProperty ;
@@ -575,7 +579,8 @@ amsl:licensingNote a owl:DatatypeProperty ;
         "licensing note"@en ;
     rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen"@de,
         "Links additional information regarding the license, the negotiation of the license, the product, etc."@en ;
-    rdfs:domain amsl:BasicContractData .
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:AnnualContractData amsl:MetadataSource ) ] .
 
 amsl:licensingAgent a owl:ObjectProperty ;
     rdfs:label "Zahlungsempfänger"@de,
@@ -1087,3 +1092,65 @@ amsl:WalkIns a amsl:UserGroup ;
         "Walk Ins"@en .
 
 
+###### Article Index
+
+
+amsl:MetadataSource a owl:Class;
+rdfs:label "Metadatenquelle"@de, "Metadata Source"@en ;
+rdfs:comment "Eine Quelle, die (bibliographische) Metadaten anbietet."@de, "A source providing (bibliographic) metadata"@en .
+
+amsl:MetadataCollection a owl:Class ;
+rdfs:label "Metadatenkollektion"@de, "Metadata Collection"@en;
+rdfs:comment "Eine Kollektion von Metadaten, die bspw. in einen Bibliothekskatalog eingespielt wird."@de, "A collection of metadata that is to be integrated in e.g. a library catalog."@en .
+
+amsl:sourceID a owl:DatatypeProperty ;
+rdfs:label "Source ID"@de, "Source ID"@en;
+rdfs:comment "Verknüpft die Source ID einer Metadatenkollektion"@de, "Links the source ID of a metadata collection"@en ;
+rdfs:domain amsl:MetadataCollection .
+
+amsl:includedInMetadataSource a owl:ObjectProperty ;
+rdfs:label "enthalten in Metadatenquelle"@de, "included in metadata source"@en ;
+rdfs:comment "Verlinkt die die Kollektion enthaltende Metadatenquelle."@de , "Links the metadata source including the collection."@en ;
+rdfs:domain amsl:MetadataCollection ;
+rdfs:range amsl:MetadataSource .
+
+amsl:usedByLibrary a owl:ObjectProperty;
+rdfs:label "angesiedelte Bibliothek"@de, "used by library"@en ;
+rdfs:comment "Verknüpft die Bibliotheken, welche die angebotenen Metadaten in ihrem Katalog nutzen möchten."@de, "Links the libraries that want to use the provided metadata in their catalog."@en ;
+rdfs:domain amsl:MetadataSource ;
+rdfs:range foaf:Organization .  
+
+amsl:indexingLevel a owl:DatatypeProperty ;
+rdfs:label "Indexierungsgrad"@de, "indexing level"@en;
+rdfs:comment "Verknüpft Angaben zum gebotenen Indexierungsgrad"@de, "Links information on the indexing level offered."@en ;
+rdfs:domain amsl:MetadataSource .
+
+amsl:updateRhythm a owl:DatatypeProperty ;
+rdfs:label  "Update-Rhythmus"@de , "update rhythm"@en ;
+rdfs:comment "Verknüpft Angaben zum Aktualiserungsrhythmus der angebotenen Metadaten"@de , "Links information on the update rhythm of the offered metadata."@en ;
+rdfs:domain amsl:MetadataSource .
+
+amsl:nextUpdateDate a owl:DatatypeProperty ;
+rdfs:label  "Datum des nächsten Updates"@de , "date of next update"@en ;
+rdfs:comment "Verknüpft das Datum der nächsten Aktualisierung der angebotenen Metadaten"@de , "Links the date of the next update of the offered metadata."@en ;
+rdfs:domain amsl:MetadataSource ;
+rdfs:range xsd:date .
+
+
+amsl:BibliographicMimeType a owl:Class ;
+owl:oneOf (<urn:mimetype:application/marc> <urn:mimetype:application/marcxml+xml>) .
+
+
+amsl:DownloadHTTP a gr:DeliveryMethod ;
+rdfs:label "HTTP Download"@de, "HTTP download"@en .
+
+amsl:DownloadFTP a gr:DeliveryMethod ;
+rdfs:label "FTP Download"@de, "FTP download"@en .
+
+
+amsl:DownloadOAI a gr:DeliveryMethod ;
+rdfs:label "OAI Download"@de, "OAI download"@en .
+
+
+amsl:DownloadAPI a gr:DeliveryMethod ;
+rdfs:label "API Download"@de, "API download"@en .
