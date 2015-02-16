@@ -853,29 +853,7 @@ amsl:StrucDB rdfs:label "Strukturdatenbank"@de,
         "structure database"@en .  
               
 
-amsl:ERStatus a owl:Class ;
-    owl:oneOf ( amsl:Active amsl:CancellationNominee amsl:Cancelled  amsl:Trial amsl:Wish  ) .  
-
-amsl:Active a amsl:ERStatus ;
-    rdfs:label "Aktiv"@de,
-        "Active"@en .
-        
-amsl:CancellationNominee a amsl:ERStatus ;
-    rdfs:label "Abbestellkandidat"@de,
-        "Nominee for Cancellation"@en .
-        
-amsl:Cancelled a amsl:ERStatus ;
-    rdfs:label "Abbestellt"@de,
-        "Cancelled"@en .       
-        
-amsl:Trial a amsl:ERStatus ;
-    rdfs:label "Test"@de,
-        "Trial"@en .
-
-amsl:Wish a amsl:ERStatus ;
-    rdfs:label "Wunsch"@de,
-        "Wish"@en .
-  
+ 
         
 amsl:ERType  a owl:Class ;
     owl:oneOf (amsl:Database amsl:Ebook  amsl:EbookPackage amsl:Ejournal amsl:EjournalPackage  ) .       
@@ -1043,30 +1021,6 @@ amsl:PaymentInLicensingYear a amsl:PaymentPeriod ;
         "Payment in licensing year"@en .
 
 
-               
-amsl:ShibbolethImplStatus a owl:Class ;
-    owl:oneOf ( amsl:Inquired amsl:Prospected amsl:InProcess amsl:Implemented amsl:Impossible   ) .
-
-amsl:Implemented a amsl:ShibbolethImplStatus ;
-    rdfs:label "Implementiert"@de,
-        "Implemented"@en .
-
-amsl:Impossible a amsl:ShibbolethImplStatus ;
-    rdfs:label "Nein"@de,
-        "No"@en .
-
-amsl:InProcess a amsl:ShibbolethImplStatus ;
-    rdfs:label "In Bearbeitung"@de,
-        "In Process"@en .
-
-amsl:Inquired a amsl:ShibbolethImplStatus ;
-    rdfs:label "Angefragt"@de,
-        "Inquired"@en .
-        
-amsl:Prospected a amsl:ShibbolethImplStatus ;
-    rdfs:label "In Aussicht"@de,
-        "Prospected"@en .
-
 
 amsl:UserGroup a owl:Class ;
     owl:oneOf ( amsl:TeachingHospitals  amsl:Staff amsl:Students  amsl:UniMember amsl:WalkIns ) .
@@ -1090,6 +1044,71 @@ amsl:UniMember a amsl:UserGroup ;
 amsl:WalkIns a amsl:UserGroup ;
     rdfs:label "Walk-Ins"@de,
         "Walk Ins"@en .
+
+
+amsl:metadataSourceImplStatus a owl:ObjectProperty ;
+    rdfs:label "Status der Metadaten-Implementierung"@de , "Metatadata Implementation status"@en ;
+    rdfs:comment "Verknüpft Informationen über den Status der Implementierung der Metadatenquelle im Artikelindex."@de , "Links information on the implementation status of the metadata source in the article index."@en ;
+    rdfs:domain amsl:MetadataSource ;
+    rdfs:range amsl:MetadataSourceImplStatus .
+
+
+               
+amsl:ShibbolethImplStatus a owl:Class ;
+    owl:oneOf ( amsl:Inquired amsl:Prospected amsl:InProcess amsl:Implemented amsl:Impossible   ) .
+
+amsl:MetadataSourceImplStatus a owl:Class ;
+    owl:oneOf   (amsl:Wish amsl:Inquired  amsl:InProcess amsl:Trial amsl:Active  amsl:Impossible ) .
+
+amsl:ERStatus a owl:Class ;
+    owl:oneOf ( amsl:Active amsl:CancellationNominee amsl:Cancelled  amsl:Trial amsl:Wish  ) .  
+
+
+amsl:Active a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
+    rdfs:label "Aktiv"@de,
+        "Active"@en .
+        
+amsl:CancellationNominee a amsl:ERStatus ;
+    rdfs:label "Abbestellkandidat"@de,
+        "Nominee for Cancellation"@en .
+        
+amsl:Cancelled a amsl:ERStatus ;
+    rdfs:label "Abbestellt"@de,
+        "Cancelled"@en .    
+
+amsl:Implemented a amsl:ShibbolethImplStatus ;
+    rdfs:label "Implementiert"@de,
+        "Implemented"@en .
+
+amsl:Impossible a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
+    rdfs:label "Nicht möglich"@de,
+        "Not possible"@en .
+
+amsl:InProcess a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
+    rdfs:label "In Bearbeitung (techn.)"@de,
+        "In Process (techn.)"@en ;
+    rdfs:comment "Wird momentan technisch bearbeitet."@de, "Is being technically processed"@en .
+
+amsl:Inquired a amsl:ShibbolethImplStatus , amsl:MetadataSourceImplStatus ;
+    rdfs:label "Angefragt / In Verhandlung"@de,
+        "Inquired / In Negotiation"@en .
+        
+amsl:Prospected a amsl:ShibbolethImplStatus  ;
+    rdfs:label "In Aussicht"@de,
+        "Prospected"@en .
+
+        
+amsl:Trial a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
+    rdfs:label "Test"@de,
+        "Trial"@en .
+
+amsl:Wish a amsl:ERStatus , amsl:MetadataSourceImplStatus ;
+    rdfs:label "Wunsch"@de,
+        "Wish"@en .    
+
+
+
+
 
 
 ###### Article Index
