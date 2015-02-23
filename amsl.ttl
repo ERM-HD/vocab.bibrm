@@ -1122,9 +1122,55 @@ amsl:MetadataCollection a owl:Class ;
 rdfs:label "Metadatenkollektion"@de, "Metadata Collection"@en;
 rdfs:comment "Eine Kollektion von Metadaten, die bspw. in einen Bibliothekskatalog eingespielt wird."@de, "A collection of metadata that is to be integrated in e.g. a library catalog."@en .
 
+amsl:LibraryCollectionOptions a owl:Class ;
+rdfs:label "Bibliothek/Kollektion-Optionen"@de, "Library/Collection options"@en ;
+rdfs:comment "Ein Konstrukt, um bibliotheksspezifische Optionen und Informationen zu einer Metadatenkollektion zu speichern."@de , "A construct to save library-specific options and information on a metadata collection."@en .
+
+
+amsl:excludedCatalogueID a owl:DatatypeProperty ;
+rdfs:label "ausgeschlossene Katalog-ID"@de , "excluded catalogue ID"@en ;
+rdfs:comment "Verknüpft Katalog-IDs von Titeln, für die die in der Kollektion vorhandenen Metadaten für eine bestimmte Bibliothek ausgeschlossen werden sollen."@de, "Links catalogue IDs of titles for which the metadata provided in the collection is to be excluded for a specific library."@en ;
+rdfs:domain amsl:LibraryCollectionOptions .
+
+amsl:deduplicateMetadataAgainst a owl:ObjectProperty ;
+rdfs:label "dedupliziere Metadaten gegen"@de , "deduplicate metadata against"@en ;
+rdfs:comment "Verknüpft eine weitere Metadatenkollektion gegen die die Metadaten der jeweiligen Kollektion für eine bestimmte Bibliothek dedupliziert werden sollen"@de , "Links anothermetadata collection the metadata from this collection is to be deduplicated against for a specific library."@en ;
+rdfs:domain amsl:LibraryCollectionOptions ;
+rdfs:range amsl:MetadataCollection .
+
+amsl:libraryConcerned a owl:ObjectProperty ;
+rdfs:label "betroffene Bibliothek"@de , "library concerned"@en ;
+rdfs:comment "Verknüpft die Bibliothek, die von den Bibliothek/Kollektion-Optionen betroffen ist."@de , "Links the library concerned by the library/collection options."@en ;
+rdfs:domain amsl:LibraryCollectionOptions ;
+rdfs:range foaf:Organization .
+
+amsl:metadataCollectionConcerned a owl:ObjectProperty ;
+rdfs:label "betroffene Metadatenkollektion"@de , "metadata collection concerned"@en ;
+rdfs:comment "Verknüpft die Metadatenkollektion, die von den Bibliothek/Kollektion-Optionen betroffen ist."@de , "Links the metadata collection concerned by the library/collection options."@en ;
+rdfs:domain amsl:LibraryCollectionOptions ;
+rdfs:range amsl:MetadataCollection .
+
+
+
+
+amsl:metadataUsedByLibrary a owl:ObjectProperty;
+rdfs:label "Metadaten nutzende Bibliothek"@de, "metadata using library"@en ;
+rdfs:comment "Verknüpft die Bibliothek, die die Metadaten einer Kollektion nutzt."@de, "Links the library using the metadata of a  collection."@en ;
+rdfs:domain amsl:MetadataCollection ;
+rdfs:range foaf:Organization .
+
+
+
+
+
 amsl:sourceID a owl:DatatypeProperty ;
 rdfs:label "Source ID"@de, "Source ID"@en;
-rdfs:comment "Verknüpft die Source ID einer Metadatenkollektion"@de, "Links the source ID of a metadata collection"@en ;
+rdfs:comment "Verknüpft die Source ID einer Metadatenquelle"@de, "Links the source ID of a metadata source"@en ;
+rdfs:domain amsl:MetadataSource .
+
+amsl:collectionID a owl:DatatypeProperty ;
+rdfs:label "Collection ID"@de, "Collection ID"@en;
+rdfs:comment "Verknüpft die Collection ID einer Metadatenkollektion"@de, "Links the collection ID of a metadata collection"@en ;
 rdfs:domain amsl:MetadataCollection .
 
 amsl:includedInMetadataSource a owl:ObjectProperty ;
@@ -1133,11 +1179,7 @@ rdfs:comment "Verlinkt die die Kollektion enthaltende Metadatenquelle."@de , "Li
 rdfs:domain amsl:MetadataCollection ;
 rdfs:range amsl:MetadataSource .
 
-amsl:usedByLibrary a owl:ObjectProperty;
-rdfs:label "angesiedelte Bibliothek"@de, "used by library"@en ;
-rdfs:comment "Verknüpft die Bibliotheken, welche die angebotenen Metadaten in ihrem Katalog nutzen möchten."@de, "Links the libraries that want to use the provided metadata in their catalog."@en ;
-rdfs:domain amsl:MetadataSource ;
-rdfs:range foaf:Organization .  
+
 
 amsl:indexingLevel a owl:DatatypeProperty ;
 rdfs:label "Indexierungsgrad"@de, "indexing level"@en;
@@ -1154,6 +1196,8 @@ rdfs:label  "Datum des nächsten Updates"@de , "date of next update"@en ;
 rdfs:comment "Verknüpft das Datum der nächsten Aktualisierung der angebotenen Metadaten"@de , "Links the date of the next update of the offered metadata."@en ;
 rdfs:domain amsl:MetadataSource ;
 rdfs:range xsd:date .
+
+
 
 
 amsl:BibliographicMimeType a owl:Class ;
