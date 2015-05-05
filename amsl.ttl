@@ -468,6 +468,15 @@ amsl:illPrintOrFax a owl:ObjectProperty ;
     rdfs:domain amsl:BasicContractData ;
     rdfs:range amsl:LicenseTerm .
 
+
+amsl:individualContractItems a owl:ObjectProperty ;
+    rdfs:label "Individual Contract Items"@en, 
+        "Individuelle Vertragspositionen"@de ;
+    rdfs:comment "Indicates if a consortial contract can have individual contract items for different participating libraries. If this is the case, license packages and contract items need to be recorded in the local ERM knowledge base of each library."@en,
+        "Gibt an, ob ein konsortialer Vertrag unterschiedliche Vertragspositionen für verschiedene teilnehmende Bibliotheken umfassen kann. Falls dies der Fall ist, müssen Pakete und Vertragspositionen jeweils in der lokelen Wissensbasis jeder Bibliothek erfasst werden."@de ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range amsl:Boolean .
+
 amsl:initialAcquisitionDate a rdf:Property,
         owl:DatatypeProperty ;
     rdfs:label "Ersterwerbungsdatum"@de,
