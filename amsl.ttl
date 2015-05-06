@@ -156,6 +156,7 @@ amsl:authorizedUser a owl:ObjectProperty ;
     rdfs:range amsl:UserGroup .
 
 amsl:balanceFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
     rdfs:label "Über-/Fehlbertragsdatei"@de , "Balance File"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
@@ -168,6 +169,13 @@ amsl:concUser a owl:DatatypeProperty ;
     rdfs:comment "Verknüpft die Anzahl der in den Lizenzbedingungen angegeben Parallelzugriffe"@de,
         "Links the licensed number of concurrent users for a resource"@en ;
     rdfs:domain amsl:BasicContractData .
+
+amsl:consortiumLeader a owl:ObjectProperty ;
+    rdfs:label "Konsortialführer"@de , "Consortium leader"@en ;
+    rdfs:comment "Verknüpft die Organisation, die für einen bestimmten konsortialen Lizenzvertrag die Rolle des Konsortialführers innehat."@de ,
+        "Links the organization operating as consortium leader for a certain consortial license contract."@en ;
+    rdfs:domain amsl:BasicContractData ;
+    rdfs:range foaf:Organization .
 
 amsl:contactNote a owl:DatatypeProperty ;
     rdfs:label "Notiz zum Kontakt"@de,
@@ -184,10 +192,12 @@ amsl:linkToContract a owl:DatatypeProperty ;
     rdfs:domain amsl:AnnualContractData .
 
 amsl:contractFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
     rdfs:label "Vertragsdatei"@de , "Contract File"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
-    rdfs:domain amsl:AnnualContractData ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:BasicContractData amsl:AnnualContractData ) ] ;
     rdfs:range foaf:Document .
 
 amsl:costCenter a rdf:Property,
@@ -305,6 +315,13 @@ amsl:field a owl:DatatypeProperty ;
         "Links faculties with their field of activity"@en ;
     rdfs:domain aiiso:Faculty .
 
+amsl:file a owl:ObjectProperty ;
+    rdfs:label "Zugehörige Datei"@de , "Associated File"@en ;
+    rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
+        "Links a resource of the type Document."@en   ;
+    rdfs:range foaf:Document . 
+
+
 amsl:acqMethod a owl:ObjectProperty ;
     rdfs:label "Erwerbungsart"@de,
         "Acquisition Method"@en ;
@@ -344,8 +361,8 @@ amsl:consortium a rdf:Property,
     rdfs:label "Beteiligtes Konsortium"@de,
         "consortium"@en ;
     rdfs:comment "Verknüpft ein beteiligtes Bibliothekskonsortium, d. h. einen Zusammenschluss von Bibliotheken"@de,
-    	"Links a n involved library consortium, that is an association of libraries"@en ;
-    rdfs:domain amsl:AnnualContractData ;
+    	"Links an involved library consortium, that is an association of libraries"@en ;
+    rdfs:domain amsl:BasicContractData ;
     rdfs:range foaf:Organization .
 
 amsl:dbType a owl:ObjectProperty ;
@@ -413,6 +430,15 @@ amsl:invoiceReceived a rdf:Property,
     	"Links the information, if the current invoice has alreday been received"@en ;
     rdfs:domain amsl:AnnualContractData ;
     rdfs:range amsl:Boolean .
+
+amsl:mailFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
+    rdfs:label "Schriftverkehrsdatei"@de , "Mail File"@en ;
+    rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
+        "Links a resource of the type Document."@en   ;
+    rdfs:domain [ a owl:Class ;
+        owl:unionOf ( amsl:BasicContractData amsl:AnnualContractData ) ] ;
+    rdfs:range foaf:Document .        
 
 amsl:noticePeriod a owl:DatatypeProperty ;
     rdfs:label "Kündigungsfrist"@de,
@@ -504,6 +530,7 @@ amsl:invoiceDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
   
 amsl:invoiceFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
     rdfs:label "Rechnungsdatei"@de , "Invoice File"@en ;
     rdfs:comment "Verknüpft eine Ressource des Typs Dokument."@de , 
         "Links a resource of the type Document."@en   ;
@@ -1220,6 +1247,14 @@ amsl:linkToHoldingsFile a owl:DatatypeProperty ;
 rdfs:label "Link zum Holdings-File"@de, "Link to holdings file"@en ;
 rdfs:comment "Verknüpft den Downloadlink zu dem aktuellen Holdings-File einer Bibliothek."@de , "Links the Download link to a library's current holdings file"@en ;
 rdfs:domain foaf:Organization .
+
+amsl:holdingsFile a owl:ObjectProperty ;
+    rdfs:subPropertyOf amsl:file ;
+    rdfs:label "Holdings-File"@de , "Holdings File"@en ;
+    rdfs:comment "Verknüpft eine Ressource des Typs Dokument, die das aktuelle Holdings-File einer Bibliothek darstellt."@de , 
+        "Links a resource of the type Document which is a library's current holdings file."@en   ;
+    rdfs:domain foaf:Organization ;
+    rdfs:range foaf:Document . 
 
 amsl:BibliographicMimeType a owl:Class ;
 rdfs:subClassOf dct:MediaTypeOrExtent ;
