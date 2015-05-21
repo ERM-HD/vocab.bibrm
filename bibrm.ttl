@@ -13,6 +13,7 @@
 
 
 bibrm: a owl:Ontology ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vocabulary for Library Electronic Resource Management" ;
     cc:attributionName "AKSW & Universitätsbibliothek Leipzig" ;
     vann:changes <https://github.com/ERM-HD/vocab.bibrm/commits/master/bibrm.ttl> ;
@@ -32,36 +33,42 @@ bibrm: a owl:Ontology ;
 
 
 bibrm:AnnualContractData a rdfs:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vertragsjahresdaten"@de,
         "Annual Contract Data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Perteien. Dieser Vertragsteil beinhaltet die sich jährlich ändernden Eigenschaften eines Vertrags."@de,
         "A class modeling a business contract between the library and one or more parties. This part of the contract contains the annual (dynamic) properties of a contract."@en .
 
 bibrm:BasicContractData a rdfs:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vertragsbasisdaten"@de,
         "Basic Contract Data"@en ;
     rdfs:comment "Ein Geschäftsvertrag zwischen der Bibliothek und weiteren Parteien. Dieser Vertragsteil beinhaltet die Basisinformationen (statische Daten) eines Vertrages."@de,
         "A class modeling a business contract between the library and one or more parties. This one contains the basic (static) properties of a contract."@en .
 
 bibrm:Budget a rdfs:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Budget"@de,
         "Budget"@en ;
     rdfs:comment "Budgets für die Medienerwerbung."@de,
     	 "Budgets for media acquisition."@en .
 
 bibrm:ContractItem a rdfs:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vertragsposition"@de,
         "Contract Item"@en ;
     rdfs:comment "Die einzelnen elektronischen Ressourcen, die von einem Vetrag oder einem Lizenzpaket umfasst werden."@de ,
     	"Individual electronic resources that are contained in a license contract or package."@en .
 
 bibrm:LicensePackage a rdfs:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Paket"@de,
         "License Package"@en ;
     rdfs:comment "Ein Lizenzvertrag kann aus mehreren Lizenzpaketen zusammengestellt sein."@de,
         "A license contract can be made up by several license packages."@en .
 
 bibrm:Platform a rdfs:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Plattform"@de,
         "Platform"@en ;
     rdfs:comment "Das Portal bzw. der Service, der die Inhalte bereitstellt und zugänglich macht."@de,
@@ -72,6 +79,7 @@ bibrm:Platform a rdfs:Class ;
 
 ######################## Properties #####################################
 bibrm:contractItemOf a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "ist Vertragsposition von"@de,
         "is contract item of"@en ;
     rdfs:comment "Verknüpft eine bestimmte Vertragsposition mit den Vertragsjahresdaten bzw. dem  Lizenzpaket, in dem sie enthalten ist."@de,
@@ -81,6 +89,7 @@ bibrm:contractItemOf a owl:ObjectProperty ;
     rdfs:domain bibrm:ContractItem  .
 
 bibrm:contractContainingPackage a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "das Paket umfassender Vertrag"@de,
         "contract containing the package"@en ;
     rdfs:comment "Verknüpft die Vertragsjahresdaten, zu denen ein bestimmtes Lizenzpaket gehört."@de ,
@@ -90,6 +99,7 @@ bibrm:contractContainingPackage a owl:ObjectProperty ;
 
 bibrm:eissn a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "E-ISSN"@de,
         "E-ISSN"@en ;
     rdfs:comment "Verknüpft die E-ISSN eines Mediums."@de,
@@ -97,6 +107,7 @@ bibrm:eissn a rdf:Property,
 
 bibrm:eisbn a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "E-ISBN"@de,
         "E-ISBN"@en ;
     rdfs:comment "Verknüpft die E-ISBN eines Mediums."@de,
@@ -104,6 +115,7 @@ bibrm:eisbn a rdf:Property,
 
 bibrm:pissn a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "P-ISSN"@de,
         "P-ISSN"@en ;
     rdfs:comment "Verknüpft die P-ISSN eines Mediums."@de,
@@ -111,6 +123,7 @@ bibrm:pissn a rdf:Property,
 
 bibrm:pisbn a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "P-ISBN"@de,
         "P-ISBN"@en ;
     rdfs:comment "Verknüpft die P-ISBN eines Mediums."@de,
@@ -118,6 +131,7 @@ bibrm:pisbn a rdf:Property,
     
 bibrm:proprietaryID a rdf:Property,
         owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Proprietäre ID"@de,
         "Proprietary ID"@en ;
     rdfs:comment "Verknüpft einen proprietären Identifier eines Mediums."@de,
@@ -125,12 +139,14 @@ bibrm:proprietaryID a rdf:Property,
     	
 bibrm:doi a rdf:Property,
         owl:ObjectProperty ; 
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "DOI"@de,
         "DOI"@en ;
     rdfs:comment "Verknüpft den DOI eines Mediums."@de,
     	"Links the DOI of a medium."@en .
 
 bibrm:annualPrice a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Jahrespreis (EUR)"@de,
         "annual price (EUR)"@en ;
     rdfs:comment "Verknüpft den jährlichen Preis eines Lizenzvertrages in Euro."@de,
@@ -138,6 +154,7 @@ bibrm:annualPrice a owl:DatatypeProperty ;
     rdfs:domain bibrm:AnnualContractData .
 
 bibrm:archivingNote a owl:DataTypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Verfügbarkeit nach Vertragsende"@de,
         "availability after termination"@en ;
     rdfs:comment "Verknüpft Informationen zur Verfügbarkeite der ER nach Vertragsende (Archivrecht, Format...)."@de,
@@ -145,6 +162,7 @@ bibrm:archivingNote a owl:DataTypeProperty ;
     rdfs:domain bibrm:BasicContractData .     
 
 bibrm:authorizedUser a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Autorisierte Nutzer"@de,
         "authorized users"@en ;
     rdfs:comment "Verknüpft eine oder mehrere Nutzergruppen, die für zur Nutzung des lizenzierten Produktes autorisiert sind."@de,
@@ -153,6 +171,7 @@ bibrm:authorizedUser a owl:ObjectProperty ;
     rdfs:range bibrm:UserGroup .
 
 bibrm:concUser a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Parallelzugriffe"@de,
         "concurrent users"@en ;
     rdfs:comment "Verknüpft die Anzahl der in den Lizenzbedingungen angegeben Parallelzugriffe"@de,
@@ -160,6 +179,7 @@ bibrm:concUser a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:contactNote a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Notiz zum Kontakt"@de,
         "contact note"@en ;
     rdfs:comment "Verknüft weitere notierte Details zu einem Kontakt"@de,
@@ -167,6 +187,7 @@ bibrm:contactNote a owl:DatatypeProperty ;
     rdfs:domain foaf:Person .
 
 bibrm:linkToContract a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Link zum Vertrag"@de,
         "url to the contract"@en ;
     rdfs:comment "Verknüpft einen Link/eine URL, die auf die digitale Version das originalen Vertragsdokuments verweist, welches der Lizenznehmer vom Lizenzgeber enthält."@de,
@@ -175,6 +196,7 @@ bibrm:linkToContract a owl:DatatypeProperty ;
 
 bibrm:costCenter a rdf:Property,
         owl:DataTypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kostenstelle"@de,
         "cost center"@en ;
     rdfs:comment "Verknüpft eine Kostenstelle. Diese ist der Ort der Kostenentstehung und der Leistungserbringung. Sie ist ein Kostenrechnungsobjekt mit der Aufgabe, die in einem Unternehmensteil, meist einer Abteilung, angefallenen Kosten zu sammeln."@de,
@@ -182,6 +204,7 @@ bibrm:costCenter a rdf:Property,
     rdfs:domain aiiso:Faculty .
 
 bibrm:coursePackE a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Reader elektronisch"@de,
         "Course Pack Electronic"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in elektronischer Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
@@ -190,6 +213,7 @@ bibrm:coursePackE a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:coursePackP a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Reader print"@de,
         "Course Pack Print"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht eines Fakultätsmitgliedes lizenziertes Material in Zusammnenstellungen in gedruckter Form für Studentengruppen zu Anleitungszwecken zu verwenden."@de,
@@ -198,6 +222,7 @@ bibrm:coursePackP a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:courseReserveE a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Semesterapparat elektronisch"@de,
         "Course Reserve Electronic"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht digitale Kopien des lizenzierten Materials zu erstellen und sie in einem sicheren Netzwerk bereitzustellen."@de,
@@ -206,6 +231,7 @@ bibrm:courseReserveE a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:courseReserveP a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Semesterapparat print"@de,
         "Course Reserve Print"@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht gedruckte Kopien des lizenzierten Materials zu erstellen und sie in einem kontrollierten Bereich bereitzustellen."@de,
@@ -214,6 +240,7 @@ bibrm:courseReserveP a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:dataAvailability a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "(Meta-)Datenverfügbarkeit"@de,
         "(meta) data availability"@en ;
     rdfs:comment "Verknüpft Informationen über die Verfügbarkeit von Metadaten zu den lizenzierten Medien"@de ,
@@ -221,6 +248,7 @@ bibrm:dataAvailability a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:description a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Beschreibung"@de,
         "description"@en ;
     rdfs:comment "Verknüpft die Beschreibung des Inhalts der ER. Es können Links zu weiteren relevanten Dokumenten (z. B. Inhaltsverzeichnis) enthalten sein."@de,
@@ -229,6 +257,7 @@ bibrm:description a owl:DatatypeProperty ;
 
 bibrm:linkToDescription a rdf:Property,
         owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "URL der Anbieterbeschreibung"@de,
         "URL to the description "@en ;
     rdfs:comment "Verknüpft einen Link zur Beschreibung der ER des Anbieters"@de,
@@ -236,6 +265,7 @@ bibrm:linkToDescription a rdf:Property,
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:digitallyCopy a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kopie digital"@de,
         "Digital Copy "@en ;
     rdfs:comment "Verknüpft Infomationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine digitale Kopie zu erstellen."@de,
@@ -244,6 +274,7 @@ bibrm:digitallyCopy a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:erAltTitle a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Alternativer Titel"@de,
         "alternative title"@en ;
     rdfs:comment "Verknüpft eine Variation des Haupttitels der Ressource, z.B. Akronyme, Paralleltitel usw."@de,
@@ -251,6 +282,7 @@ bibrm:erAltTitle a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:expectedPrice a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Planpreis laufendes Jahr (EUR)"@de,
         "expected price current year (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das laufende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
@@ -258,6 +290,7 @@ bibrm:expectedPrice a owl:DatatypeProperty ;
     rdfs:domain bibrm:AnnualContractData .
     
 bibrm:expectedPriceFollowingYear a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Planpreis Folgejahr (EUR)"@de,
         "expected price following year (EUR)"@en ;
     rdfs:comment "Verknüpft den Preis, welcher für das nachfolgende Jahr für den Vertrag geschätzt und eingeplant wurde"@de,
@@ -265,6 +298,7 @@ bibrm:expectedPriceFollowingYear a owl:DatatypeProperty ;
     rdfs:domain bibrm:AnnualContractData .    
 
 bibrm:externalContact a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Externer Ansprechpartner"@de,
         "external contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten von Verlagen, Konsortien..."@de,
@@ -273,6 +307,7 @@ bibrm:externalContact a owl:ObjectProperty ;
     rdfs:range foaf:Person .
 
 bibrm:feedbackDate a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Rückmeldetermin"@de,
         "Feedback date"@en ;
     rdfs:comment "Verknüpft den letztmöglichen Tag, an welchem eine Rückmeldung an Zahlungsempfänger, Lizenzgeber etc. erfolgen muss"@de,
@@ -281,6 +316,7 @@ bibrm:feedbackDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 bibrm:field a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Fachgebiet"@de,
         "field"@en ;
     rdfs:comment "Verknüpft Fakultäten mit ihren Fachgebieten"@de,
@@ -288,6 +324,7 @@ bibrm:field a owl:DatatypeProperty ;
     rdfs:domain aiiso:Faculty .
 
 bibrm:acqMethod a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Erwerbungsart"@de,
         "Acquisition Method"@en ;
     rdfs:comment "Verknüpft die Art, auf die die Lizenzen des Vertrages erworben werden"@de,
@@ -297,6 +334,7 @@ bibrm:acqMethod a owl:ObjectProperty ;
 
 bibrm:authMethod a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Authentifizierungsmethode"@de,
         "Authentication Method"@en ;
     rdfs:comment "Verknüpft die nötige Authentifizierungsmethode, um Zugang zu den lizenzierten Medien zu erhalten"@de,
@@ -306,6 +344,7 @@ bibrm:authMethod a rdf:Property,
 
 bibrm:basicContractData a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Zugehörige Vertragsbasisdaten"@de,
         "associated basic contract data"@en ;
     rdfs:comment "Vernüpft die Vertragsbasisdaten, zu denen bestimmte Vertragsbasisdaten gehören"@de,
@@ -314,6 +353,7 @@ bibrm:basicContractData a rdf:Property,
     rdfs:range bibrm:BasicContractData .
 
 bibrm:budget a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "hat Budget"@de,
         "has budget"@en ;
     rdf:comment "Verknüpft das Budget, aus dem die Kosten für einen Lizenzvertrag gezahlt werden."@de,
@@ -323,6 +363,7 @@ bibrm:budget a owl:ObjectProperty ;
 
 bibrm:consortium a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Beteiligtes Konsortium"@de,
         "consortium"@en ;
     rdfs:comment "Verknüpft ein beteiligtes Bibliothekskonsortium, d. h. einen Zusammenschluss von Bibliotheken"@de,
@@ -331,6 +372,7 @@ bibrm:consortium a rdf:Property,
     rdfs:range foaf:Organization .
 
 bibrm:dbType a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "hat Datenbanktyp"@de,
         "has database type"@en ;
     rdfs:comment "Verknüpft den Typ einer Datenbank"@de ,
@@ -340,6 +382,7 @@ bibrm:dbType a owl:ObjectProperty ;
 
 bibrm:erStatus a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Status der ER"@de,
         "Status of the ER"@en ;
     rdfs:comment "Verknüpft den Status der elektronischen Ressourcen bzw. des diese beinhaltenden Vertrages im Erwerbungsprozess"@de,
@@ -348,6 +391,7 @@ bibrm:erStatus a rdf:Property,
     rdfs:range bibrm:ERStatus .
 
 bibrm:erType a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Produktart"@de,
         "ER type"@en ;
     rdfs:comment "Verknüpft die Produktart der in einem Vertrag lizenzierten elektronischen Ressourcen"@de,
@@ -356,6 +400,7 @@ bibrm:erType a owl:ObjectProperty ;
     rdfs:range bibrm:ERType .
 
 bibrm:expectedInvoiceMonth a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Erwarteter Rechnungsmonat"@de,
         "Expected Invoice Month"@en ;
     rdfs:comment "Verknüpft den Monat, in dem der Eingang der Rechnung zu einem Vertrag erwartet wird."@de, 
@@ -364,6 +409,7 @@ bibrm:expectedInvoiceMonth a owl:ObjectProperty ;
     rdfs:range bibrm:Month .
 
 bibrm:illNote a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Fernleihnotiz"@de,
         "Interlibrary Loan Note"@en ;
     rdfs:comment "Verknüpft weitere Informationen über Fernleihbedingungen"@de,
@@ -371,6 +417,7 @@ bibrm:illNote a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:illset a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Interlibrary Loan Secure Electronic Transmission"@de,
         "Interlibrary Loan Secure Electronic Transmission"@en ;
     rdfs:comment "Verknüpft Informationen über ILLSET"@de,
@@ -380,6 +427,7 @@ bibrm:illset a owl:ObjectProperty ;
 
 bibrm:invoiceReceived a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Rechnung vorhanden?"@de,
         "Invoice received?"@en ;
     rdfs:comment "Verknüpft die Information, ob die aktuelle Rechnung bereits eingegangen ist"@de ,
@@ -388,6 +436,7 @@ bibrm:invoiceReceived a rdf:Property,
     rdfs:range bibrm:Boolean .
 
 bibrm:noticePeriod a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kündigungsfrist"@de,
         "Notice Period"@en ;
     rdfs:comment "Verknüpft die einzuhaltende Kündigungsfrist eines Vertrages. Die Kündigungsfrist ist zu verwenden, wenn die vorliegenden Angaben kein Datum darstellen oder nicht sinnvoll in ein solches umgerechnet werden können"@de,
@@ -395,6 +444,7 @@ bibrm:noticePeriod a owl:DatatypeProperty ;
     rdfs:domain bibrm:AnnualContractData .
 
 bibrm:organizationType a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kategorie"@de,
         "organization type"@en ;
     rdfs:comment "Verknüpft die Kategorie einer Organisation"@de,
@@ -403,6 +453,7 @@ bibrm:organizationType a owl:ObjectProperty ;
     rdfs:range bibrm:OrganizationType .
 
 bibrm:platform a  owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "via Plattform"@de,
         "via platform"@en ;
     rdfs:comment "Verknüpft die Vertragsbasisdaten mit der Plattform, über die die Inhalte abrufbar sind."@de,
@@ -411,6 +462,7 @@ bibrm:platform a  owl:ObjectProperty ;
     rdfs:range bibrm:Platform .
 
 bibrm:primaryAccessURI a  owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "URL des Mediums"@de,
         "URL of the ER"@en ;
     rdfs:comment "Verknüpft die URI, unter der die lizenzierten Medien primär zugänglich sind"@de,
@@ -418,6 +470,7 @@ bibrm:primaryAccessURI a  owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:shibbolethImplStatus a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Status Shibboleth Implementation"@de, "Shibboleth implementation status"@en ;
     rdfs:comment "Verknüpft Informationen über den Status der Shibboleth Implementation"@de,
         "Links information on the status of the shibboleth implementation"@en ;
@@ -425,6 +478,7 @@ bibrm:shibbolethImplStatus a owl:ObjectProperty ;
     rdfs:range bibrm:ShibbolethImplStatus .
 
 bibrm:illElectronic a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Fernleihe elektronisch"@de,
         "Interlibrary  Loan Electronic"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer digitalen Kopie für die Fernleihe zur Verfügung zu stellen."@de,
@@ -433,6 +487,7 @@ bibrm:illElectronic a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:illPrintOrFax a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Fernleihe print / Fax"@de,
         "Interlibrary Loan Print or Fax"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht lizenziertes Material in Form einer Print- oder Faxkopie für die Fernleihe zur Verfügung zu stellen."@de,
@@ -442,6 +497,7 @@ bibrm:illPrintOrFax a owl:ObjectProperty ;
 
 bibrm:initialAcquisitionDate a rdf:Property,
         owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Ersterwerbungsdatum"@de,
         "initial acquisition date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem das Produkt zum ersten Mal erworben wurde"@de,
@@ -450,6 +506,7 @@ bibrm:initialAcquisitionDate a rdf:Property,
     rdfs:range xsd:date .
 
 bibrm:internalContact a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Hausinterner Ansprechpartner"@de,
         "inhouse contact"@en ;
     rdfs:comment "Verknüpft den verantwortlichen Ansprechpartner auf Seiten des Lizenznehmers"@de,
@@ -458,6 +515,7 @@ bibrm:internalContact a owl:ObjectProperty ;
     rdfs:range foaf:Person .
 
 bibrm:invoiceDate a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Rechnungsbearbeitungs-Datum"@de,
         "Invoive processing date"@en ;
     rdfs:comment "Verknüpft den Tag, an dem die Rechnung bearbeitet wurde"@de,
@@ -467,6 +525,7 @@ bibrm:invoiceDate a owl:DatatypeProperty ;
    
 
 bibrm:invoicePriceNetEUR a owl:DatatypeProperty;
+    owl:deprecated "true"^^xsd:boolean ;
 	rdfs:label "Rechnungspreis netto (EUR)"@de,
 		"invoice price net (EUR)"@en ;
 	rdfs:comment "Verknüpft den netto Rechnungspreis in Euro."@de,
@@ -475,6 +534,7 @@ bibrm:invoicePriceNetEUR a owl:DatatypeProperty;
 	
 
 bibrm:invoicePriceGrossEUR  a owl:DatatypeProperty;
+    owl:deprecated "true"^^xsd:boolean ;
 	rdfs:label "Rechnungspreis brutto (EUR)"@de,
 		"invoice price gross (EUR)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Euro."@de,
@@ -482,6 +542,7 @@ bibrm:invoicePriceGrossEUR  a owl:DatatypeProperty;
 	rdfs:domain bibrm:AnnualContractData .
 
 bibrm:invoicePriceNetUSD a owl:DatatypeProperty;
+    owl:deprecated "true"^^xsd:boolean ;
 	rdfs:label "Rechnungspreis netto (USD)"@de,
 		"invoice price net (USD)"@en ;
 	rdfs:comment "Verknüpft den netto Rechnungspreis in US-Dollar."@de,
@@ -490,6 +551,7 @@ bibrm:invoicePriceNetUSD a owl:DatatypeProperty;
 	
 
 bibrm:invoicePriceGrossUSD a owl:DatatypeProperty;
+    owl:deprecated "true"^^xsd:boolean ;
 	rdfs:label "Rechnungspreis brutto (USD)"@de,
 		"invoice price gross (USD)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in US-Dollar."@de,
@@ -497,6 +559,7 @@ bibrm:invoicePriceGrossUSD a owl:DatatypeProperty;
 	rdfs:domain bibrm:AnnualContractData .
 
 bibrm:invoicePriceNetGBP  a owl:DatatypeProperty;
+    owl:deprecated "true"^^xsd:boolean ;
 	rdfs:label "Rechnungspreis netto (GBP)"@de,
 		"invoice price net (GBP)"@en ;
 	rdfs:comment "Verknüpft den netto Rechnungspreis in Pfund Sterling."@de,
@@ -505,6 +568,7 @@ bibrm:invoicePriceNetGBP  a owl:DatatypeProperty;
 	
 
 bibrm:invoicePriceGrossGBP a owl:DatatypeProperty;
+    owl:deprecated "true"^^xsd:boolean ;
 	rdfs:label "Rechnungspreis brutto (GBP)"@de,
 		"invoice price gross (GBP)"@en ;
 	rdfs:comment "Verknüpft den brutto Rechnungspreis in Pfund Sterling."@de,
@@ -513,6 +577,7 @@ bibrm:invoicePriceGrossGBP a owl:DatatypeProperty;
     
 
 bibrm:isMemberOf a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "ist Mitglied von"@de,
         "is member of"@en ;
     rdfs:comment "Verknüpft die Organisation, bei der eine Person Mitglied ist"@de,
@@ -521,6 +586,7 @@ bibrm:isMemberOf a owl:ObjectProperty ;
     rdfs:range foaf:Organization .
 
 bibrm:isRelatedTo a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "ist thematisch zugehörig zu"@de,
     	"is related to"@en ;
     rdfs:comment "Verknüpft eine elektronische Ressourcen über deren ISSN mit einer thematisch passend zum Inhalt der Ressource ausgerichteten Fakultät"@de,
@@ -528,6 +594,7 @@ bibrm:isRelatedTo a owl:ObjectProperty ;
     rdfs:range aiiso:Faculty .
 
 bibrm:licenseEndDate a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vertragsende"@de,
         "license end date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem die Gültigkeit eines Lizenzvertrags endet"@de,
@@ -536,6 +603,7 @@ bibrm:licenseEndDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 bibrm:licenseStartDate a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vertragsbeginn"@de,
         "license start date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem ein Lizenzvertrag in Kraft tritt"@de,
@@ -545,6 +613,7 @@ bibrm:licenseStartDate a owl:DatatypeProperty ;
 
 bibrm:licenseType a owl:ObjectProperty,
         owl:ObjectPropery ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Lizenzart"@de,
         "license type"@en ;
     rdfs:comment "Verknüpft Informationen über die Art der Lizenz, welche den Zugang zu der elektronischen Ressource regelt"@de,
@@ -554,6 +623,7 @@ bibrm:licenseType a owl:ObjectProperty,
 
 bibrm:licensee a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Lizenznehmer"@de,
         "licensee"@en ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz erhält"@de,
@@ -562,6 +632,7 @@ bibrm:licensee a rdf:Property,
     rdfs:range foaf:Organization .
 
 bibrm:licensingNote a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Bemerkungen zum Vertrag"@de,
         "licensing note"@en ;
     rdfs:comment "Verknüpft zusätzliche Informationen, welche den Vertrag, die Lizenzverhandlungen, das Produkt etc. betreffen"@de,
@@ -569,6 +640,7 @@ bibrm:licensingNote a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:licensingAgent a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Zahlungsempfänger"@de,
         "licensing agent"@en ;
     rdfs:comment "Verknüpft ein Unternehmen, das die Bezahlung einer ER abwickelt."@de,
@@ -577,6 +649,7 @@ bibrm:licensingAgent a owl:ObjectProperty ;
     rdfs:range foaf:Organization .
 
 bibrm:licensor a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Lizenzgeber"@de,
         "licensor"@en ;
     rdfs:comment "Verknüpft die Vertragspartei, die eine Lizenz zur Verfügung stellt"@de,
@@ -585,6 +658,7 @@ bibrm:licensor a owl:ObjectProperty ;
     rdfs:range foaf:Organization .
 
 bibrm:linkToBalance a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Link zum Über-/Fehlbetrag"@de,
         "Link tobalance"@en ;
     rdfs:comment "Verknüpft einen Link zum Über-/Fehlbetrag"@de,
@@ -592,6 +666,7 @@ bibrm:linkToBalance a owl:DatatypeProperty ;
     rdfs:domain bibrm:AnnualContractData .
 
 bibrm:linkToInvoice a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Link zur Rechnung"@de,
         "link to invoice"@en ;
     rdfs:comment "Verknüpft einen Link zur Rechnung"@de,
@@ -600,6 +675,7 @@ bibrm:linkToInvoice a owl:DatatypeProperty ;
 
 bibrm:localSystemNumber a rdf:Property,
         owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Nummer aus Lokalsystem"@de,
         "local system number"@en ;
     rdfs:comment "Verknüpft eine Nummer, die das lokale Bibliotheksmanagementsystem (z.B. Libero) für die Ressource vergibt"@de,
@@ -608,6 +684,7 @@ bibrm:localSystemNumber a rdf:Property,
     	owl:unionOf ( bibrm:AnnualContractData bibrm:ContractItem  bibrm:LicensePackage ) ] .
 
 bibrm:orgNote a  owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Notiz zur Organisation"@de,
         "organization note"@en ;
     rdfs:comment "Verknüpft weitere Informationen zu einer Organisation"@de,
@@ -615,6 +692,7 @@ bibrm:orgNote a  owl:DatatypeProperty ;
     rdfs:domain foaf:Organization .
 
 bibrm:pCopy a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kopie print"@de,
         "Print Copy "@en ;
     rdfs:comment "Verknüpft Informationen üas Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte Kopie zu erstellen."@de,
@@ -623,6 +701,7 @@ bibrm:pCopy a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
     
 bibrm:previousContract a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Vorgängervertrag"@de,
     	"Previous contract"@en ;
     rdfs:comment "Verknüpft vorhergehende Vertragsbasisdaten, die mit den jetzigen in Beziehung stehen."@de,
@@ -631,6 +710,7 @@ bibrm:previousContract a owl:ObjectProperty ;
     rdfs:range bibrm:BasicContractData .    
 
 bibrm:itemPrice a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Preis einzelner Titel (EUR)"@de,
         "price single title (EUR)"@en ;
     rdfs:comment "Verknüpft den Anschaffungs-/Nutzungspreis, den die Bibliothek für eine Bibliographische Ressource bezahlt"@de,
@@ -638,6 +718,7 @@ bibrm:itemPrice a owl:DatatypeProperty ;
     rdfs:domain bibrm:ContractItem .
 
 bibrm:proprietaryIdentifier a owl:DataTypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Verlags-ID"@de,
         "proprietary identifier"@en ;
     rdfs:comment "Verknüpft eine ID, die verlagsseitig für die ER vergeben wird. Zur besseren Identifikation von ER bei Kommunikation mit dem Verlag."@de,
@@ -647,6 +728,7 @@ bibrm:proprietaryIdentifier a owl:DataTypeProperty ;
 
 bibrm:hasRemoteAccess a rdf:Property,
         owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Remote Access"@de,
         "remote access"@en ;
     rdfs:comment "Verknüpft Informationen über das Recht eines autorisierten Nutzers von außerhalb Zugang zu elektronischen Produkten zu erlangen "@de,
@@ -655,6 +737,7 @@ bibrm:hasRemoteAccess a rdf:Property,
     rdfs:range bibrm:ExtendedBoolean .
 
 bibrm:scholarlySharing a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Scholarly Sharing "@de,
         "Scholarly Sharing "@en ;
     rdfs:comment "Verknüpft Informationen über das Recht des Lizenznehmers und autorisierter Nutzer, eine gedruckte oder digitale Kopie für Dritte zum persönlichen, wissenschaftlichen, bildendem oder beruflichen Gebrauch zu erstellen."@de,
@@ -663,6 +746,7 @@ bibrm:scholarlySharing a owl:ObjectProperty ;
     rdfs:range bibrm:LicenseTerm .
 
 bibrm:budgetAbbr a owl:DataTypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Budgetkürzel"@de,
         "budget abbreviation"@en ;
     rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung einer Budgetbezeichnung"@de,
@@ -671,6 +755,7 @@ bibrm:budgetAbbr a owl:DataTypeProperty ;
 
 bibrm:facultyAbbr a rdf:Property,
         owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Fakultätskürzel"@de,
         "faculty abbreviation"@en ;
     rdfs:comment "Verknüpft die intern gebräuchliche Abkürzung einer Fakultätsbezeichnung"@de,
@@ -678,6 +763,7 @@ bibrm:facultyAbbr a rdf:Property,
     rdfs:domain aiiso:Faculty .
 
 bibrm:shutDownDate a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Abschalttermin"@de,
         "Shutdown date"@en ;
     rdfs:comment "Verknüpft das Datum, an dem der technische Zugang zum elektronischen Produkt endet."@de,
@@ -686,6 +772,7 @@ bibrm:shutDownDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 bibrm:terminationAlert a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Letztmöglicher Kündigungstag"@de,
         "last possible termination date"@en ;
     rdfs:comment "Verknüpft das letztmögliche Datum, an welchem ein Vertrag/Abo gekündigt werden kann"@de,
@@ -694,6 +781,7 @@ bibrm:terminationAlert a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 bibrm:terminationDate a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "gekündigt am"@de,
         "termination date"@en ;
     rdfs:comment "Verknüpft das Datum, an welchem ein Vertrag/Abo gekündigt worden ist"@de,
@@ -702,6 +790,7 @@ bibrm:terminationDate a owl:DatatypeProperty ;
     rdfs:range xsd:date .
 
 bibrm:terminationReason a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kündigungsgrund"@de,
         "termination reason"@en ;
     rdfs:comment "Verknüpft den Grund für die Kündigung eines Vertrags"@de,
@@ -709,6 +798,7 @@ bibrm:terminationReason a owl:DatatypeProperty ;
     rdfs:domain bibrm:BasicContractData .
 
 bibrm:usageStatsNote a owl:DatatypeProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Nutzungsstatistik"@de,
         "usage statistics"@en ;
     rdfs:comment "Verknüpft allgemeine Informationen zu Nutzungsstatistiken. Empfehlung: Angabe von Jahr, Reportform, Nutzungszahl und Link zur entsprechenden Tabelle"@de,
@@ -716,6 +806,7 @@ bibrm:usageStatsNote a owl:DatatypeProperty ;
     rdfs:domain bibrm:AnnualContractData .
 
 bibrm:paymentPeriod  a owl:ObjectProperty ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Zahlungszeitraum"@de,
         "payment period"@en ;
     rdfs:comment "Verknüpft den Zeitraum, in dem die Zahlung einer Rechnung fällig wird."@de,
@@ -731,336 +822,424 @@ bibrm:paymentPeriod  a owl:ObjectProperty ;
 ######################## Collections & Individuals #####################################
     
 bibrm:AcqNote a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:AllianceLicense bibrm:DedicatedLicense bibrm:Gift bibrm:Purchase bibrm:ConsortialLicense bibrm:NationalLicense bibrm:PDA   bibrm:PPV  bibrm:Unknown ) . 
 
 bibrm:AllianceLicense a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Allianzlizenz"@de,
         "Alliance License"@en .
         
 bibrm:ConsortialLicense a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Konsortiallizenz"@de,
         "Consortial License"@en .  
         
 bibrm:DedicatedLicense a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Eigene Lizenz"@de,
         "Dedicated License"@en .
                 
 bibrm:Gift a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Geschenk"@de,
         "Gift"@en .        
         
 bibrm:NationalLicense a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Nationallizenz"@de,
         "National License"@en .
 
 bibrm:PDA a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Patron Driven Acquisiton"@de,
         "Patron Driven Acquisiton"@en .
         
 bibrm:PPV a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Pay per view / use"@de,
         "Pay per view / use"@en .          
         
 bibrm:Purchase a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Kauf"@de,
         "Purchase"@en .        
         
 bibrm:Unknown a bibrm:AcqNote ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "unbekannt"@de,
         "Unknown"@en . 
 
 
 bibrm:AuthMethod a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:IPCampus bibrm:IPSingle bibrm:IPSubnet bibrm:LandP bibrm:Registration bibrm:Shibboleth  ) .
 
 bibrm:IPCampus a bibrm:AuthMethod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "IP-Check Campusnetz"@de,
         "IP-Check campus network"@en .
         
 bibrm:IPSingle a bibrm:AuthMethod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "IP-Check Einzelplatz (IP: ) Campusnetz"@de,
         "IP-Check Single Station"@en .
         
 bibrm:IPSubnet a bibrm:AuthMethod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "IP-Check Subnetz (von - bis)"@de,
         "IP-Check Subnet"@en .
 
 bibrm:LandP a bibrm:AuthMethod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Login und Passwort"@de,
         "Login and Password"@en .     
           
 bibrm:Registration a bibrm:AuthMethod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Registrierung"@de,
         "Registration"@en .
         
 bibrm:Shibboleth a bibrm:AuthMethod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Shibboleth"@de ,
     	"Shibboleth"@en .
        
         
 bibrm:Boolean a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     	rdfs:subClassOf bibrm:ExtendedBoolean ;
 	owl:oneOf ( bibrm:Yes bibrm:No ) .  
 	
 bibrm:Yes a bibrm:Boolean ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Ja"@de,
         "yes"@en . 
         
 bibrm:No a bibrm:Boolean ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Nein"@de,
         "no"@en .	    
 
 
 bibrm:DBType a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:EmpirDB bibrm:FactDB bibrm:IndexDB bibrm:RealtimeDB bibrm:StrucDB bibrm:FulltextDB bibrm:AbstrDB bibrm:PicDB ) . 
 
 bibrm:AbstrDB rdfs:label "Abstractdatenbank"@de,
-        "abstracts database"@en .
+        "abstracts database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:EmpirDB rdfs:label "empirische Datenbank"@de,
-        "empiric database"@en .
+        "empiric database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 bibrm:FactDB rdfs:label "Faktendatenbank"@de,
-        "facts database"@en .
+        "facts database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
                 
 bibrm:FulltextDB rdfs:label "Volltextdatenbank"@de,
-        "fulltext database"@en .
+        "fulltext database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 bibrm:IndexDB rdfs:label "Indexdatenbank"@de,
-        "index database"@en .
+        "index database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:PicDB rdfs:label "Bilddatenbank"@de,
-        "picture database"@en .
+        "picture database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:RealtimeDB rdfs:label "Realtime Datenbank"@de,
-        "realtime database"@en .
+        "realtime database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:StrucDB rdfs:label "Strukturdatenbank"@de,
-        "structure database"@en .  
+        "structure database"@en ;
+    owl:deprecated "true"^^xsd:boolean .
               
 
 bibrm:ERStatus a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:Active bibrm:CancellationNominee bibrm:Cancelled  bibrm:Trial bibrm:Wish  ) .  
 
 bibrm:Active a bibrm:ERStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Aktiv"@de,
         "Active"@en .
         
 bibrm:CancellationNominee a bibrm:ERStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Abbestellkandidat"@de,
         "Nominee for Cancellation"@en .
         
 bibrm:Cancelled a bibrm:ERStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Abbestellt"@de,
         "Cancelled"@en .       
         
 bibrm:Trial a bibrm:ERStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Test"@de,
         "Trial"@en .
 
 bibrm:Wish a bibrm:ERStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Wunsch"@de,
         "Wish"@en .
   
         
 bibrm:ERType  a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf (bibrm:Database bibrm:Ebook  bibrm:EbookPackage bibrm:Ejournal bibrm:EjournalPackage  ) .       
 
 bibrm:Database a bibrm:ERType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Datenbank"@de,
         "database"@en .
         
 bibrm:EbookPackage a bibrm:ERType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "E-Book Paket"@de,
         "e-book package"@en . 
 
 bibrm:Ebook a bibrm:ERType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "E-Book"@de,
         "e-book"@en .
         
 bibrm:Ejournal a bibrm:ERType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "E-Journal"@de,
         "e-journal"@en .
         
 bibrm:EjournalPackage a bibrm:ERType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "E-Journals-Paket"@de,
         "e-journal package"@en .
  
 
 bibrm:ExtendedBoolean  a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf (  bibrm:Yes bibrm:No bibrm:Undetermined ) .
         
 bibrm:Undetermined a bibrm:ExtendedBoolean ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "nicht festgelegt"@de,
         "undetermined"@en .
  
  
 bibrm:LicenseTerm a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:NotApplicable bibrm:SilentUninterpreted bibrm:ProhibitedInterpreted  bibrm:ProhibitedExplicit bibrm:PermittedInterpreted  bibrm:PermittedExplicit ) .
         
 bibrm:NotApplicable a bibrm:LicenseTerm ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "nicht zutreffend"@de,
         "not applicable"@en .
         
 bibrm:ProhibitedExplicit a bibrm:LicenseTerm ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "verboten (explizit)"@de,
         "prohibited (explicit)"@en .  
               
 bibrm:ProhibitedInterpreted a bibrm:LicenseTerm ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "verboten (Auslegung)"@de,
         "prohibited (interpreted)"@en .
 
 bibrm:PermittedExplicit a bibrm:LicenseTerm ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "zulässig (explizit)"@de,
         "permitted (explicit)"@en .
                 
 bibrm:PermittedInterpreted a bibrm:LicenseTerm ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "zulässig (Auslegung)"@de,
         "permitted (interpreted)"@en .
         
 bibrm:SilentUninterpreted a bibrm:LicenseTerm ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "unerwähnt"@de,
         "unmentioned"@en .
           
    
 bibrm:LicenseType a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:Faculty bibrm:CampusWithoutVPN bibrm:Single bibrm:Campus bibrm:NetworkIndependent ) .               
 
 bibrm:Campus a bibrm:LicenseType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Campuslizenz"@de,
         "Campus license"@en .
        
 bibrm:CampusWithoutVPN a bibrm:LicenseType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Campuslizenz ohne VPN-Zugang"@de,
         "Campus license without VPN"@en .
         
 bibrm:Faculty a bibrm:LicenseType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Fakultätslizenz (Class C Subnetz)"@de,
         "faculty license"@en .               
 
 bibrm:NetworkIndependent a bibrm:LicenseType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "netzunabhängig"@de,
         "Network independent"@en .
         
 bibrm:Single a bibrm:LicenseType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Einzelplatzlizenz"@de,
         "single-position license"@en .  
  
  
 bibrm:Month a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:January bibrm:February bibrm:March bibrm:April bibrm:May bibrm:June bibrm:July bibrm:August bibrm:September bibrm:October bibrm:November bibrm:December ) .
               
 bibrm:January rdfs:label "Januar"@de,
-        "January"@en .
+        "January"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:February rdfs:label "Februar"@de,
-        "February"@en .
+        "February"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 bibrm:March rdfs:label "März"@de,
-        "March"@en .
+        "March"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:April rdfs:label "April"@de,
-        "April"@en .
+        "April"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:May rdfs:label "Mai"@de,
-        "May"@en .      
+        "May"@en ;      
+    owl:deprecated "true"^^xsd:boolean .
 
 bibrm:June rdfs:label "Juni"@de,
-        "June"@en .
+        "June"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 bibrm:July rdfs:label "Juli"@de,
-        "July"@en .
+        "July"@en ;
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:August rdfs:label "August"@de,
-        "August"@en .
+        "August"@en ;
+    owl:deprecated "true"^^xsd:boolean .
    
 bibrm:September rdfs:label "September"@de,
-        "September"@en .   
+        "September"@en ;   
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:October rdfs:label "Oktober"@de,
-        "October"@en .  
+        "October"@en ;  
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:November rdfs:label "November"@de,
-        "November"@en .              
+        "November"@en ;              
+    owl:deprecated "true"^^xsd:boolean .
         
 bibrm:December rdfs:label "Dezember"@de,
-        "December"@en .        
+        "December"@en ;
+    owl:deprecated "true"^^xsd:boolean .
 
 
       
 bibrm:OrganizationType a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:Consortium bibrm:Enterprise bibrm:Library ) .        
 
 bibrm:Consortium a bibrm:OrganizationType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Konsortium"@de,
         "consortium"@en .
 
 bibrm:Enterprise a bibrm:OrganizationType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Unternehmen"@de,
         "enterprise"@en .   
              
 bibrm:Library a bibrm:OrganizationType ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Bibliothek"@de,
         "library"@en .
         
  
 bibrm:PaymentPeriod a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf (bibrm:PaymentInAdvance bibrm:PaymentInLicensingYear) .
 
 bibrm:PaymentInAdvance a bibrm:PaymentPeriod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Zahlung im Voraus"@de ,
         "Payment in advance"@en .
 
 bibrm:PaymentInLicensingYear a bibrm:PaymentPeriod ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Zahlung im Lizenzjahr"@de ,
         "Payment in licensing year"@en .
 
 
                
 bibrm:ShibbolethImplStatus a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:Implemented bibrm:Impossible bibrm:InProcess bibrm:Inquired bibrm:Prospected ) .
 
 bibrm:Implemented a bibrm:ShibbolethImplStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Implementiert"@de,
         "Implemented"@en .
 
 bibrm:Impossible a bibrm:ShibbolethImplStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Nein"@de,
         "No"@en .
 
 bibrm:InProcess a bibrm:ShibbolethImplStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "In Bearbeitung"@de,
         "In Process"@en .
 
 bibrm:Inquired a bibrm:ShibbolethImplStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Angefragt"@de,
         "Inquired"@en .
         
 bibrm:Prospected a bibrm:ShibbolethImplStatus ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "In Aussicht"@de,
         "Prospected"@en .
 
 
 bibrm:UserGroup a owl:Class ;
+    owl:deprecated "true"^^xsd:boolean ;
     owl:oneOf ( bibrm:TeachingHospitals  bibrm:Staff bibrm:Students  bibrm:UniMember bibrm:WalkIns ) .
     
 bibrm:Staff a bibrm:UserGroup ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Mitarbeiter"@de,
         "Staff"@en .
         
 bibrm:Students a bibrm:UserGroup ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Studierende"@de,
         "Students"@en .
         
 bibrm:TeachingHospitals a bibrm:UserGroup ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Lehrbeauftrage Lehrkrankenhäuser"@de,
         "Hospital teachers"@en .    
 
 bibrm:UniMember a bibrm:UserGroup ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Uni-Angehörige"@de,
         "University members"@en .
                     
 bibrm:WalkIns a bibrm:UserGroup ;
+    owl:deprecated "true"^^xsd:boolean ;
     rdfs:label "Walk-Ins"@de,
         "Walk Ins"@en .
 

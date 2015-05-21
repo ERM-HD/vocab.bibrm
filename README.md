@@ -1,3 +1,5 @@
+This Vocabulary is deprecated. The new vocabulary is maintained [here](https://github.com/amsl-project/amsl.vocab)
+
 Vocabulary for Bibliographical Electronic Resource Management
 =============================================================
 
